@@ -60,6 +60,7 @@
     	<!--<li><a href="<?php echo $this->config->item('admin_url').'/'.$this->name.'/newd'?>">Add New Forms</a></li>-->
         <li><a href="<?php echo $this->config->item('admin_url').'/'?>">Back</a></li>
     </ul>
+</div>
 <div id="loading" name="loading" align='center'><br/><br/><br/><?= $this->config->item("img_loading") ?><br/><br/></div>
 <div id="the_list"></div>
 <script>
