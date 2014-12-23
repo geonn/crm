@@ -29,7 +29,7 @@
 	<?php endforeach; ?>		
 	
 		<?php 	}else{ ?>
-			<tr><td colspan="5" ><div align='center'>No result found</div><td></tr>
+			<tr><td colspan="4" ><div align='center'>No result found</div></td></tr>
 		<?php  } ?>		
 	</tbody>	
 </table>	

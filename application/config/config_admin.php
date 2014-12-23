@@ -11,9 +11,9 @@ $config['roles'] = array(
 );
 
 $config['menu'] = array(
-	 'users'     => array(
-	 					"name" => "Users",	
-	 					"url" => $this->domain."/admin/users/index",	
+	 'staff'     => array(
+	 					"name" => "Staffs",	
+	 					"url" => $this->domain."/admin/staff/index",	
 	 				),
 	 'forms'  => array(
 	 					"name" => "Forms",	
@@ -50,8 +50,8 @@ $config['sub_menu'] = array(
 	 					'Add Product' => $this->domain.'/admin/product/newd', 
 	 					'Product List' => $this->domain.'/admin/product/index'
 	 				),
-	 'users'     => array(
-	 					'Users List' => $this->domain.'/admin/users/index'
+	 'staff'     => array(
+	 					'Staff List' => $this->domain.'/admin/staff/index'
 	 				),	
 	 'customer'     => array(),	
 	'forms'     => array(),	
@@ -76,8 +76,8 @@ $config['admin_option'] = array(
 );
 
 $config['account_status'] = array(
-	1=> 'Active',
-	2 => 'Inactive',
+	1=> 'Hired',
+	2 => 'Resign',
 );							
 
 $config['publish_status'] = array(
