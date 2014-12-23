@@ -43,14 +43,14 @@
 			<td><?= form_input('mobile', set_value('mobile',isset($form) ? $form['mobile'] : ''),'class="required" placeholder="Mobile No." style="width:98%;"'); ?></td>			
 		</tr>	
 	 	<tr>
-			<td style="width: 140px;"  id='edit_title'>User Type</td>
+			<td style="width: 140px;"  id='edit_title'>Position</td>
 			<td>
-				<?php
+				<?php 
 				if(in_array($roles, array('founder','director'))){
 					echo form_dropdown('roles', $this->config->item('roles'), set_value('roles',isset($form) ? $form['roles'] : ''), ' style="width:20%;"'); 
 				}else{
 					if($roles == "manager"){
-						echo form_dropdown('roles', array("admin" => "Admin"), set_value('roles',isset($form) ? $form['roles'] : ''), ' style="width:20%;"'); 
+						echo form_dropdown('roles', $this->config->item('manager_roles_access'), set_value('roles',isset($form) ? $form['roles'] : ''), ' style="width:20%;"'); 
 					}else{
 						echo  set_value('roles',isset($form) ? ucwords($form['roles']) : '');
 					 	echo form_hidden('roles', set_value('roles',isset($form) ? $form['roles'] : ''));

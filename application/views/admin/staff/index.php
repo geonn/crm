@@ -57,7 +57,7 @@
 <?= $template['partials']['message']; ?>
 <div id="submenu">
 	<ul>
-    	<li><a href="<?php echo $this->config->item('admin_url').'/'.$this->name.'/newd'?>">Add New <?= ucwords($this->name) ?></a></li>
+    	<li><a href="<?php echo $this->config->item('admin_url').'/'.$this->name.'/newd'?>">Hire New <?= ucwords($this->name) ?></a></li>
         <li><a href="<?php echo $this->config->item('admin_url').'/'?>">Back</a></li>
     </ul>
 </div>

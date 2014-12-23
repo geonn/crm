@@ -7,7 +7,13 @@ $config['roles'] = array(
 	 'founder'      => "Founder",
 	 'director' => "Director",	
 	 'manager'     => "Manager",
-	 'admin'       => "Admin"
+	 'admin'       => "Admin",
+	 'salesman'       => "Salesman",
+);
+
+$config['manager_roles_access'] = array(
+	"admin" => "Admin", 
+	"salesman" => "Salesman"
 );
 
 $config['menu'] = array(
