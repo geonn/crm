@@ -22,13 +22,21 @@ background: -ms-linear-gradient(top,  #d67c7d 0%,#eee 0%,#ffffff 50%); /* IE10+ 
 background: linear-gradient(to bottom,  #d67c7d 0%,#eee 0%,#ffffff 50%); /* W3C */
 }
 #submenu a{display:block;}
-#the_list{float:left; width:79.8%; height:100%;background: #eee;}
+#the_list{float:left; width:79.8%; height:100%;background: #eee; overflow: scroll; padding-bottom:50px;}
 #footer{position:fixed; background:#fff; bottom: 0; padding:10px; border-top: 1px solid #999; width:100%;}
 /*--------------------------------------------------------------------------------------------------
  	 DEFAULT PAGE DEFINITIONS
 	 CLASS
 --------------------------------------------------------------------------------------------------*/
 
+.dashboard_button{float:left;margin:10px;width:25%;border:1px black solid;}
+.dashboard_button:hover{background-color: #F4EF9A;
+    -webkit-transition: background-color 500ms linear;
+    -moz-transition: background-color 500ms linear;
+    -o-transition: background-color 500ms linear;
+    -ms-transition: background-color 500ms linear;
+    transition: background-color 500ms linear;}
+.dashboard_button a{display:block; padding:10px;}
 table.bordered{width: 100%; background:#eee;}
 table.bordered td{background: #fff; padding: 5px 10px; position: relative;line-height: 25px}
 table.bordered th{color: #fff; text-shadow:1px 1px 1px #333; padding: 5px 10px; position: relative;background:#333;}
