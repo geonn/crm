@@ -1,18 +1,18 @@
 <?php 
 if (! defined('BASEPATH')) exit('No direct script access');
 
-class Users extends Admin_Controller {
+class Staff extends Admin_Controller {
 	public $denied   = false;
 	public $validation = array();
 	public $account_status = array();  
 	public $day_list = array();
 	public $month_list = array();
 	public $year_list = array();
-	public $name  = 'users';
+	public $name  = 'staff';
 	      			
 	function __construct() {
 		parent::__construct();	
-		$this->account_status = array(1 => 'Active', 2 => 'Resign');
+		$this->account_status = $this->config->item('account_status');
 		$this->day_list = $this->config->item('day');
 		$this->month_list = $this->config->item('month');
 		$this->year_list = $this->config->item('yearRpt'); 

@@ -34,12 +34,7 @@ class Users_Model extends APP_Model{
 		
 		return $this->_result;
 	}
-	
-	public function retrievedByCriteria($criteria, $quantity){
-		$filter = array('u_status' => 1);
-		return $this->get_data($filter,$quantity,0,$criteria,'DESC');
-	}
-	
+	 
 	public function getUserById($u_id){
 		$filter = array(
 					$this->primary_key    => $u_id
@@ -90,30 +85,7 @@ class Users_Model extends APP_Model{
 		return $this->_result;
 	}
 	
-	
-	public function activateUser(){
-		$email = decode_key($this->param['id']);
-		$filter = array(
-					'u_email' => $email
-				);
-		$user = $this->get_data($filter);
-		
-		if(!empty($user)){
-			$update = array(
-						'u_status' => 1,
-						'updated' => date('Y-m-d H:i:s'),
-						);
-			$this->update($user[0]['u_id'],$update);
-			$this->_result['status']     = 'success';
-		}else{
-			$this->_result['status']     = 'error';
-			$this->_result['error_code'] = 114;
-			$this->_result['data'] = $this->code[114];
-		}
-			
-		return $this->_result;
-	}
-	
+	 
 	/** Logout User ***/
 	public function logoutUser(){
 		$u_id = $this->user_sessions_model->removeUserSession();
