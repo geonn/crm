@@ -1,0 +1,570 @@
+a.linkheader:link , a.linkheader:visited , a.linkheader:hover
+  {
+    color: #000000;
+    text-decoration: none;
+  }
+
+a.hoverunderline:link , a.hoverunderline:visited
+  {
+    color: #000000;
+    text-decoration: none;
+  }
+
+a.hoverunderline:hover
+  {
+    color: #000000;
+    text-decoration: underline;
+  }
+
+body, td, th {
+       font-family: "Arial", "Helvetica", "sans-serif";
+       font-size: 10pt;
+       font-height: 18pt
+       text-align:left}
+
+font.h5 {
+       font-family:  "Arial", "Helvetica", "sans-serif";
+       font-size: 8pt;
+       font-height: 18pt}
+
+font.h4 {
+       font-family: "Arial", "Helvetica", "sans-serif";
+       font-size: 12pt;
+       font-height: 18pt}
+
+font.h3 {
+       font-family: "Arial", "Helvetica", "sans-serif";
+       font-size: 13pt;
+       font-height: 18pt}
+
+font.h2 {
+       font-family: "Arial", "Helvetica", "sans-serif";
+       font-size: 14pt;
+       font-height: 18pt}
+
+font.h1 {
+       font-family: "Arial", "Helvetica", "sans-serif";
+       font-size: 16pt;
+       font-height: 18pt}
+
+.Toolbar 
+{
+	background-color: #DACEFA;
+	border-left: solid 0px #eeeeee;
+	border-right: solid 0px #eeeeee;
+	border-top: solid 0px #eeeeee;
+	border-bottom: solid 1px #C8B5FC;
+	padding: 2px;
+}
+
+.ButtonNormal
+{
+	background-color: #DACEFA;
+	border-left: #DACEFA solid 1px;
+	border-top: #DACEFA solid 1px;
+	border-right: #DACEFA solid 1px;
+	border-bottom: #DACEFA solid 1px;
+	cursor:hand;
+}
+
+.ButtonPressed
+{
+	background-color: #DACEFA;
+	border-left: #bbbbbb solid 1px;
+	border-top: #bbbbbb solid 1px;
+	border-right: #ffffff solid 1px;
+	border-bottom: #ffffff solid 1px;
+	cursor:hand;
+}
+
+.ButtonMouseOver
+{
+	background-color: #DACEFA;
+	border-left: #ffffff solid 1px;
+	border-top: #ffffff solid 1px;
+	border-right: #bbbbbb solid 1px;
+	border-bottom: #bbbbbb solid 1px;
+	cursor:hand;
+}
+
+.ButtonDisabled
+{
+	background-color: #eeeeee;
+	border-left: #DACEFA solid 1px;
+	border-top: #DACEFA solid 1px;
+	border-right: #DACEFA solid 1px;
+	border-bottom: #DACEFA solid 1px;
+}
+
+.ButtonText
+{
+	font-family: Verdana;
+	font-size: 10px;
+}
+
+.DropDown
+{
+	background-color:#FFFFFF;
+	border-left:#eeeeee solid 1px;
+	border-top:#eeeeee solid 1px;
+	border-right:buttonshadow solid 1px;
+	border-bottom:buttonshadow solid 1px;
+}
+
+.Space
+{
+	background-color: #DACEFA;
+	width: 4px;
+	height: 24px;
+}
+
+.List
+{	
+	background-color: #eeeeee;
+}
+
+.Image
+{
+	width: 22px;
+	height: 22px;
+}
+
+.Divider
+{
+	background-color: #DACEFA;
+	border-left: #bbbbbb solid 1px;
+	border-top: #bbbbbb solid 1px;
+	border-right: #ffffff solid 1px;
+	border-bottom: #ffffff solid 1px;
+	width: 2px;
+	height: 24px;
+}
+
+.Text
+{
+	font: 8pt verdana,arial,sans-serif
+}
+
+.Heading
+{
+	color:navy;
+	background-color: #eeeeee;
+}
+
+.Selector
+{
+	z-index:100;
+	display:none;
+	position:absolute;
+}
+
+A.SelectItem:link
+{
+	color: black;
+	text-decoration:none;
+}
+
+A.SelectItem:active
+{
+	color: black;
+	text-decoration:none;
+}
+
+A.SelectItem:visited
+{
+	color: black;
+	text-decoration:none;
+}
+
+/*** ESSENTIAL STYLES ***/
+.sf-menu, .sf-menu * {
+	margin:			0;
+	padding:		0;
+	list-style:		none;
+}
+.sf-menu {
+	line-height:	1.0;
+}
+.sf-menu ul {
+	position:		absolute;
+	top:			-999em;
+	width:			10em; /* left offset of submenus need to match (see below) */
+}
+.sf-menu ul li {
+	width:			100%;
+}
+.sf-menu li:hover {
+	visibility:		inherit; /* fixes IE7 'sticky bug' */
+}
+.sf-menu li {
+	float:			left;
+	position:		relative;
+}
+.sf-menu a {
+	display:		block;
+	position:		relative;
+}
+.sf-menu li:hover ul,
+.sf-menu li.sfHover ul {
+	left:			0;
+	top:			2.5em; /* match top ul list item height */
+	z-index:		99;
+}
+ul.sf-menu li:hover li ul,
+ul.sf-menu li.sfHover li ul {
+	top:			-999em;
+}
+ul.sf-menu li li:hover ul,
+ul.sf-menu li li.sfHover ul {
+	left:			10em; /* match ul width */
+	top:			0;
+}
+ul.sf-menu li li:hover li ul,
+ul.sf-menu li li.sfHover li ul {
+	top:			-999em;
+}
+ul.sf-menu li li li:hover ul,
+ul.sf-menu li li li.sfHover ul {
+	left:			10em; /* match ul width */
+	top:			0;
+}
+
+/*** DEMO SKIN ***/
+.sf-menu {
+	float:			left;
+}
+.sf-menu a {
+	border-left:	1px solid #fff;
+	border-top:		1px solid #CFDEFF;
+	padding: 		.75em 1em;
+	text-decoration:none;
+}
+.sf-menu a, .sf-menu a:visited  { /* visited pseudo selector so IE6 applies text colour*/
+	color:			#13a;
+}
+.sf-menu li {
+	background:		#BDD2FF;
+}
+.sf-menu li li {
+	background:		#AABDE6;
+}
+.sf-menu li li li {
+	background:		#9AAEDB;
+}
+.sf-menu li:hover, .sf-menu li.sfHover,
+.sf-menu a:focus, .sf-menu a:hover, .sf-menu a:active {
+	background:		#CFDEFF;
+	outline:		0;
+}
+
+/*** arrows **/
+.sf-menu a.sf-with-ul {
+	padding-right: 	2.25em;
+	min-width:		1px; /* trigger IE7 hasLayout so spans position accurately */
+}
+.sf-sub-indicator {
+	position:		absolute;
+	display:		block;
+	right:			.75em;
+	top:			1.05em; /* IE6 only */
+	width:			10px;
+	height:			10px;
+	text-indent: 	-999em;
+	overflow:		hidden;
+	background:		url('/administrator/image/arrows-ffffff.png') no-repeat -10px -100px; /* 8-bit indexed alpha png. IE6 gets solid image only */
+}
+a > .sf-sub-indicator {  /* give all except IE6 the correct values */
+	top:			.8em;
+	background-position: 0 -100px; /* use translucent arrow for modern browsers*/
+}
+/* apply hovers to modern browsers */
+a:focus > .sf-sub-indicator,
+a:hover > .sf-sub-indicator,
+a:active > .sf-sub-indicator,
+li:hover > a > .sf-sub-indicator,
+li.sfHover > a > .sf-sub-indicator {
+	background-position: -10px -100px; /* arrow hovers for modern browsers*/
+}
+
+/* point right for anchors in subs */
+.sf-menu ul .sf-sub-indicator { background-position:  -10px 0; }
+.sf-menu ul a > .sf-sub-indicator { background-position:  0 0; }
+/* apply hovers to modern browsers */
+.sf-menu ul a:focus > .sf-sub-indicator,
+.sf-menu ul a:hover > .sf-sub-indicator,
+.sf-menu ul a:active > .sf-sub-indicator,
+.sf-menu ul li:hover > a > .sf-sub-indicator,
+.sf-menu ul li.sfHover > a > .sf-sub-indicator {
+	background-position: -10px 0; /* arrow hovers for modern browsers*/
+}
+
+/*** shadows for all but IE6 ***/
+.sf-shadow ul {
+	background:	url('/administrator/image/shadow.png') no-repeat bottom right;
+	padding: 0 8px 9px 0;
+	-moz-border-radius-bottomleft: 17px;
+	-moz-border-radius-topright: 17px;
+	-webkit-border-top-right-radius: 17px;
+	-webkit-border-bottom-left-radius: 17px;
+}
+.sf-shadow ul.sf-shadow-off {
+	background: transparent;
+}
+
+ul.whiteMainTab {
+    list-style: none;
+    margin: 0;
+    padding: 5px 0 0 3px;
+}
+
+ul.whiteMainTab li {
+    float: left;
+    margin: 0 0 0 2px;
+}
+
+ul.whiteMainTab  a, ul.whiteMainTab  a span {
+    float: left;
+    padding: 0 6px;
+    background: url(/image/buttons.gif) no-repeat;
+}
+
+ul.whiteMainTab  a {
+    margin: 0;
+    padding-left: 0;
+	background-position: right -936px;	
+    text-decoration: none;
+    white-space: nowrap;
+    outline: 0; /* @ Firefox, prevent dotted border after click */    
+}
+
+ul.whiteMainTab a span {
+    padding-right: 0;
+    height: 28px;
+	background-position: 0 -907px;
+}
+
+ul.whiteMainTab a , ul.whiteMainTab a:link, ul.whiteMainTab a:visited {
+    color: #000;
+    cursor: pointer;
+}
+
+ul.whiteMainTab li.selected a {
+    position: relative;
+    z-index: 2;
+    margin-top: 0;
+	background-position: right -878px;	
+}
+
+ul.whiteMainTab li.selected a span {
+    padding-top: 0;
+    height: 28px;
+	background-position: 0 -849px;	
+}
+
+ul.whiteMainTab li.selected a:link, ul.whiteMainTab li.selected a:visited {
+    cursor: text;
+}
+
+ul.whiteMainTab li.selected font {
+	padding: 6px 3px;
+	font-size:14px;
+	color: #C00;
+	font-weight: bold;
+	display: block;
+}
+
+ul.whiteMainTab font {
+	color: #000;
+	font-size:12px;
+	padding: 5px 3px 0;
+	display: block;
+	font-weight: bold;
+}
+
+div.whiteBoxTabBg {
+	background:transparent url(/image/buttons.gif) repeat-x;
+	height: 33px;
+	background-position: 0px -976px;
+	float:left;
+}
+
+div.mainWhiteBoxContentBg {
+	background:transparent url(/image/horizontal_image.gif) repeat-y;
+	width: 660px;
+	background-position: -1653px 0px;
+}
+
+div.whiteBoxContentBg760 {
+	background:transparent url(/image/horizontal_image.gif) repeat-y;
+	width: 760px;
+	background-position: -4873px 0;
+	clear: both;
+}
+
+div.whiteBoxBottomLeft {
+	background:transparent url(/image/vertical_image.gif) no-repeat;
+	width: 4px;
+	height: 4px;
+	float:left;
+	background-position: -576px -49px;
+}
+
+div.whiteBoxBottomRight {
+	background:transparent url(/public/images/vertical_image.gif) no-repeat;
+	width: 4px;
+	height: 4px;
+	float:left;
+	background-position: -581px -49px;
+}
+
+div.whiteBoxBottomBg {
+	background:transparent url(/public/images/buttons.gif) repeat-x;
+	height: 4px;
+	float:left;
+	background-position: 0px -844px;
+}
+
+div.whiteBoxContentBg968 {
+	background:transparent url(/public/images/horizontal_image.gif) repeat-y;
+	width: 968px;
+	background-position: -3065px 0px;
+	float:left;
+	clear: both;
+}
+
+a.btn:link {
+    background-color: #F8F8F8;
+    border-color: #6C6C6C;
+    border-style: solid;
+    border-width: 1px;
+    color: #6C6C6C;
+    font-size: 11px;
+    font-weight: bold;
+    padding: 2px 6px;
+    text-decoration: none;
+}
+a.btn:visited {
+    background-color: #F8F8F8;
+    border: 1px solid #6C6C6C;
+    color: #6C6C6C;
+    font-size: 11px;
+    font-weight: bold;
+    padding: 2px 6px;
+    text-decoration: none;
+}
+a.btn:hover {
+    background-color: #FFDDBB;
+    border: 1px solid #6C6C6C;
+    color: #6C6C6C;
+    font-size: 11px;
+    font-weight: bold;
+    padding: 2px 6px;
+    text-decoration: none;
+}
+a.btn:active {
+    background-color: #F8F8F8;
+    border: 1px solid #6C6C6C;
+    color: #6C6C6C;
+    font-size: 11px;
+    font-weight: bold;
+    padding: 2px 6px;
+    text-decoration: none;
+}
+
+.data {
+    border-collapse: collapse;
+    font-size: 9pt;
+    width: 97%;
+}
+.data th {
+    background-color: #DFFFBF;
+    border-bottom: 1px solid #767757;
+    border-top: 1px solid #767757;
+    padding: 5px;
+    text-align: left;
+}
+.data td {
+    border-bottom: 1px solid #767757;
+    padding: 5px;
+    text-align: left;
+}
+.data tr:hover {
+    background-color: #FFFFA0;
+}
+.data a:link {
+    color: #000066;
+    text-decoration: none;
+}
+.data a:visited {
+    color: #000066;
+    text-decoration: none;
+}
+.data a:hover {
+    text-decoration: underline;
+}
+.data .number {
+    padding-right: 10px;
+    text-align: right;
+}
+
+.data_roles {
+    border-collapse: collapse;
+    font-size: 9pt;
+    width: 70%;
+}
+.data_roles th {
+    background-color: #DFFFBF;
+    border-bottom: 1px solid #767757;
+    border-top: 1px solid #767757;
+    padding: 5px;
+    text-align: left;
+}
+.data_roles td {
+    border-bottom: 1px solid #767757;
+    padding: 5px;
+    text-align: left;
+}
+.data_roles tr:hover {
+    background-color: #FFFFA0;
+}
+.data_roles a:link {
+    color: #000066;
+    text-decoration: none;
+}
+.data_roles a:visited {
+    color: #000066;
+    text-decoration: none;
+}
+.data_roles a:hover {
+    text-decoration: underline;
+}
+.data_roles .number {
+    padding-right: 10px;
+    text-align: right;
+}
+
+.edit {
+    border-collapse: collapse;
+    font-size: 10pt;
+    width: 100%;
+}
+.edit th {
+    background-color: #FEDCBA;
+    border: 1px solid #987654;
+    padding: 5px;
+    width: 150px;
+}
+.edit th p {
+    font-weight: normal;
+}
+.edit td {
+    background-color: white;
+    border: 1px solid #888888;
+    padding: 5px;
+}
+.edit td:hover {
+    background-color: #FFFFA0;
+}
+.edit .width_500 {
+    width: 500px;
+}

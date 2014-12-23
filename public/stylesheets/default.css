@@ -1,0 +1,57 @@
+html{height:100%}
+body{font-size: 14px; height:100%;}
+a{color: #000; text-decoration:none;}
+select{-webkit-appearance:none;-moz-appearance:none;appearance:none; padding:4px 10px;height: 25px;}
+input, button{padding:4px 10px;}
+/*--------------------------------------------------------------------------------------------------
+ 	 DEFAULT PAGE DEFINITIONS
+	 ID
+--------------------------------------------------------------------------------------------------*/
+#header{border-bottom:1px solid #999;}
+#header td{line-height:30px; padding: 5px 0;}
+#header a{padding:0 10px; border-right:1px solid #999; float:right;}
+#header a:hover{background:#555; color:#6CF;}
+#container{clear:both; height:100%;}
+#submenu{height:100%; float:left; border-right:1px solid #999; width:20%}
+#submenu li{padding:10px 15px; border-bottom:1px solid #999;
+background: -moz-linear-gradient(top,  #d67c7d 0%, #eee 0%, #ffffff 50%); /* FF3.6+ */
+background: -webkit-gradient(linear, color-stop(0%,#d67c7d), color-stop(0%,#eee), color-stop(50%,#ffffff)); /* Chrome,Safari4+ */
+background: -webkit-linear-gradient(top,  #d67c7d 0%,#eee 0%,#ffffff 50%); /* Chrome10+,Safari5.1+ */
+background: -o-linear-gradient(top,  #d67c7d 0%,#eee 0%,#ffffff 50%); /* Opera 11.10+ */
+background: -ms-linear-gradient(top,  #d67c7d 0%,#eee 0%,#ffffff 50%); /* IE10+ */
+background: linear-gradient(to bottom,  #d67c7d 0%,#eee 0%,#ffffff 50%); /* W3C */
+}
+#submenu a{display:block;}
+#the_list{float:left; width:79.8%; height:100%;background: #eee;}
+#footer{position:fixed; background:#fff; bottom: 0; padding:10px; border-top: 1px solid #999; width:100%;}
+/*--------------------------------------------------------------------------------------------------
+ 	 DEFAULT PAGE DEFINITIONS
+	 CLASS
+--------------------------------------------------------------------------------------------------*/
+
+table.bordered{width: 100%; background:#eee;}
+table.bordered td{background: #fff; padding: 5px 10px; position: relative;line-height: 25px}
+table.bordered th{color: #fff; text-shadow:1px 1px 1px #333; padding: 5px 10px; position: relative;background:#333;}
+table.bordered th a{color: #fff; text-shadow:1px 1px 1px #333; text-decoration:underline;}
+table.bordered th a span{position:absolute; top:0;}
+.search_panel{margin: 5px 0;}
+.separator:after{content: " \00bb" }
+.container_header{border-bottom:1px solid #999; font-size: 16px;}
+.notice_message,.success_message,.error_message {padding:10px;color: #1D1D1D;width:auto;}
+.success_message {background: #BCFFB5;border: 1px solid #A3E59B;}
+.notice_message {background: #F4EF9A;border: 1px solid #F4EF9A;}
+.error_message {background: #FFB5B5;border: 1px solid #E09799;}
+.header_title{float:left; padding:0 10px; border-right:1px solid #999; margin:5px 0;line-height: 25px;}
+.preview {
+  width: 540px;
+  height: 140px;
+  border: 1px solid #cccccc;
+}
+.gradient{#
+background: -moz-linear-gradient(top,  #d67c7d 0%, #CFF 0%, #ffffff 100%); /* FF3.6+ */
+background: -webkit-gradient(linear, color-stop(0%,#d67c7d), color-stop(0%,#CFF), color-stop(100%,#ffffff)); /* Chrome,Safari4+ */
+background: -webkit-linear-gradient(top,  #d67c7d 0%,#CFF 0%,#ffffff 100%); /* Chrome10+,Safari5.1+ */
+background: -o-linear-gradient(top,  #d67c7d 0%,#CFF 0%,#ffffff 100%); /* Opera 11.10+ */
+background: -ms-linear-gradient(top,  #d67c7d 0%,#CFF 0%,#ffffff 100%); /* IE10+ */
+background: linear-gradient(to bottom,  #d67c7d 0%,#CFF 0%,#ffffff 100%); /* W3C */
+}

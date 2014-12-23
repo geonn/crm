@@ -1,0 +1,7 @@
+
+RewriteEngine on
+RewriteBase /
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond $1 !^(index\.php|images|css|public|robots\.txt)
+RewriteRule ^(.*)$ /crm/index.php?/$1 [QSA,L]

@@ -1,0 +1,53 @@
+/*
+	 Organic Tabs
+	 by Chris Coyier
+	 http://css-tricks.com
+*/
+
+a { text-decoration: none; }
+a:focus { outline: 0; }
+p { font-size: 14px; margin: 0 0 20px 0; }
+#page-wrap { width: 440px; margin: 80px auto; }
+
+/* Generic Utility */
+.hide { position: absolute; top: -9999px; left: -9999px; }
+
+
+/* Specific to example one */
+
+#vasibletable { background: #eee; padding: 10px; margin: 0 0 20px 0; -moz-box-shadow: 0 0 5px #666; -webkit-box-shadow: 0 0 5px #666; }
+
+#vasibletable .nav { overflow: hidden; margin: 0 0 10px 0; }
+#vasibletable .nav li { width: 120px; float: left; margin: 0 10px 0 0; }
+#vasibletable .nav li.last { margin-right: 0; }
+#vasibletable .nav li a { display: block; padding: 5px; background: #959290; color: white; font-size: 14px; text-align: center; border: 0; }
+#vasibletable .nav li a:hover { background-color: #111; }
+
+#vasibletable ul { list-style: none; }
+#vasibletable ul li a { display: block; border-bottom: 1px solid #666; padding: 4px; color: #666; }
+#vasibletable ul li a:hover { color: white; }
+#vasibletable ul li:last-child a { border: none; }
+
+#vasibletable ul li.nav-one a.current, #vasibletable ul.featured li a:hover { background-color: #0575f4; color: white; }
+#vasibletable ul li.nav-two a.current, #vasibletable ul.core li a:hover { background-color: #d30000; color: white; }
+#vasibletable ul li.nav-three a.current, #vasibletable ul.jquerytuts li a:hover { background-color: #8d01b0; color: white; }
+#vasibletable ul li.nav-four a.current, #vasibletable ul.classics li a:hover { background-color: #FE4902; color: white; }
+
+
+
+/* Specific to example two */
+
+#example-two .list-wrap { background: #eee; padding: 10px; margin: 0 0 15px 0; }
+
+#example-two ul { list-style: none; }
+#example-two ul li a { display: block; border-bottom: 1px solid #666; padding: 4px; color: #666; }
+#example-two ul li a:hover { background: #333; color: white; }
+#example-two ul li:last-child a { border: none; }
+
+#example-two .nav { overflow: hidden; }
+#example-two .nav li { width: 97px; float: left; margin: 0 10px 0 0; }
+#example-two .nav li.last { margin-right: 0; }
+#example-two .nav li a { display: block; padding: 5px; background: #666; color: white; font-size: 10px; text-align: center; border: 0; }
+
+#example-two li a.current,#example-two li a.current:hover { background-color: #eee !important; color: black; }
+#example-two .nav li a:hover, #example-two .nav li a:focus { background: #999;}

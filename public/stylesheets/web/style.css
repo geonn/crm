@@ -1,0 +1,16 @@
+@charset "utf-8";
+/* CSS Document */
+
+body {color: #555555; font-family: "Segoe UI",Helvetica,Arial,"Sans-Serif"; font-size: 14px; font-weight: normal; line-height: 20px; margin:0px; width: 100%;}
+img {border:0 none;}
+
+.pageBg { background:url(../../images/bg.png) repeat-x top;}
+.wrapper {width:80%; margin:10px auto;}
+.header  {padding:10px 20px;}
+.logo {padding-left:15px;}
+.content {margin-bottom:20px;}
+.footer {font-size:12px; border-top:1px solid #555555; padding:10px; text-align:center;}
+
+/*LANDING PAGE*/
+.content_landing {height:550px; background:url(../../images/landingBG.jpg) repeat-x top center;}
+.footer_landing {font-size:12px; text-align:center; padding:10px}

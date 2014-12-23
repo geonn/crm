@@ -1,0 +1,1 @@
+<div class="footer">Copyright &copy; <? echo date('Y');?> by GEONN Solution</div>

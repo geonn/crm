@@ -1,0 +1,2009 @@
+p {
+	margin : 10px 0 0;
+}
+
+a.linkheader:link , a.linkheader:visited , a.linkheader:hover
+  {
+    color: #000000;
+    text-decoration: none;
+  }
+
+a.hoverunderline:link , a.hoverunderline:visited  {
+    text-decoration: none;
+}
+
+a.hoverunderline:hover {text-decoration: underline;}
+
+a.hoverunderlineblack:link , a.hoverunderlineblack:visited  {
+    text-decoration: none;
+	color: #000000;
+}
+
+a.hoverunderlineblack:hover {text-decoration: underline;}
+
+
+a.boxLink:hover, a.boxLinkFirst:hover {
+	text-decoration: underline;
+	color: #CC0000;
+}
+
+a.boxLink, a.boxLinkFirst {
+	display:block;
+	font-weight:bold;
+	width:180px;
+	text-decoration: none;
+	color: #000000;
+}
+
+a.boxLink font, a.boxLinkFirst font {
+	padding:5px 7px;
+	font-size: 13px;
+	display: block;
+}
+
+a.boxLink {
+	border-top: 1px dotted #000000;
+}
+
+div.topBackground {
+	background: url(image/background1.gif) 0 0 repeat-x;
+	height: 331px;
+	width: 100%;
+	position: absolute;
+}
+
+div.bodyContent {
+	position: absolute;
+	width: 100%;
+}
+
+div.bodyContentBackground {
+	background: url(image/horizontal_image.gif) 0 0 repeat-y;
+	width: 988px;
+	background-position: -664px 0px;
+	clear: both;
+	float:left;
+}
+
+div.topHeader {
+	background: url(image/headertop.gif) 0 0 no-repeat;
+	width: 988px;
+	height: 58px;
+	clear: both;
+}
+
+div.footerImage {
+	background: url(image/headertop.gif) 0 0 no-repeat;
+	background-position: 0px -59px;
+	width: 988px;
+	height: 13px;
+	clear: both;
+}
+
+div.arrowRight {
+	background: url(image/vertical_image.gif) -543px -28px no-repeat;
+	float:left;
+	width: 8px;
+	height: 6px;
+}
+
+div.topHeaderDarkGreenLeft {
+	background: url(image/vertical_image.gif) -494px -12px no-repeat;
+	float:left;
+	width: 11px;
+	height: 47px;
+}
+
+div.topHeaderDarkGreenCenter {
+	background: url(image/vertical_bg_image.gif) -0 -28px repeat-x;
+	float:left;
+	width: 966px;
+	height: 47px;
+}
+
+div.topHeaderDarkGreenRight {
+	background: url(image/vertical_image.gif) -511px -12px no-repeat;
+	float:left;
+	width: 11px;
+	height: 47px;
+}
+
+div.everydayGreenLogo {
+	background: url(image/big_image.gif) -351px -168px no-repeat;
+	width: 86px;
+	height: 23px;
+}
+
+div.greenVerticalLine {
+	background: url(image/vertical_image.gif) -472px -12px no-repeat;
+	width: 2px;
+	height: 30px;
+}
+
+ul.greenTab {
+	list-style-image:none;
+	list-style-position:outside;
+	list-style-type:none;
+	margin:0;
+	padding:0;
+	right:0;
+}
+
+ul.greenTab li {
+	float:left;
+	margin:0;
+	padding:0;
+}
+
+ul.greenTab a, ul.greenTab span{
+	background:transparent url(image/buttons.gif) no-repeat;
+	height:27px;
+	float:left;
+	padding:0 10px 0 0;
+}
+
+ul.greenTab a {
+	display:block;
+	margin:0;
+	padding:0;
+	cursor:pointer;
+	text-decoration:none;
+}
+
+ul.greenTab li.selectedFirst a{
+	background-position: 0 0;
+}
+
+ul.greenTab li.selectedFirst span{
+	background-position: right -27px;	
+}
+
+ul.greenTab li.Selected a{
+	background-position: 0 -139px;
+}
+
+ul.greenTab li.Selected span{
+	background-position: right -27px;	
+}
+
+ul.greenTab li.notSelected a{
+	background-position: -8px -55px;
+}
+
+ul.greenTab li.notSelected span{
+	background-position: right -83px;	
+}
+
+ul.greenTab li.notSelectedFirst a{
+	background-position: 0px -55px;
+}
+
+ul.greenTab li.notSelectedFirst span{
+	background-position: right -83px;	
+}
+
+ul.greenTab font {
+	color:#000000;
+	display:block;
+	font-size:13px;
+	padding:4px 5px 0 15px;
+	white-space:nowrap;
+	font-weight: bold;
+}
+
+
+ul.whiteMainTab {
+    list-style: none;
+    margin: 0;
+    padding: 5px 0 0 3px;
+}
+
+ul.whiteMainTab li {
+    float: left;
+    margin: 0 0 0 2px;
+}
+
+ul.whiteMainTab  a, ul.whiteMainTab  a span {
+    float: left;
+    padding: 0 6px;
+    background: url(image/buttons.gif) no-repeat;
+}
+
+ul.whiteMainTab  a {
+    margin: 0;
+    padding-left: 0;
+	background-position: right -936px;	
+    text-decoration: none;
+    white-space: nowrap;
+    outline: 0; /* @ Firefox, prevent dotted border after click */    
+}
+
+ul.whiteMainTab a span {
+    padding-right: 0;
+    height: 28px;
+	background-position: 0 -907px;
+}
+
+ul.whiteMainTab a , ul.whiteMainTab a:link, ul.whiteMainTab a:visited {
+    color: #000;
+    cursor: pointer;
+}
+
+ul.whiteMainTab li.selected a {
+    position: relative;
+    z-index: 2;
+    margin-top: 0;
+	background-position: right -878px;	
+}
+
+ul.whiteMainTab li.selected a span {
+    padding-top: 0;
+    height: 28px;
+	background-position: 0 -849px;	
+}
+
+ul.whiteMainTab li.selected a:link, ul.whiteMainTab li.selected a:visited {
+    cursor: text;
+}
+
+ul.whiteMainTab li.selected font {
+	padding: 6px 3px;
+	font-size:14px;
+	color: #C00;
+	font-weight: bold;
+	display: block;
+}
+
+ul.whiteMainTab font {
+	color: #000;
+	font-size:12px;
+	padding: 5px 3px 0;
+	display: block;
+	font-weight: bold;
+}
+
+div.greenButtonBlackBg {
+	float:left;
+	margin:0;
+	padding:0;
+}
+
+div.greenButtonBlackBg a, div.greenButtonBlackBg span{
+	background:transparent url(image/buttons.gif) no-repeat;
+	height:41px;
+	float:left;
+	padding:0 10px 0 0;
+	display:block;
+}
+
+div.greenButtonBlackBg a {
+	background-position: right -210px;
+	cursor:pointer;
+	text-decoration:none;
+}
+
+div.greenButtonBlackBg span {
+	background-position: 0px -168px;
+}
+
+div.greenButtonBlackBg a:hover {
+	background-position: right -294px;
+	cursor:pointer;
+	text-decoration:none;
+}
+
+div.greenButtonBlackBg a:hover span {
+	background-position: 0 -252px;
+}
+
+div.greenButtonBlackBg font {
+	color:#000000;
+	display:block;
+	font-size:20px;
+	padding:10px 0px 0 20px;
+	white-space:nowrap;
+	font-weight: bold;
+}
+
+div.greenButton {
+	float:left;
+	margin:0;
+	padding:0;
+}
+
+div.greenButton a, div.greenButton span{
+	background:transparent url(image/buttons.gif) no-repeat;
+	height:41px;
+	float:left;
+	padding:0 10px 0 0;
+	display:block;
+}
+
+div.greenButton a {
+	background-position: right -377px;
+	cursor:pointer;
+	text-decoration:none;
+}
+
+div.greenButton span {
+	background-position: 0 -335px;
+}
+
+div.greenButton a:hover {
+	background-position: right -461px;
+	cursor:pointer;
+	text-decoration:none;
+}
+
+div.greenButton a:hover span {
+	background-position: 0 -419px;
+}
+
+div.greenButton a:hover font {
+	color:#FF0000;
+}
+
+div.greenButton font {
+	color:#111111;
+	display:block;
+	font-size:19px;
+	padding:12px 20px 0 40px;
+	white-space:nowrap;
+}
+
+div.blueButton {
+	float:left;
+	margin:0;
+	padding:0;
+}
+
+div.blueButton a, div.blueButton span{
+	background:transparent url(image/buttons.gif) no-repeat;
+	height:36px;
+	float:left;
+	padding:0 10px 0 0;
+	display:block;
+}
+
+div.blueButton a {
+	background-position: right -688px;
+	cursor:pointer;
+	text-decoration:none;
+}
+
+div.blueButton span {
+	background-position: 0 -651px;
+}
+
+div.blueButton a:hover {
+	background-position: right -762px;
+	cursor:pointer;
+	text-decoration:none;
+}
+
+div.blueButton a:hover span {
+	background-position: 0 -725px;
+}
+
+div.blueButton font {
+	color:#FFFFFF;
+	display:block;
+	font-size:16px;
+	padding:10px 0px 0 20px;
+	white-space:nowrap;
+	font-weight: bold;
+}
+
+div.everydayLogo {
+	background:transparent url(image/big_image.gif) no-repeat;
+	width:447px;
+	height:95px;
+	float:left;
+	position: absolute;
+	top:11px;
+	left:11px;
+}
+
+div.searchPanel {
+	background:transparent url(image/big_image.gif) no-repeat 0 -96px;
+	width:418px;
+	height:71px;
+	float:left;
+	position: absolute;
+	top:34px;
+	left:570px;
+	z-index: 1;
+}
+
+div.searchDiscountPanel {
+	background:transparent url(image/big_image.gif) no-repeat 0 -168px;
+	width:350px;
+	height:45px;
+	float:left;
+	position: absolute;
+	top:50px;
+	left:587px;
+	z-index: 2;
+}
+
+div.searchDiscountInputDiv {
+	float:left;
+	position: absolute;
+	top:66px;
+	left:610px;
+	z-index: 2;
+}
+
+div.searchButton {
+	float:left;
+	position: absolute;
+	top:52px;
+	left:945px;
+	z-index: 2;
+	width: 35px;
+	height: 35px;
+	cursor: pointer;
+}
+
+div.searchDiscountSelectButton {
+	float:left;
+	position: absolute;
+	top:70px;
+	left:913px;
+	z-index: 2;
+	width: 20px;
+	height: 20px;
+	cursor: pointer;
+}
+
+div.searchDiscountSelectDiv {
+	font-size: 11px;
+	float:left;
+	position: absolute;
+	top:71px;
+	left:801px;
+	z-index: 2;
+	width: 110px;
+}
+
+div.blackCornerTopLeft {
+	background:transparent url(image/vertical_image.gif) no-repeat -537px -49px;
+	float:left;
+	width:6px;
+	height:6px;
+}
+
+div.blackCornerTopRight {
+	background:transparent url(image/vertical_image.gif) no-repeat -545px -49px;
+	float:left;
+	width:6px;
+	height:6px;
+}
+
+div.blackCornerBottomLeft {
+	background:transparent url(image/vertical_image.gif) no-repeat -552px -49px;
+	float:left;
+	width:6px;
+	height:6px;
+}
+
+div.blackCornerBottomRight {
+	background:transparent url(image/vertical_image.gif) no-repeat -559px -49px;
+	float:left;
+	width:6px;
+	height:6px;
+}
+
+div.grayBoxTop {
+	background:transparent url(image/buttons.gif) repeat-x 0 -964px;
+	float:left;
+	height:5px;
+}
+
+div.grayBoxBottom {
+	background:transparent url(image/buttons.gif) repeat-x 0 -970px;
+	float:left;
+	height:5px;
+}
+
+div.grayBoxCornerTopLeft {
+	background:transparent url(image/vertical_image.gif) no-repeat 0 0;
+	float:left;
+	width:7px;
+	height:5px;
+}
+
+div.grayBoxCornerTopRight {
+	background:transparent url(image/vertical_image.gif) no-repeat -8px 0;
+	float:left;
+	width:7px;
+	height:5px;
+}
+
+div.grayBoxCornerBottomLeft {
+	background:transparent url(image/vertical_image.gif) no-repeat 0 -6px;
+	float:left;
+	width:7px;
+	height:5px;
+}
+
+div.grayBoxCornerBottomRight {
+	background:transparent url(image/vertical_image.gif) no-repeat -8px -6px;
+	float:left;
+	width:7px;
+	height:5px;
+}
+
+
+div.searchDiscountSelectWindow {
+	float:left;
+	position: absolute;
+	top:88px;
+	left:797px;
+	z-index: 3;
+	width:132px;
+}
+
+div.searchDiscountSelectWindowBg {
+	alpha(opacity=80);
+	-moz-opacity: 0.8;
+	opacity: 0.8;
+	position: absolute;
+}
+
+div.searchDiscountSelectWindowContent {
+	position: absolute;
+	width: 132px;
+}
+
+div.searchDiscountSelectWindowContent div {
+	display:block;
+	padding: 5px;
+}
+
+div.searchDiscountSelectWindowContent div a, div.searchDiscountSelectWindowContent div a:link {
+	margin: 2px 0;
+	display:block;
+	padding: 4px 5px;
+	text-decoration: none;
+	color: #ffffff;
+}
+
+div.searchDiscountSelectWindowContent div a:hover {
+	background-color: #000000;
+	color: #FF0000;
+}
+
+div.loginWindow {
+	float:left;
+	position: absolute;
+	top:2px;
+	left:696px;
+	z-index: 3;
+}
+
+div.loginWindowBg {
+	alpha(opacity=80);
+	-moz-opacity: 0.8;
+	opacity: 0.8;
+	position: absolute;
+}
+
+div.loginWindowContent {
+	position: absolute;
+	width: 270px;
+}
+
+div.footerContent {
+	color: #ffffff;
+}
+
+div.footerContent a {
+	color: #ffffff;
+}
+
+input.blur {
+color:#999999;
+}
+
+input.searchFieldInput {
+border:0 none;
+font-family:Arial,Tahoma,Geneva,sans-serif;
+font-size:11px;
+font-size-adjust:none;
+margin:2pt 2pt 0 3px;
+width:165px;
+}
+
+ul.greenTab li.notSelected a:hover font {
+	color:#CC0000;
+}
+
+ul.greenTab li.notSelectedFirst a:hover font {
+	color:#CC0000;
+}
+
+
+ul.greenTab li.selected font, ul.greenTab li.selectedFirst font {
+	color:#FFFFFF;
+}
+
+div.tabBackground {
+	background:transparent url(image/vertical_bg_image.gif) repeat-x 0 0;
+	height:27px;
+	float:left;
+	width:919px;
+}
+
+div.tabRight {
+	background:transparent url(image/vertical_image.gif) no-repeat -485px -13px;
+	height:27px;
+	float:left;
+	width:9px;
+}
+
+div, body, td, th, h3, p {
+   font-family: "Arial", "Verdana", "Geneva", "Verdana", "Helvetica", "sans-serif";
+   font-size: 12px;
+   line-height: auto;
+}
+
+img {border: 0px;} 
+
+textarea {
+	background-color:#FBFBFB;
+	font-family: "Arial", "Verdana", "Geneva", "Verdana", "Helvetica", "sans-serif";
+	font-size: 12px;
+	padding:3px;
+	border: 1px solid #999999;
+}
+
+textarea {
+	background-color:#FBFBFB;
+	font-family: "Arial", "Verdana", "Geneva", "Verdana", "Helvetica", "sans-serif";
+	font-size: 12px;
+	padding:3px;
+	border: 1px solid #999999;
+}
+
+input.inputClass {
+}
+
+input[type=text], input[type=password] {
+	background:#FBFBFB none repeat scroll 0% 0%;
+	font-family:Arial,Verdana,Helvetica,sans-serif;
+	font-size:12px;
+	padding:3px;
+	border: 1px solid #999999;
+	color:#333333;
+}
+
+span.timeago {
+	font-style:italic;
+}
+
+form {
+display:inline;
+}
+
+.h5 {
+       font-family:  "Arial", "Verdana", "Geneva", "Verdana", "Helvetica", "sans-serif";
+       font-size: 11px;
+       line-height: auto;
+}
+
+.h4 {
+       font-family: "Arial", "Verdana", "Geneva", "Verdana", "Helvetica", "sans-serif";
+       font-size: 14px;
+       line-height: auto;
+  }
+
+.h3 {
+       font-family: "Arial", "Verdana", "Geneva", "Verdana", "Helvetica", "sans-serif";
+       font-size: 16px;
+       line-height: auto;
+  }
+
+h1 {
+       font-family: "Arial", "Verdana", "Geneva", "Verdana", "Helvetica", "sans-serif";
+       font-size: 20px;
+       display: inline;
+       display: block;
+       margin: 12px 0 0 7px;
+}
+  
+h2 {
+       font-family: "Arial", "Verdana", "Geneva", "Verdana", "Helvetica", "sans-serif";
+       font-size: 18px;
+       line-height: auto;
+       display: inline;
+  }
+
+.h2 {
+       font-family: "Arial", "Verdana", "Geneva", "Verdana", "Helvetica", "sans-serif";
+       font-size: 18px;
+       line-height: auto;
+}
+
+.h1 {
+       font-family: "Arial", "Verdana", "Geneva", "Verdana", "Helvetica", "sans-serif";
+       font-size: 20px;
+       display: inline;
+}
+
+.rteImage {
+	background: #D3D3D3;
+	border: 1px solid #D3D3D3;
+	cursor: pointer;
+	cursor: hand;
+}
+
+.rteImageRaised, .rteImage:hover {
+	background: #D3D3D3;
+	border: 1px outset;
+	cursor: pointer;
+	cursor: hand;
+}
+
+.rteImageLowered, .rteImage:active {
+	background: #D3D3D3;
+	border: 1px inset;
+	cursor: pointer;
+	cursor: hand;
+}
+
+.rteVertSep {
+	margin: 0 4px 0 4px;
+}
+
+.rteBack {
+	background: #D3D3D3;
+	border: 1px outset;
+	letter-spacing: 0;
+	padding: 2px;
+}
+
+.rteBack tbody tr td, .rteBack tr td {
+	background: #D3D3D3;
+	padding: 0;
+}
+
+.rteDiv {
+	display: block;
+	position: relative;
+}
+
+.highlight1 { background-color: yellow }
+.highlight2 { background-color: cyan }
+.highlight3 { background-color: lightgreen }
+.highlight4 { background-color: pink }
+.highlight5 { background-color: lightblue }
+
+div.blue_box_t, div.blue_box_b, div.blue_box_l, div.blue_box_r, div.blue_box_bl, div.blue_box_br, div.blue_box_tl, div.blue_box_tr {
+	width: 315px;
+	margin: 0px;
+}
+
+div.blue_box_t {background: url(image/blue1_box_t.gif) 0 0 repeat-x;}
+div.blue_box_b {background: url(image/blue1_box_b.gif) 0 100% repeat-x;}
+div.blue_box_l {background: url(image/blue1_box_l.gif) 0 0 repeat-y;}
+div.blue_box_r {background: url(image/blue1_box_r.gif) 100% 0 repeat-y;}
+div.blue_box_bl {background: url(image/blue1_box_bl.gif) 0 100% no-repeat;}
+div.blue_box_br {background: url(image/blue1_box_br.gif) 100% 100% no-repeat;}
+div.blue_box_tl {background: url(image/blue1_box_tl.gif) 0 0 no-repeat;}
+div.blue_box_tr {background: url(image/blue1_box_tr.gif) 100% 0 no-repeat;}
+
+div.break_line {
+	height: 10px;
+	clear: both;
+}
+
+div.half_break_line {
+	height: 5px;
+	clear: both;
+}
+
+div.whiteBoxLine, div.yellow_box_line {
+	border-bottom-color:#cccccc;
+	border-bottom-style:solid;
+	border-bottom-width:1px;
+	clear:both;
+}
+
+div.field_text {
+	font-weight: bold;
+	color: #0000CC;
+}
+
+@media projection, screen {
+    .ui-tabs-hide {
+        display: none !important;
+    }
+}
+
+@media print {
+    .ui-tabs-nav {
+        display: none;
+    }
+}
+
+div.yellow_box_dotted_line {
+	border-bottom:1px dotted #cccccc;
+	clear: both;
+}
+
+.ui-tabs-panel {
+	background:#FFFFFF none repeat scroll 0 0;
+	border:1px solid #cccccc;
+	width:100%;
+}
+
+/* Skin */
+.ui-tabs-nav, .ui-tabs-panel {
+    font-family: "Arial","Verdana","Geneva","Verdana","Helvetica","sans-serif";
+    font-size: 12px;
+}
+.ui-tabs-nav {
+    list-style: none;
+    margin: 0;
+    padding: 0 0 0 3px;
+}
+.ui-tabs-nav:after { /* clearing without presentational markup, IE gets extra treatment */
+    display: block;
+    clear: both;
+    content: " ";
+}
+.ui-tabs-nav li {
+    float: left;
+    margin: 0 0 0 2px;
+    font-weight: bold;
+}
+.ui-tabs-nav a, .ui-tabs-nav a span {
+    float: left; /* fixes dir=ltr problem and other quirks IE */
+    padding: 0 6px;
+    background: url(image/tabs.gif) no-repeat;
+}
+.ui-tabs-nav a {
+    margin: 0; /* position: relative makes opacity fail for disabled tab in IE */
+    padding-left: 0;
+    background-position: 100% 0;
+    text-decoration: none;
+    white-space: nowrap; /* @ IE 6 */
+    outline: 0; /* @ Firefox, prevent dotted border after click */    
+}
+
+.ui-tabs-nav a:hover {
+    background-position: 100% -23px;
+}
+
+.ui-tabs-nav a:hover span {
+    background-position: 0px -23px;
+}
+
+.ui-tabs-selected a:hover, .ui-tabs-selected1 a:hover {
+    background-position: 100% -46px;
+}
+
+.ui-tabs-selected a:hover span, .ui-tabs-selected a:hover span {
+    background-position: 0 -46px;
+}
+
+.ui-tabs-nav a:link, .ui-tabs-nav a:visited {
+    color: #000;
+}
+
+.ui-tabs-nav .ui-tabs-selected a {
+    position: relative;
+    top: 1px;
+    z-index: 2;
+    margin-top: 0;
+    background-position: 100% -46px;
+}
+
+.ui-tabs-selected1 a {
+    position: relative;
+    z-index: 2;
+	top: 1px;
+    background-position: 100% -46px;
+}
+
+.ui-tabs-nav a span {
+    padding-top: 1px;
+    padding-right: 0;
+    height: 20px;
+    background-position: 0 0;
+    line-height: 20px;
+}
+.ui-tabs-nav .ui-tabs-selected a span {
+    padding-top: 0;
+    height: 27px;
+    background-position: 0 -46px;
+    line-height: 27px;
+}
+
+.ui-tabs-nav .ui-tabs-selected1 a span {
+    padding-top: 0;
+    height: 21px;
+    background-position: 0 -46px;
+    line-height: 21px;
+}
+
+.ui-tabs-nav .ui-tabs-selected1 a:link, .ui-tabs-nav .ui-tabs-selected1 a:visited {
+    cursor: text;
+}
+
+.ui-tabs-nav .ui-tabs-selected a:link, .ui-tabs-nav .ui-tabs-selected a:visited,
+.ui-tabs-nav .ui-tabs-disabled a:link, .ui-tabs-nav .ui-tabs-disabled a:visited { /* @ Opera, use pseudo classes otherwise it confuses cursor... */
+	font-size:14px;
+	color: #C00;
+    cursor: text;
+}
+.ui-tabs-nav a:hover, .ui-tabs-nav a:focus, .ui-tabs-nav a:active,
+.ui-tabs-nav .ui-tabs-unselect a:hover, .ui-tabs-nav .ui-tabs-unselect a:focus, .ui-tabs-nav .ui-tabs-unselect a:active { /* @ Opera, we need to be explicit again here now... */
+    cursor: pointer;
+}
+.ui-tabs-disabled {
+    opacity: .4;
+    filter: alpha(opacity=40);
+}
+.ui-tabs-nav .ui-tabs-disabled a:link, .ui-tabs-nav .ui-tabs-disabled a:visited {
+    color: #000;
+}
+
+li.ui-tabs-notselected {
+    margin: 6px 0 0 2px;
+}
+
+/* Additional IE specific bug fixes... */
+* html .ui-tabs-nav { /* auto clear @ IE 6 & IE 7 Quirks Mode */
+    display: inline-block;
+}
+*:first-child+html .ui-tabs-nav  { /* auto clear @ IE 7 Standards Mode - do not group selectors, otherwise IE 6 will ignore complete rule (because of the unknown + combinator)... */
+    display: inline-block;
+}
+
+
+.adsbanner {
+	position:absolute;
+	display: none;
+	cursor: pointer;
+}
+
+div.adsbutton_nav1, div.adsbutton_nav2,div.adsbutton_nav3,div.adsbutton_nav4,div.adsbutton_nav5 {
+	background:transparent url(image/ads_banner_nav.gif) no-repeat scroll 0 0;
+	width:15px;
+	height:16px;
+	cursor: pointer;
+}
+
+div.adsbutton_nav1 {
+	background-position: 0 0;
+}
+
+div.adsbutton_nav2 {
+	background-position: 0 -16px;
+}
+
+div.adsbutton_nav3 {
+	background-position: 0 -32px;
+}
+
+div.adsbutton_nav4 {
+	background-position: 0 -48px;
+}
+
+div.adsbutton_nav5 {
+	background-position: 0 -64px;
+}
+
+.adsbanner_nav {
+	position:absolute; 
+	background: #000000; 
+	height:100%; 
+	width:30px; 
+	right: 0px; 
+	top:0px;
+	alpha(opacity=80);
+	-moz-opacity: 0.8;
+	opacity: 0.8;
+}
+
+.nav_not_selected {
+	width:21px;
+	height:21px;
+	cursor: pointer;
+}
+
+div.nav_not_selected:hover , .nav_selected {
+	width:21px;
+	height:21px;
+	background:transparent url(image/ads_banner_nav.gif) no-repeat scroll 0 0;
+	background-position: 0 -85px;
+}
+
+div.icon_details {
+	background:transparent url(/image/vertical_image.gif) no-repeat scroll 0 0;
+	background-position: -522px -45px;
+	width:14px;
+	height:15px;
+	cursor: pointer;
+	float: left;
+	margin: 0px 5px;
+}
+
+div.icon_bloglink, img.icon_bloglink {
+	background:transparent url(/image/vertical_image.gif) no-repeat scroll 0 0;
+	background-position: -522 -29px;
+	width:20px;
+	height:15px;
+	cursor: pointer;
+	float: left;
+	margin: 0px 5px;
+}
+
+div.icon_comment {
+	background:transparent url(/image/vertical_image.gif) no-repeat scroll 0 0;
+	background-position: -543px -12px;
+	width:16px;
+	height:15px;
+	cursor: pointer;
+	float: left;
+	margin: 0px 5px;
+}
+
+div.icon_pricelist {
+	background:transparent url(/image/vertical_image.gif) no-repeat scroll 0 0;
+	background-position: -522px -12px;
+	width:16px;
+	height:16px;
+	cursor: pointer;
+	float: left;
+	margin: 0px 5px;
+}
+
+div.icon_bloglink_small {
+	background:transparent url(/image/vertical_image.gif) no-repeat scroll 0 0;
+	background-position: -586px -45px;
+	width:14px;
+	height:13px;
+	float: left;
+}
+
+div.icon_comment_small {
+	background:transparent url(/image/vertical_image.gif) no-repeat scroll 0 0;
+	background-position: -543px -35px;
+	width:14px;
+	height:13px;
+	float: left;
+}
+
+div.icon_pricelist_small {
+	background:transparent url(/image/vertical_image.gif) no-repeat scroll 0 0;
+	background-position: -560px -12px;
+	width:14px;
+	height:14px;
+	float: left;
+}
+
+div.rss_background {
+	background:transparent url(image/rss-background.gif) no-repeat scroll 0 0;
+	width:280px;
+	height:104px;
+	padding: 5px 0 0 10px;
+}
+
+div.whiteBoxHeaderLeft {
+	background:transparent url(image/vertical_image.gif) no-repeat;
+	width: 6px;
+	height: 39px;
+	background-position: -646px -12px;
+	float:left;
+}
+
+div.whiteBoxHeaderRight {
+	background:transparent url(image/vertical_image.gif) no-repeat;
+	width: 6px;
+	height: 39px;
+	background-position: -653px -12px;
+	float:left;
+}
+
+div.whiteBoxHeader {
+	background:transparent url(image/buttons.gif) repeat-x;
+	height: 39px;
+	background-position: 0px -799px;
+	float:left;
+}
+
+div.whiteBoxTabBg {
+	background:transparent url(image/buttons.gif) repeat-x;
+	height: 33px;
+	background-position: 0px -976px;
+	float:left;
+}
+
+div.mainWhiteBoxContentBg {
+	background:transparent url(image/horizontal_image.gif) repeat-y;
+	width: 660px;
+	background-position: -1653px 0px;
+}
+
+div.whiteBoxContentBg280 {
+	background:transparent url(image/horizontal_image.gif) repeat-y;
+	width: 280px;
+	background-position: -2784px 0px;
+	clear: both;
+}
+
+div.whiteBoxContentBg530 {
+	background:transparent url(image/horizontal_image.gif) repeat-y;
+	width: 530px;
+	background-position: -6811px 0px;
+	clear: both;
+}
+
+div.whiteBoxContentBg180 {
+	background:transparent url(image/horizontal_image.gif) repeat-y;
+	width: 180px;
+	background-position: -4692px 0px;
+	clear: both;
+}
+
+div.whiteBoxContentBg200 {
+	background:transparent url(image/horizontal_image.gif) repeat-y;
+	width: 200px;
+	background-position: -6129px 0px;
+	clear: both;
+}
+
+div.whiteBoxContentBg480 {
+	background:transparent url(image/horizontal_image.gif) repeat-y;
+	width: 480px;
+	background-position: -6330px 0px;
+	clear: both;
+}
+
+div.whiteBoxContentBg740 {
+	background:transparent url(image/horizontal_image.gif) repeat-y;
+	width: 740px;
+	background-position: -7342px 0;
+	clear: both;
+}
+
+div.whiteBoxContentBg760 {
+	background:transparent url(image/horizontal_image.gif) repeat-y;
+	width: 760px;
+	background-position: -4873px 0;
+	clear: both;
+}
+
+div.whiteBoxContentBg968 {
+	background:transparent url(image/horizontal_image.gif) repeat-y;
+	width: 968px;
+	background-position: -3065px 0px;
+	float:left;
+	clear: both;
+}
+
+div.whiteBoxContentBg657 {
+	background:transparent url(image/horizontal_image.gif) repeat-y;
+	width: 657px;
+	background-position: -4034px 0px;
+	clear: both;
+}
+
+div.grayBoxContentBg494 {
+	background:transparent url(image/horizontal_image.gif) repeat-y;
+	width: 494px;
+	background-position: -8083px 0px;
+	clear: both;
+}
+
+div.grayBoxContentBg380 {
+	background:transparent url(image/horizontal_image.gif) repeat-y;
+	width: 380px;
+	background-position: -8578px 0px;
+	clear: both;
+}
+
+div.whiteBoxTopLeft {
+	background:transparent url(image/vertical_image.gif) no-repeat;
+	width: 4px;
+	height: 4px;
+	float:left;
+	background-position: -566px -49px;
+}
+
+div.pictureOutline {
+	padding:3px;
+	border-style:solid;
+	border-color: #cccccc;
+	border-width: 1px;
+	background-color: #ffffff;
+	float:left;
+}
+
+div.whiteBoxTopRight {
+	background:transparent url(image/vertical_image.gif) no-repeat;
+	width: 4px;
+	height: 4px;
+	float:left;
+	background-position: -571px -49px;
+}
+
+div.whiteBoxBottomLeft {
+	background:transparent url(image/vertical_image.gif) no-repeat;
+	width: 4px;
+	height: 4px;
+	float:left;
+	background-position: -576px -49px;
+}
+
+div.whiteBoxBottomRight {
+	background:transparent url(image/vertical_image.gif) no-repeat;
+	width: 4px;
+	height: 4px;
+	float:left;
+	background-position: -581px -49px;
+}
+
+div.whiteBoxTopBg {
+	background:transparent url(image/buttons.gif) repeat-x;
+	height: 4px;
+	float:left;
+	background-position: 0px -839px;
+}
+
+div.whiteBoxBottomBg {
+	background:transparent url(image/buttons.gif) repeat-x;
+	height: 4px;
+	float:left;
+	background-position: 0px -844px;
+}
+
+div.blueBoxTop {
+	background:transparent url(image/vertical_image.gif) repeat-x;
+	width: 662px;
+	height: 5px;
+	float:left;
+	background-position: 0 0;
+}
+
+div.blueBoxMiddle {
+	background:transparent url(image/horizontal_image.gif) repeat-y;
+	float:left;
+	width: 660px;
+	background-position: 0 0;
+}
+
+div.blueBoxBottom {
+	clear: both;
+	background:transparent url(image/vertical_image.gif) no-repeat;
+	width: 662px;
+	height: 5px;
+	background-position: 0 -6px;
+}
+
+div.commentPointer {
+	background:transparent url(image/vertical_image.gif) no-repeat;
+	width: 10px;
+	height: 15px;
+	background-position: -282px -12px;
+	position:absolute;
+	margin: 10px 0 0 -9px;
+}
+
+div.closeIcon {
+	background:transparent url(image/vertical_image.gif) no-repeat;
+	width: 14px;
+	height: 14px;
+	background-position: -625px -29px;
+}
+
+div.editIcon {
+	background:transparent url(image/vertical_image.gif) no-repeat;
+	width: 15px;
+	height: 14px;
+	background-position: -117px -62px;
+}
+
+div.addIcon {
+	background:transparent url(image/vertical_image.gif) no-repeat;
+	width: 14px;
+	height: 14px;
+	background-position: -102px -62px;
+}
+
+div.padlockIcon {
+	background:transparent url(image/vertical_image.gif) no-repeat;
+	width: 14px;
+	height: 17px;
+	background-position: -212px -62px;
+}
+
+div.clothesIcon {
+	background:transparent url(image/vertical_image.gif) no-repeat;
+	width: 19px;
+	height: 21px;
+	background-position: -1px -12px;
+	margin: 2px 5px;
+}
+
+div.entertaintmentIcon {
+	background:transparent url(image/vertical_image.gif) no-repeat;
+	width: 27px;
+	height: 21px;
+	background-position: -21px -12px;
+	margin: 2px 1px;
+}
+
+div.homeIcon {
+	background:transparent url(image/vertical_image.gif) no-repeat;
+	width: 23px;
+	height: 20px;
+	background-position: -49px -12px;
+	margin: 2px 3px;
+}
+
+div.beautyIcon {
+	background:transparent url(image/vertical_image.gif) no-repeat;
+	width: 16px;
+	height: 21px;
+	background-position: -73px -12px;
+	margin: 2px 7px;
+}
+
+div.dinningIcon {
+	background:transparent url(image/vertical_image.gif) no-repeat;
+	width: 21px;
+	height: 17px;
+	background-position: -90px -12px;
+	margin: 4px 4px;
+}
+
+div.jewelryIcon {
+	background:transparent url(image/vertical_image.gif) no-repeat;
+	width: 26px;
+	height: 19px;
+	background-position: -112px -12px;
+	margin: 3px 2px;
+}
+
+div.toysIcon {
+	background:transparent url(image/vertical_image.gif) no-repeat;
+	width: 17px;
+	height: 20px;
+	background-position: -139px -12px;
+	margin: 2px 6px;
+}
+
+div.sportsIcon {
+	background:transparent url(image/vertical_image.gif) no-repeat;
+	width: 19px;
+	height: 19px;
+	background-position: -157px -12px;
+	margin: 3px 5px;
+}
+
+div.groceryIcon {
+	background:transparent url(image/vertical_image.gif) no-repeat;
+	width: 18px;
+	height: 20px;
+	background-position: -177px -12px;
+	margin: 2px 6px;
+}
+
+div.computerIcon {
+	background:transparent url(image/vertical_image.gif) no-repeat;
+	width: 20px;
+	height: 21px;
+	background-position: -196px -12px;
+	margin: 2px 5px;
+}
+
+div.travelIcon {
+	background:transparent url(image/vertical_image.gif) no-repeat;
+	width: 21px;
+	height: 21px;
+	background-position: -217px -12px;
+	margin: 2px 4px;
+}
+
+div.electricalIcon {
+	background:transparent url(image/vertical_image.gif) no-repeat;
+	width: 18px;
+	height: 21px;
+	background-position: -240px -12px;
+	margin: 2px 6px;
+}
+
+div.bookIcon {
+	background:transparent url(image/vertical_image.gif) no-repeat;
+	width: 21px;
+	height: 21px;
+	background-position: -260px -12px;
+	margin: 2px 4px;
+}
+
+div.topRatedIcon {
+	background:transparent url(image/vertical_image.gif) no-repeat;
+	width: 20px;
+	height: 21px;
+	background-position: -343px -12px;
+	margin: 3px 5px;
+}
+
+div.newIcon {
+	background:transparent url(image/vertical_image.gif) no-repeat;
+	width: 20px;
+	height: 20px;
+	background-position: -302px -12px;
+	margin: 2px 5px;
+}
+
+div.warehouseIcon {
+	background:transparent url(image/vertical_image.gif) no-repeat;
+	width: 24px;
+	height: 19px;
+	background-position: -428px -12px;
+	margin: 3px 3px;
+}
+
+div.priceCatalogIcon {
+	background:transparent url(image/vertical_image.gif) no-repeat;
+	width: 22px;
+	height: 20px;
+	background-position: 0 -62px;
+	margin: 2px 4px;
+}
+
+div.discountPromotionIcon {
+	background:transparent url(image/vertical_image.gif) no-repeat;
+	width: 22px;
+	height: 19px;
+	background-position: -44px -62px;
+	margin: 3px 4px;
+}
+
+div.creditCardIcon {
+	background:transparent url(image/vertical_image.gif) no-repeat;
+	width: 20px;
+	height: 19px;
+	background-position: -407px -12px;
+	margin: 3px 5px;
+}
+
+div.creditCardIcon {
+	background:transparent url(image/vertical_image.gif) no-repeat;
+	width: 20px;
+	height: 19px;
+	background-position: -407px -12px;
+	margin: 3px 5px;
+}
+
+div.memberDicountIcon {
+	background:transparent url(image/vertical_image.gif) no-repeat;
+	width: 23px;
+	height: 20px;
+	background-position: -365px -12px;
+	margin: 2px 3px;
+}
+
+div.discountVoucherIcon {
+	background:transparent url(image/vertical_image.gif) no-repeat;
+	width: 17px;
+	height: 20px;
+	background-position: -389px -12px;
+	margin: 2px 6px;
+}
+
+div.hiddenDiscountIcon {
+	background:transparent url(image/vertical_image.gif) no-repeat;
+	width: 19px;
+	height: 19px;
+	background-position: -23px -62px;
+	margin: 2px 5px;
+}
+
+div.categoryImage {
+	float: left;
+	width: 30px;
+	text-align: center;
+}
+
+div.categoryLink {
+	width: 170px;
+	height: 25px;
+	float: left;
+	text-align: left;
+}
+
+div.categoryLink a {
+	padding: 5px 0 0 3px;
+	display: block;
+	font-weight:bold;
+}
+
+div.footerBoxTop {
+	background:transparent url(image/horizontal_image.gif) no-repeat;
+	width: 950px;
+	height: 6px;
+	background-position: -663 -1;
+}
+
+div.footerBoxMiddle {
+	background:transparent url(image/horizontal_image.gif) repeat-y;
+	float:left;
+	width: 950px;
+	background-position: -2566px 0;
+}
+
+div.footerBoxBottom {
+	clear: both;
+	background:transparent url(image/horizontal_image.gif) no-repeat;
+	width: 950px;
+	height: 6px;
+	background-position: -1614 -1;
+}
+
+div.footerColumn {
+	float:left;
+	width:237px;
+}
+
+div.footerColumnPadding {
+	padding: 10px;
+}
+
+div.footerColumn a {
+	color: #CCCCFF;
+}
+
+div.footerColumn a:hover {
+	color: #FFFFFF;
+}
+
+div.halfBlueBoxTop {
+	background:transparent url(image/vertical_image.gif) no-repeat;
+	width: 471px;
+	height: 6px;
+	background-position: 0 -34;
+}
+
+div.halfBlueBoxMiddle {
+	background:transparent url(image/horizontal_image.gif) repeat-y;
+	float:left;
+	width: 471px;
+	background-position: -3516 0;
+}
+
+div.halfBlueBoxBottom {
+	clear: both;
+	background:transparent url(image/vertical_image.gif) no-repeat;
+	width: 471px;
+	height: 6px;
+	background-position: 0 -41;
+}
+
+div.blueBoxLine {
+	border-bottom:1px solid #cccccc;
+	clear:both;
+}
+
+div.blueBoxDashedLine {
+	border-bottom:1px dashed #cccccc;
+	clear:both;
+}
+
+div.fullBlueBoxTop {
+	background:transparent url(image/horizontal_image.gif) no-repeat;
+	width: 950px;
+	height: 6px;
+	background-position: -3988px -0;
+}
+
+div.fullBlueBoxMiddle {
+	background:transparent url(image/horizontal_image.gif) repeat-y;
+	float:left;
+	width: 950px;
+	background-position: -5891px 0;
+}
+
+div.fullBlueBoxBottom {
+	clear: both;
+	background:transparent url(image/horizontal_image.gif) no-repeat;
+	width: 950px;
+	height: 6px;
+	background-position: -4940px 0;
+}
+
+div.memberIcon, span.memberIcon {
+	background:transparent url(image/vertical_image.gif) no-repeat;
+	width: 8px;
+	height: 14px;
+	background-position: -293 -12;
+}
+
+div.memberIcon {
+	float: left;
+}
+
+div.theLayerBg {
+	display:none;
+	border: medium none ;
+	margin: 0px;
+	padding: 0px;
+	z-index: 998;
+	width: 100%;
+	top: 0px;
+	left: 0px;
+	background-color: rgb(0, 0, 0);
+	opacity:0.8;
+	filter: alpha(opacity=80);
+	-moz-opacity: 0.8;
+	position: fixed;
+	height: 100%;
+}
+
+div.upload_picture_div {
+	display:none;
+	text-align:left;
+	position:absolute;
+	top:100px; 
+	left:100px; 
+	width:750px; 
+	height:420px;
+	background-color:#ffffff;
+	border-width: 1px;
+	border-style: solid; 
+	border-color: #cccccc;
+	z-index: 999;
+}
+
+input.bigButton {
+	padding: 5px;
+	width: 250px;
+	font-weight: bold;
+	font-size: 18px;
+	color: rgb(255, 0, 0);
+}
+
+div.everydayCouponsLogo {
+	background:transparent url(image/coupons_images.gif) no-repeat;
+	width:447px;
+	height:95px;
+	float:left;
+	position: absolute;
+	top:11px;
+	left:11px;
+}
+
+div.everydayCouponBoxTop {
+	background: url(image/coupons_images.gif) -14px -162px no-repeat;
+	width: 280px;
+	height: 49px;
+	float:left;
+	position:relative;
+}
+
+div.everydayCouponLogoLink {
+	cursor:pointer;
+	width:182px;
+	height:44px;
+	left:0px;
+	top:0px;
+	position:absolute;
+}
+
+div.everydayCouponBoxTopLink {
+	cursor:pointer;
+	width:60px;
+	height:25px;
+	left:218px;
+	top:10px;
+	position:absolute;
+}
+
+div.darkGrayBoxTopLeft {
+	background: url(image/coupons_images.gif) -341px -96px no-repeat;
+	width: 4px;
+	height: 4px;
+	float:left;
+}
+
+div.darkGrayBoxTopRight {
+	background: url(image/coupons_images.gif) -346px -96px no-repeat;
+	width: 4px;
+	height: 4px;
+	float:left;
+}
+
+div.darkGrayBoxBottomLeft {
+	background: url(image/coupons_images.gif) -341px -101px no-repeat;
+	width: 4px;
+	height: 4px;
+	float:left;
+}
+
+div.darkGrayBoxBottomRight {
+	background: url(image/coupons_images.gif) -346px -101px no-repeat;
+	width: 4px;
+	height: 4px;
+	float:left;
+}
+
+div.darkGrayBoxBottom {
+	background: url(image/coupons_vertical_image.gif) 0 -80px repeat-x;
+	width: 4px;
+	height: 4px;
+	float:left;
+}
+
+div.darkGrayBoxTop {
+	background: url(image/coupons_vertical_image.gif) 0 -85px repeat-x;
+	width: 4px;
+	height: 4px;
+	float:left;
+}
+
+div.darkGrayBoxContentBg280 {
+	background: url(image/coupons_horizontal_image.gif) 0 0 repeat-y;
+	width: 280px;
+	float:left;
+}
+
+div.darkGrayBoxContentBg270 {
+	background: url(image/coupons_horizontal_image.gif) -281px 0 repeat-y;
+	width: 270px;
+	float:left;
+}
+
+div.darkGrayBoxContentBg180 {
+	background: url(image/coupons_horizontal_image.gif) -552px 0 repeat-y;
+	width: 180px;
+	float:left;
+}
+
+div.darkGrayBoxLine {
+	clear:both;width:280px;border-bottom:solid 1px #acacac;
+}
+
+div.darkGrayBoxVerLine {
+	height:48px;border-left:solid 1px #acacac;float:left;
+}
+
+div.couponNavLeft {
+	background: url(image/coupons_images.gif) 0 -162px no-repeat;
+	width: 6px;
+	height: 58px;
+	float:left;
+}
+
+div.couponNavRight {
+	background: url(image/coupons_images.gif) -7px -162px no-repeat;
+	width: 6px;
+	height: 58px;
+	float:left;
+}
+
+div.couponNavMiddle {
+	background: url(image/coupons_vertical_image.gif) 0 0 repeat-x;
+	width: 956px;
+	height: 58px;
+	float:left;
+}
+
+div.couponBuyButton a {
+	background: url(image/coupons_images.gif) 0 -96px no-repeat;
+	width: 208px;
+	height: 65px;
+	float:left;
+}
+
+div.couponBuyButton a:hover {
+	background-position: 0 -306px;
+}
+
+div.couponSoldOutButton {
+	background: url(image/coupons_images.gif) -239px -492px no-repeat;
+	width: 208px;
+	height: 65px;
+	float:left;
+}
+
+ul.couponNavList {
+	list-style-image:none;
+	list-style-position:outside;
+	list-style-type:none;
+	margin:0;
+	padding: 8px 0;
+	display:block;
+	float:left;
+}
+
+ul.couponNavList li {
+	float:left;
+	margin:0 10px;
+	padding:0;
+}
+
+ul.couponNavList li a {
+	text-decoration:none;
+	outline:0 none;
+}
+
+ul.couponNavList li a, ul.couponNavList li span{
+	height:42px;
+	float:left;
+	cursor:pointer;
+}
+
+ul.couponNavList li.selected a {
+	background:transparent url(image/coupons_images.gif) no-repeat;
+	background-position: right -263px;
+	padding:0 10px 0 0;
+}
+
+ul.couponNavList li.selected span {
+	background:transparent url(image/coupons_images.gif) no-repeat;
+	background-position: 0 -221px;
+}
+
+ul.couponNavList li.selected span font {
+	font-weight:bold;
+}
+
+ul.couponNavList li font {
+	padding: 9px 15px 0 25px;
+	display:block;
+	font-size:20px;
+	color:#000;
+}
+
+ul.couponNavList li a:hover span font {
+	color:#cc0000;
+}
+
+div#couponDescription h1, div#couponDescription h1 font {
+	font-size:34px;
+	line-height:40px;
+}
+
+div#couponDescription h1 font {
+	color:#FF0000
+}
+
+div.countdownColumn {
+	float:left;width:56px;
+}
+
+div.countdownBg {
+	background: url(image/coupons_images.gif) -209px -96px no-repeat;
+	width: 56px;
+	height: 48px;
+	float:left;
+	overflow:hidden;
+}
+
+div.countdownBg font {
+	font-size:30px;
+	display:block;
+	padding:9px 0 0 6px;
+	letter-spacing:10px;
+	color:#ffffff;
+	line-height:30px;
+}
+
+div.onePerson {
+	background: url(image/coupons_images.gif) -266px -96px no-repeat;
+	width: 23px;
+	height: 30px;
+	float:left;
+	overflow:hidden;
+}
+
+div.multiplePerson {
+	background: url(image/coupons_images.gif) -290px -96px no-repeat;
+	width: 31px;
+	height: 30px;
+	float:left;
+	overflow:hidden;
+}
+
+div.paxTimelineBGLeft {
+	background: url(image/coupons_images.gif) -327px -96px no-repeat;
+	width: 6px;
+	height: 12px;
+	float:left;
+}
+
+div.paxTimelineBGRight {
+	background: url(image/coupons_images.gif) -334px -96px no-repeat;
+	width: 6px;
+	height: 12px;
+	float:left;
+}
+
+div.paxTimelineBGMiddle {
+	background: url(image/coupons_vertical_image.gif) 0 -67px repeat-x;
+	width: 174px;
+	height: 12px;
+	float:left;
+	overflow:hidden;
+}
+
+div.paxTimelineLeft {
+	background: url(image/coupons_images.gif) -327px -109px no-repeat;
+	width: 4px;
+	height: 7px;
+	float:left;
+}
+
+div.paxTimelineMiddle {
+	background: url(image/coupons_vertical_image.gif) 0 -59px repeat-x;
+	height: 7px;
+	float:left;
+	overflow:hidden;
+}
+
+div.paxTimelineRight {
+	background: url(image/coupons_images.gif) -332px -109px no-repeat;
+	width: 3px;
+	height: 7px;
+	float:left;
+}
+
+div.dealIsOn {
+	background: url(image/coupons_images.gif) -266px -132px no-repeat;
+	width: 27px;
+	height: 28px;
+	float:left;
+}
+
+div.contactRetailer {
+	background: url(image/coupons_images.gif) -377px -96px no-repeat;
+	width: 70px;
+	height: 63px;
+	float:left;
+}
+
+div.moneyBackGuarantee {
+	background: url(image/coupons_images.gif) -265px -306px no-repeat;
+	width: 182px;
+	height: 185px;
+	float:left;
+}
+
+div.moneyBackGuaranteeSmall {
+	background: url(image/coupons_images.gif) -295px -127px no-repeat;
+	width: 73px;
+	height: 74px;
+	float:left;
+}
+
+ul.terms {
+	list-style-position:outside;
+	margin:0;
+	padding: 0 0 0 18px;
+}
+
+div.reviewIcon {
+	background: url(image/coupons_images.gif) -422px -160px no-repeat;
+	width: 25px;
+	height: 29px;
+	float:left;
+}
+
+div.quoteOpen {
+	background: url(image/coupons_images.gif) -351px -96px no-repeat;
+	width: 14px;
+	height: 11px;
+	float:left;
+}
+
+font.couponPrice {
+	color:#FF0000;
+	font-size:40px;
+	font-weight:bold;
+	line-height:44px;
+}
