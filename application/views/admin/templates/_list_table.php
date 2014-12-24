@@ -22,13 +22,8 @@
 			<td><?= $row['creator'];?></td>	
 			<td><?= $row['v_con'];?></td>
 			<td><?php 
-				
-					if($row['status'] == "2"){
-						echo "<div class='orange_label'>";
-					}else{
-						echo "<div class='green_label'>";
-					}
-					echo match($row['status'],$this->config->item('publish_status')) ." </div>";
+				 
+					echo "<div style='text-align:center;'>".$this->config->item('icon_status'.$row['status']) ." </div>";
 				?>
 			</td>	
 			<td><?= $this->admin_model->generateEditButton($this->name,$row['id'],$this->name); ?></td>																

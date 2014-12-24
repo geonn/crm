@@ -14,13 +14,13 @@
   		$.get("<?= $this->config->item('admin_url') ?>/<?= $this->name ?>/show_answer/?question_type="+question_type+"&q_id="+ q_id, function(data) {
 	  		jQuery('#options').show();
 			jQuery('#loading').hide();
-		  	jQuery('#the_list').html(data);
+		  	jQuery('#the_list_question').html(data);
 		  	
 		});
   	}
   	
   </script> 
-<table class="edit">
+<table class="edit bordered">
 	<tbody>	
 	
 		<tr>
@@ -38,7 +38,7 @@
 			</tr>	
 			<tr id="options" style="display:none;">
 				<td style="width: 140px;"  id='edit_title'>Answer Options</td>
-				<td><div id="the_list"></div></td>		
+				<td><div id="the_list_question"></div></td>		
 			</tr>	
 		 <?php } ?>
 	</tbody>

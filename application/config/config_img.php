@@ -16,5 +16,7 @@ $config['icon_gotop']  = '<img src="'.$this->domain.'/public/images/go-top.png" 
 $config['icon_prev']   = '<img src="'.$this->domain.'/public/images/icon_prev.gif" width="20px" height="20px" />';
 $config['img_loading'] = '<img src="'.$this->domain.'/public/images/loading.gif">';
 $config['icon_delete'] = '<img src="'.$this->domain.'/public/images/cross.png" />';
+$config['icon_status1'] = '<img src="'.$this->domain.'/public/images/status_1.png" />';
+$config['icon_status2'] = '<img src="'.$this->domain.'/public/images/status_2.png" />';
 /* End of file config_img.php */
 /* Location: ./application/config/config_img.php */

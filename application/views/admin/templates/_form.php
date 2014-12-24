@@ -35,7 +35,7 @@
      <div class="list-wrap">
 		<ul id="info">
 			<li>
-				<table class="edit">
+				<table class="edit bordered">
 					<tbody>	
 						<tr>
 							<td style="width: 140px;"  id='edit_title'>Template Name</td>

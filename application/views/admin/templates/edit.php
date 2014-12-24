@@ -1,8 +1,7 @@
 <div class="container_header">
 	<div class="header_title"><a class="separator" href="#">Home</a> <a class="separator" href="#"><?= ucwords($this->name) ?></a> Edit <?= ucwords($this->name) ?></div>
 	<div style="clear:both"></div>
-</div>
-<?= $template['partials']['message']; ?>
+</div> 
 <div id="submenu">
 	<ul>
     	<li><a href="javascript:void(0);" onclick="return $('#updateform').submit();">Update</a></li>

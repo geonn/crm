@@ -2,7 +2,7 @@
 	<div class="header_title"><a class="separator" href="#">Home</a> <a class="separator" href="#"><?= ucwords($this->name) ?></a> Edit <?= ucwords($this->name) ?></div>
 	<div style="clear:both"></div>
 </div>
-<?= $template['partials']['message']; ?>
+
 <div id="submenu">
 	<ul>
     	<li><a href="javascript:void(0);" onclick="return $('#updateform').submit();">Update</a></li>
@@ -10,7 +10,8 @@
     </ul>
 </div>
 <div id="the_list">
-	<div class="header_title">User Profile</div>
+	<?= $template['partials']['message']; ?>
+	<div class="header_title"><?= ucwords($this->name) ?> Profile</div>
 	<?= form_open_multipart($this->config->item('admin_url').'/'.$this->name.'/update/'.$this->uri->segment(4),'id="updateform"'); ?>
     <?= $template['partials']['content']; ?>
     <?php $roles = $this->user->get_memberrole(); ?>
