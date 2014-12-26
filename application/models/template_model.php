@@ -41,6 +41,7 @@ class Template_Model extends APP_Model{
 				
 				//$res[$k]['questions'][] = $questions ;
 			}
+			$this->logger_model->addLogger('view', $this->name, $res['name']);
 			$this->_result['status']     = 'success'; 
 			$this->_result['data']       = $res;
 		}else{
@@ -71,7 +72,7 @@ class Template_Model extends APP_Model{
 				'updated'	=> localDate(),
 			);
 			$id = $this->insert($data);
-			
+			$this->logger_model->addLogger('add', $this->name, $this->param['name']);
 			$this->_result['status']     = 'success'; 
 			$this->_result['data']       = $id;
 		}else{
@@ -100,7 +101,7 @@ class Template_Model extends APP_Model{
 				'updated'	=> localDate(),
 			);
 			$id = $this->update($this->param['id'], $data);
-			
+			$this->logger_model->addLogger('edit', $this->name, $this->param['name']);
 			$this->_result['status']     = 'success'; 
 			$this->_result['data']       = $id;
 		}else{
@@ -113,8 +114,10 @@ class Template_Model extends APP_Model{
 		return $this->_result;
 	}
 	
-	public function deleteQuestion(){
+	public function deleteTemplate(){
+		$res = $this->find_by($this->param['id']);
 		$this->delete($this->param['id']);
+		$this->logger_model->addLogger('delete', $this->name, $res['name']);
 		$this->_result['status']     = 'success'; 
 		
 		return $this->_result;

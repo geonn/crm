@@ -33,6 +33,10 @@ $config['menu'] = array(
 	 					"name" => "Inventory",	
 	 					"url" => $this->domain."/admin/inventory/index",	
 	 					),
+	  'activity'  => array(
+	 					"name" => "Activities",	
+	 					"url" => $this->domain."/admin/activity/index",	
+	 					),
 	 'question'  => array(
 	 					"name" => "Question Pool",	
 	 					"url" => $this->domain."/admin/question/index",	
@@ -60,6 +64,7 @@ $config['sub_menu'] = array(
 	 					'Staff List' => $this->domain.'/admin/staff/index'
 	 				),	
 	 'customer'     => array(),	
+	 'activity'     => array(),	
 	'forms'     => array(),	
 	'inventory'     => array(),	
 	'templates'     => array(),	

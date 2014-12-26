@@ -24,7 +24,7 @@ class Customer_Model extends APP_Model{
 	
 	 
 	public function addCustomer(){
-		if($this->param['isCustomerForm'] != "1"){
+		if(isset($this->param['isCustomerForm']) && $this->param['isCustomerForm'] != "1"){
 			$this->_result['status']     = 'error'; 
 			$this->_result['error_code'] = 121;	
 			$this->_result['data'] = $this->code[121];	
@@ -37,6 +37,7 @@ class Customer_Model extends APP_Model{
 			$data = array(
 				'name' 					 => $this->param['name'],
 				'ic' 					 	  => $this->param['ic'],
+				'serial' 					=> $this->param['serial'],
 				'contact_home'   => $this->param['contact_home'],
 				'contact_mobile' => $this->param['contact_mobile'],
 				'contact_office' 	=> $this->param['contact_office'],
@@ -48,7 +49,7 @@ class Customer_Model extends APP_Model{
 				'updated'			  => localDate(),
 			);
 			$id = $this->insert($data);
-			
+			$this->logger_model->addLogger('add', $this->name, $this->param['name']);
 			$this->_result['status']     = 'success'; 
 			$this->_result['data']       = $id;
 		}else{
@@ -67,6 +68,8 @@ class Customer_Model extends APP_Model{
 			
 			$data = array(
 				'name' 					 => $this->param['name'],
+				'serial' 					=> $this->param['serial'],
+				'ic' 				    	  => $this->param['ic'],
 				'contact_home'   => $this->param['contact_home'],
 				'contact_mobile' => $this->param['contact_mobile'],
 				'contact_office' 	=> $this->param['contact_office'],
@@ -77,7 +80,7 @@ class Customer_Model extends APP_Model{
 				'updated'	=> localDate(),
 			);
 			$id = $this->update($this->param['id'], $data);
-			
+			$this->logger_model->addLogger('edit', $this->name, $this->param['name']);
 			$this->_result['status']     = 'success'; 
 			$this->_result['data']       = $id;
 		}else{
@@ -102,15 +105,10 @@ class Customer_Model extends APP_Model{
 			$srhs = explode(' ',$this->input->get('q'));
 			foreach($srhs as $srh){
 				$search .= (!empty($search) ? " and ": "");		
-				$search .= "(name like '%".$srh."%' OR contact_mobile like'%".$srh."%'  OR ".$this->primary_key."='".$srh."')  ";			
+				$search .= "(name like '%".$srh."%' OR contact_mobile like'%".$srh."%'  OR contact_home like'%".$srh."%' OR serial like'%".$srh."%')  ";			
 			}
 		}
 			 
-	 	if ($this->input->get('status')) {
-			$search .= (!empty($search) ? " and ": "");					
-			$search .= "status = '".$this->input->get('status')."' ";
-		}
-	
 		$return   = convert_sort($this->sorted,$sortby,$this->primary_key);
 		$new_sort = change_sort($return['sort']);	
 	 	 $offset   = pageToOffset($this->config->item('per_page'),$page);

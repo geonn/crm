@@ -1,4 +1,4 @@
-<table class="edit">
+<table class="edit bordered">
 	<tbody>	
 	
 		<tr>
@@ -21,5 +21,9 @@
 			<td style="width: 140px;"  id='edit_title'>State</td>
 			<td><?= form_input('state', set_value('state',isset($form) ? $form['state'] : ''),'class="required" placeholder="State of project" style="width:98%;"'); ?></td>			
 		</tr>	
+		<tr>
+			<td style="width: 140px;"  id='edit_title'>Status</td>
+			<td><?= magic_radio_label('status', $this->config->item('project_status'), set_value('status',isset($form) ? $form['status'] : '')); ?></td>		
+		</tr>
 	</tbody>
 </table>

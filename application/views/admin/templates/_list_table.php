@@ -21,8 +21,7 @@
 			<td><?= $row['c_con'];?></td>	
 			<td><?= $row['creator'];?></td>	
 			<td><?= $row['v_con'];?></td>
-			<td><?php 
-				 
+			<td><?php  
 					echo "<div style='text-align:center;'>".$this->config->item('icon_status'.$row['status']) ." </div>";
 				?>
 			</td>	

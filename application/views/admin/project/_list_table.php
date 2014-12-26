@@ -6,7 +6,7 @@
 			<th style="width: 100px;"><a href="javascript:void(0)" onclick="sorting('description','<?= $new_sort ?>');">Description <span id="description_sortimg"></span></a></th>
 			<th style="width: 120px;"><a href="javascript:void(0)" onclick="sorting('created_by','<?= $new_sort ?>');">Created By  <span id="created_by_sortimg"></span></a></th>
 			<th style="width: 150px;"><a href="javascript:void(0)" onclick="sorting('state','<?= $new_sort ?>');">State<span id="state_sortimg"></span></a></th>
-			<th style="width: 100px;"><a href="javascript:void(0)" onclick="sorting('status','<?= $new_sort ?>');">Status<span id="status_sortimg"></span></a></th>			
+			<th style="width: 100px;text-align:center;"><a href="javascript:void(0)" onclick="sorting('status','<?= $new_sort ?>');">Status<span id="status_sortimg"></span></a></th>			
 			<th style="width: 40px;">Action</th>
 		</tr>
 		
@@ -19,7 +19,9 @@
 			<td><?= $row['description'];?></td>	 
 			<td><?= $row['creator'];?></td>	
 			<td><?= $row['state'];?></td>	
-			<td><?= match($row['status'],$this->config->item('project_status'));?></td>			
+			<td><?php  
+					echo "<div style='text-align:center;'>".$this->config->item('icon_status'.$row['status']) ." </div>";
+				?></td>			
 			<td><?= $this->admin_model->generateEditButton($this->name,$row['id'],$this->name); ?></td>																
 		</tr>
 	<?php endforeach; ?>		

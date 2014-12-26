@@ -42,7 +42,7 @@ class Response_Model extends APP_Model{
 							'q_id' => $q_id,
 							'c_id' => $c_id,
 							'answer' 		=>  $aa_a,
-							'additional' 	=>  !empty($this->param['additional']) ? $this->param['additional'] : "",    
+							'additional' 	=>  !empty($this->param['q_'.$q_id.'_text']) ? $this->param['q_'.$q_id.'_text'] : "",    
 							'created'	=> localDate(),
 							'updated'	=> localDate(),
 						);

@@ -30,9 +30,11 @@
 		$(".required").css('outline','');
 	}
 	
+	
 </script>
 <div class="container_header">
-	<div class="header_title"><a class="separator" href="<?= $this->config->item('domain') ?>">Home</a> <a class="separator" href="#"><?= ucwords($this->name) ?></a> <?= ucwords($this->name) ?></div>
+	<div class="header_title"><a class="separator" href="<?= $this->config->item('admin_url') ?>">Home</a> 
+		<a class="separator" href="<?= $this->config->item('admin_url').'/'.$this->name ?>"><?= ucwords($this->name) ?></a> <?= $result['data']['name'] ?></div>
 	<div style="clear:both"></div>
 </div>
 <?= $template['partials']['message']; ?>
@@ -49,16 +51,21 @@
             echo form_hidden('isCustomerForm', set_value('isCustomerForm',$result['data']['isCustomerForm']));
             if($result['data']['isCustomerForm'] == "1"){
                  ?>
-                <div style="font-size:14px;">Personal Details</div> 
+                <div style="font-size:16px;padding-left:10px;">Personal Details</div> 
                 <div style="background-color:<?= $result['data']['background'] ?>;width:100%;margin-top:10px;margin-bottom:10px;">
                     <div style="padding:10px;font-size:14px;">Full Name</div>
                     <div style="padding-left:10px;padding-bottom:5px;">
                         <?=  form_input('name', '','class="required" placeholder="Please fill in customer name" style="width:50%;"') ?>
                     </div>
                     
+                     <div style="padding:10px;font-size:14px;">Silver card serial number</div>
+                    <div style="padding-left:10px;padding-bottom:5px;">
+                        <?=  form_input('serial', '','class="required" placeholder="Please fill in silver card serial number" style="width:50%;"') ?>
+                    </div>
+                    
                     <div style="padding:10px;font-size:14px;">I/C</div>
                     <div style="padding-left:10px;padding-bottom:5px;">
-                        <?=  form_input('ic', '','class="required" placeholder="Please fill in identity card number" style="width:50%;"') ?>
+                        <?=  form_input('ic', '','class="required phone_number" placeholder="Please fill in identity card number"  maxlength="20" style="width:50%;"') ?>
                     </div>
                     
                     <div style="padding:10px;font-size:14px;">Email Address</div>
@@ -68,36 +75,37 @@
                     
                     <div style="padding:10px;font-size:14px;">Contact Home</div>
                     <div style="padding-left:10px;padding-bottom:5px;">
-                        <?=  form_input('contact_home', '','class="required" placeholder="Please fill in home contact number" style="width:50%;"') ?>
+                        <?=  form_input('contact_home', '','class="required phone_number" placeholder="Please fill in home contact number" style="width:50%;"') ?>
                     </div>
                     
                     <div style="padding:10px;font-size:14px;">Contact Mobile</div>
                     <div style="padding-left:10px;padding-bottom:5px;">
-                        <?=  form_input('contact_mobile', '','class="required" placeholder="Please fill in mobile contact number" style="width:50%;"') ?>
+                        <?=  form_input('contact_mobile', '','class="required phone_number" placeholder="Please fill in mobile contact number" style="width:50%;"') ?>
                     </div>
                     
                     <div style="padding:10px;font-size:14px;">Contact Office</div>
                     <div style="padding-left:10px;padding-bottom:5px;">
-                        <?=  form_input('contact_office', '','class="required" placeholder="Please fill in office contact number" style="width:50%;"') ?>
+                        <?=  form_input('contact_office', '','class="required phone_number" placeholder="Please fill in office contact number" style="width:50%;"') ?>
                     </div>
                     
                     <div style="padding:10px;font-size:14px;">Age</div>
                     <div style="padding-left:10px;padding-bottom:5px;">
-                        <?=  form_input('age', '','class="required" placeholder="Please fill in customer age" style="width:50%;"') ?>
+                        <?=  form_input('age', '','class="required num_only" placeholder="Please fill in customer age" maxlength="3" style="width:50%;"') ?>
                     </div>
                     <div style="padding:10px;font-size:14px;">Address(Mail)</div>
                     <div style="padding-left:10px;padding-bottom:5px;">
-                        <textarea name="mail_address" row="4" placeholder="Mailing address" ></textarea>
+                        <textarea name="mail_address" rows="4"  style="width:50%;" placeholder="Mailing address" ></textarea>
                     </div>
                     
                     <div style="padding:10px;font-size:14px;">Address(Home)</div>
                     <div style="padding-left:10px;padding-bottom:5px;">
-                        <textarea name="home_address" row="4" placeholder="Mailing address"></textarea>
+                        <textarea name="home_address" rows="4"   style="width:50%;" placeholder="Home address"></textarea>
                     </div>
                 </div>
+                <hr/>
     <?php 		} ?>
-            <div style="font-size:14px;"><?= $result['data']['name'] ?></div>
-            <div style="font-size:10px;color: #A4A4A4;"><?= $result['data']['description'] ?></div>
+            <div style="font-size:16px;padding-left:10px;padding-top:10px;"><?= $result['data']['name'] ?></div>
+            <div style="font-size:10px;color: #A4A4A4;padding-left:10px;"><?= $result['data']['description'] ?></div>
             <div class="error_message" style="display:none;"></div>
             <div style="background-color:<?= $result['data']['background'] ?>;width:100%;margin-top:10px;">
     <?php		
@@ -134,21 +142,44 @@
                                 'class'         => "required ".  $val['id'],
                                 'checked'     => FALSE, 
                             );
-                            echo   form_radio($radioValue) . "<span style='margin-right:20px;'>".$ans."</span>"; 
+                            echo   form_radio($radioValue) . "<span style='margin-right:20px;'>".$ans."</span><br/>"; 
                         }
+                        
+                       	if($val['hasOthers'] == "1"){
+                       		 $radioOthersValue = array(
+                                'name'    => 'q_'. $val['id'],
+                                'id'          => 'q_'. $val['id'],
+                                'value'       => 99,
+                                'class'         => "required ".  $val['id'],
+                                'checked'     => FALSE, 
+                            );
+							echo   form_radio($radioOthersValue) . "<span style='margin-right:20px;'>Others</span>".form_input('q_'. $val['id']."_text", '','class="required '.$val['id'].'" placeholder="Please fill in your answer" style="width:50%;"'); ; 
+						}
+                        
                     break;	
                     case 4: //CHECKBOX
                         echo	form_hidden('q_'. $val['id'], "");
                         foreach($val['answer'] as $sk => $ans){
-                            $radioValue = array(
+                            $checkValue = array(
                                 'name'    => 'q_'. $val['id']."[]",
                                 'id'          => 'q_'. $val['id'],
                                 'value'       => $sk,
                                  'class'         => "required ". $val['id'],
                                 'checked'     => FALSE, 
                             );
-                            echo   form_checkbox($radioValue) . "<span style='margin-right:20px;'>".$ans."</span>"; 
+                            echo   form_checkbox($checkValue) . "<span style='margin-right:20px;'>".$ans."</span><br/>"; 
                         }
+                        
+                        if($val['hasOthers'] == "1"){
+                       		 $checkOthersValue = array(
+                                'name'    => 'q_'. $val['id'],
+                                'id'          => 'q_'. $val['id'],
+                                'value'       => 99,
+                                'class'         => "required ".  $val['id'],
+                                'checked'     => FALSE, 
+                            );
+							echo   form_checkbox($checkOthersValue	) . "<span style='margin-right:20px;'>Others</span>".form_input('q_'. $val['id']."_text", '','class="required '.$val['id'].'" placeholder="Please fill in your answer" style="width:50%;"'); ; 
+						}
                     break;	
                 }
                 $index++; 

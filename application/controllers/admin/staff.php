@@ -91,8 +91,8 @@ class Staff extends Admin_Controller {
 	function create(){		
 		$data['module'] = "add";
 		$result = $this->users_model->addUser(); 
-		if ($result['status'] == 'success') {
-			$this->message->set('User created!', 'success',TRUE);		
+		if ($result['status'] == 'success') { 
+			$this->message->set(ucwords($this->name).' created!', 'success',TRUE);		
 		    $this->goHome();
 		}else{
 			$data['form'] =$this->param;

@@ -16,7 +16,7 @@
 			 getTemplateQuestion(template_id)
 		});	
 	}
-</script>
+</script> 
 <div style="padding-bottom:10px;">
 	<input name="q" id="q" type="text" value="<?= set_value('q',''); ?>" class="mystyles_textbox" placeholder="Search questions or tags" style="width:85%;">
  	<button type="submit" class="blue_button" value="Submit" >Filter</button>   

@@ -192,13 +192,12 @@ class MY_Pagination extends CI_Pagination {
 
 			if ($i == 0 && $this->first_url != '')
 			{
-				$output .= $this->prev_tag_open.'<a '.$this->anchor_class.'href="'.$this->prefix.$this->first_url.$this->suffix.'">'.$this->prev_link.'</a>'.$this->prev_tag_close;
+				$output .= $this->prev_tag_open.'<a '.$this->anchor_class.'href="'.$this->prefix.$this->first_url.$this->suffix.' ">'.$this->prev_link.'</a>'.$this->prev_tag_close;
 			}
 			else
 			{
-				$i = ($i == 0) ? '' : $this->prefix.$i.$this->suffix;
-				//echo $this->per_page;
-				$output .= $this->prev_tag_open.'<a '.$this->anchor_class.'href="'.$this->base_url.$this->prefix.$i.$this->suffix.'">'.$this->prev_link.'</a>'.$this->prev_tag_close;
+				$i = ($i == 0) ? '' : $this->prefix.$i.$this->suffix; 
+				$output .= $this->prev_tag_open.'<a '.$this->anchor_class.'href="'.$this->base_url.$this->prefix.$i.$this->suffix.'" >'.$this->prev_link.'</a>'.$this->prev_tag_close;
 			}
 
 		}

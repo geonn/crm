@@ -22,7 +22,7 @@ class APP_Controller extends CI_Controller{
 			 ->model(array(
 				'admin_model','permissions_model','user_sessions_model','users_model',
 				'question_model','template_model','project_model','answer_model',
-				'template_details_model','response_model','customer_model'
+				'template_details_model','response_model','customer_model','logger_model'
 			));
 			
 		/***********************************************

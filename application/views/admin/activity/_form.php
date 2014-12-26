@@ -35,19 +35,15 @@
      <div class="list-wrap">
 		<ul id="info">
 			<li> 
-				<table class="edit bordered">
+				<table class="edit">
 					<tbody>	
 						<tr>
 							<td style="width: 140px;"  id='edit_title'>Full Name</td>
 							<td>	<?=  form_input('name',set_value('name',isset($form) ? $form['name'] : ''),'class="required" placeholder="Please fill in customer name" style="width:50%;"') ?></td>			
 						</tr>	
 						<tr>
-							<td style="width: 140px;"  id='edit_title'>Silver card serial number</td>
-							<td><?=  form_input('serial', set_value('serial',isset($form) ? $form['serial'] : ''),'class="required" placeholder="Please fill in silver card serial number" style="width:50%;"') ?></td>			
-						</tr>
-						<tr>
 							<td style="width: 140px;"  id='edit_title'>I/C</td>
-							<td><?=  form_input('ic', set_value('ic',isset($form) ? $form['ic'] : ''),'class="required phone_number" placeholder="Please fill in identity card number" style="width:50%;"') ?></td>			
+							<td><?=  form_input('ic', set_value('ic',isset($form) ? $form['ic'] : ''),'class="required" placeholder="Please fill in identity card number" style="width:50%;"') ?></td>			
 						</tr>		
 						<tr>
 							<td style="width: 140px;"  id='edit_title'>Email</td>
@@ -55,31 +51,31 @@
 						</tr>	
 						<tr>
 							<td style="width: 140px;"  id='edit_title'>Contact Home</td>
-							<td><?=  form_input('contact_home', set_value('contact_home',isset($form) ? $form['contact_home'] : ''),'class="required phone_number" placeholder="Please fill in home contact number" style="width:50%;"') ?></td>			
+							<td><?=  form_input('contact_home', set_value('contact_home',isset($form) ? $form['contact_home'] : ''),'class="required" placeholder="Please fill in home contact number" style="width:50%;"') ?></td>			
 						</tr>
 						<tr>
 							<td style="width: 140px;"  id='edit_title'>Contact Mobile</td>
-							<td><?=  form_input('contact_mobile', set_value('contact_mobile',isset($form) ? $form['contact_mobile'] : ''),'class="required phone_number" placeholder="Please fill in mobile contact number" style="width:50%;"') ?></td>			
+							<td><?=  form_input('contact_mobile', set_value('contact_mobile',isset($form) ? $form['contact_mobile'] : ''),'class="required" placeholder="Please fill in mobile contact number" style="width:50%;"') ?></td>			
 						</tr>
 					 
 						<tr>
 							<td style="width: 140px;"  id='edit_title'>Contact Office</td>
-							<td><?=  form_input('contact_office', set_value('contact_office',isset($form) ? $form['contact_office'] : ''),'class="required phone_number" placeholder="Please fill in office contact number" style="width:50%;"') ?></td>		
+							<td><?=  form_input('contact_office', set_value('contact_office',isset($form) ? $form['contact_office'] : ''),'class="required" placeholder="Please fill in office contact number" style="width:50%;"') ?></td>		
 						</tr>
 						
 						<tr>
 							<td style="width: 140px;"  id='edit_title'>Age</td>
-							<td><?=  form_input('age',set_value('age',isset($form) ? $form['age'] : ''),'class="required num_only" placeholder="Please fill in customer age" style="width:50%;"') ?></td>		
+							<td><?=  form_input('age',set_value('age',isset($form) ? $form['age'] : ''),'class="required" placeholder="Please fill in customer age" style="width:50%;"') ?></td>		
 						</tr>
 						
 						<tr>
 							<td style="width: 140px;"  id='edit_title'>Address(Mail)</td>
-							<td><textarea name="mail_address" rows="4" style="width:50%;" placeholder="Mailing address" ><?= set_value('mail_address',isset($form) ? $form['mail_address'] : '') ?></textarea></td>		
+							<td><textarea name="mail_address" row="4" placeholder="Mailing address" ><?= set_value('mail_address',isset($form) ? $form['mail_address'] : '') ?></textarea></td>		
 						</tr>
 						
 						<tr>
 							<td style="width: 140px;"  id='edit_title'>Address(Home)</td>
-							<td><textarea name="home_address" rows="4" style="width:50%;" placeholder="Home address"><?= set_value('home_address',isset($form) ? $form['home_address'] : '') ?></textarea></td>		
+							<td><textarea name="home_address" row="4" placeholder="Mailing address"><?= set_value('home_address',isset($form) ? $form['home_address'] : '') ?></textarea></td>		
 						</tr>
 					</tbody>
 				</table>

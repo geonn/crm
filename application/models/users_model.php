@@ -120,7 +120,7 @@ class Users_Model extends APP_Model{
 				);
 				$id = $this->insert($data);
 				
-			
+				$this->logger_model->addLogger('add', $this->name, $this->param['fullname']);
 				$this->_result['status']     = 'success';
 				$this->_result['data']       = $this->generateSession($id);
 				
@@ -155,7 +155,7 @@ class Users_Model extends APP_Model{
 					'status' => $this->param['status'],
 					'updated' 	 => date('Y-m-d H:i:s'),
 				);
-			 
+			 	$this->logger_model->addLogger('edit', $this->name, $this->param['fullname']);
 				$id = $this->update($this->param['u_id'],$data);
 				$this->_result['status']     = 'success';
 				
@@ -192,9 +192,18 @@ class Users_Model extends APP_Model{
 	public function checkUserById($user_id){
 		$filter = array($this->primary_key => $user_id);
 		$result = $this->get_data($filter);
-	 
-		
         return $result;
+	}
+	
+	public function getUserFullNameById($u_id){
+		$name = "";
+		if(!empty($u_id)){
+			
+			$user = $this->getUserById($u_id);
+			$name = $user['fullname'];
+		} 
+		
+		return $name; 
 	}
 	
 	/** Retrieve member info from users table by using admin email (FOR ADMIN ONLY) **/

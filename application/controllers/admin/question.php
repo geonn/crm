@@ -52,6 +52,8 @@ class Question extends Admin_Controller {
 		$data = $this->answer_model->getList($this->param['q_id']);
 		$data['q_id'] = $this->param['q_id'];
 		$data['question_type'] = $this->param['question_type']; 
+		$data['question'] = $this->question_model->find_by($this->param['q_id']);
+	 
 		$table_row = $this->load->view('/admin/'.$this->name.'/_options',$data,true);
 		echo $table_row;
 	}
@@ -105,6 +107,7 @@ class Question extends Admin_Controller {
 	}
 	
 	function update(){  
+		
 		$this->param['id'] =  $this->uri->segment(4);
 		$result = $this->question_model->editQuestion();
 		if ($result['status'] == 'success') {

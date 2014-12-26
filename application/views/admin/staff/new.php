@@ -1,5 +1,6 @@
 <div class="container_header">
-	<div class="header_title"><a class="separator" href="#">Home</a> <a class="separator" href="#"><?= ucwords($this->name) ?></a> New <?= ucwords($this->name) ?></div>
+	<div class="header_title">
+		<a class="separator" href="<?= $this->config->item('admin_url') ?>">Home</a> <a class="separator" href="<?= $this->config->item('admin_url').'/'.$this->name ?>"><?= ucwords($this->name) ?></a> New <?= ucwords($this->name) ?></div>
 	<div style="clear:both"></div>
 </div>
 <?= $template['partials']['message']; ?>

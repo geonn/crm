@@ -51,11 +51,12 @@ class Question_Model extends APP_Model{
 				'question' => $this->param['question'],
 				'created_by' 		=> $this->user->get_memberid(),
 				'tag' 		=> $this->param['tag'],  
+				'hasOthers'	=> $this->param['hasOthers'], 
 				'created'	=> localDate(),
 				'updated'	=> localDate(),
 			);
 			$id = $this->insert($data);
-			
+			$this->logger_model->addLogger('add', $this->name, $this->param['question'] );
 			$this->_result['status']     = 'success'; 
 			$this->_result['data']       = $id;
 		}else{
@@ -73,13 +74,14 @@ class Question_Model extends APP_Model{
 		if($check === 1) { 
 			
 			$data = array(
-				'question' => $this->param['question'], 
-				'tag' 		=> $this->param['tag'],  
-				'type' 		=> $this->param['type'],   
-				'updated'	=> localDate(),
+				'question'    => $this->param['question'], 
+				'tag' 		       => $this->param['tag'],  
+				'type' 		     => $this->param['type'],   
+				'hasOthers'	=> !empty($this->param['hasOthers']) ? $this->param['hasOthers'] : "2", 
+				'updated'  	 => localDate(),
 			);
 			$id = $this->update($this->param['id'], $data);
-			
+			$this->logger_model->addLogger('edit', $this->name, $this->param['question'] );
 			$this->_result['status']     = 'success'; 
 			$this->_result['data']       = $id;
 		}else{

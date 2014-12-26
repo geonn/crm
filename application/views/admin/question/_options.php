@@ -100,7 +100,23 @@
 </script>
  <?= form_input('answer', '','class="required" placeholder="Add answer..." class="mystyles_textbox" style="width:50%"'); ?>
  <button type="button" onClick="return submitAnswer();" class="blue_button" value="Submit " >Add Answer</button>  
- <br/><br/>
+ <br/>
+<?php
+	$others_check = FALSE;
+	if($question['hasOthers'] == "1"){
+		$others_check = TRUE;
+	}
+	$radioValue = array(
+        'name'    => 'hasOthers',
+        'id'          => 'hasOthers',
+        'value'       => 1,
+         'class'         => "required ",
+        'checked'     => $others_check, 
+    );
+    echo   form_checkbox($radioValue) . "<span style='margin-right:20px;'>'Others' option </span>"; 
+                            
+  ?>                    
+ <br/> <br/>
   <div id="dialog-form" title="Edit Answer Options">
 	<p class="validateTips"></p>
 	<p class="error_message" style="display:none;font-size:12px;"></p>
@@ -112,13 +128,13 @@
 	  	  <?= form_hidden('id', ''); ?>
 	  </fieldset>
 	</form>
+ 
 </div>
  <form id="itemForm">
 	<ul id="sortable">		
 		<?php 
 		if(!empty($data)){ 
 			foreach ($data as $row){ ?>		
-			
 	    	
 	    	<li class="ui-state-default">
 	    		<input type="hidden" name="items[]" value="<?= $row['id'] ?>" />

@@ -23,6 +23,8 @@
 <script type="text/javascript" src="<?= $this->config->item('domain') ?>/public/javascripts/jquery/ui/jquery.ui.core.js"></script>
 <script type="text/javascript" src="<?= $this->config->item('domain') ?>/public/javascripts/jquery/jquery-ui.js"></script>
 <script type="text/javascript" src="<?= $this->config->item('domain') ?>/public/javascripts/jquery/confirm/jquery.confirm.js"></script>
+<script type="text/javascript" src="<?= $this->config->item('domain') ?>/public/javascripts/crm.js"></script>
+	
 <!-- image/icon -->
 <link rel="shortcut icon" href="<?= $this->config->item('domain') ?>/public/images/favicon.ico" type="image/icon">
 <link rel="icon" href="<?= $this->config->item('domain') ?>/public/images/favicon.ico" type="image/icon">

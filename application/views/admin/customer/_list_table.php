@@ -6,7 +6,7 @@
 			<th style="width: 15%;"><a href="javascript:void(0)" onclick="sorting('ic','<?= $new_sort ?>');">I/C <span id="ic_sortimg"></span></a></th>
 			<th style="width: 20%;"><a href="javascript:void(0)" onclick="sorting('contact_mobile','<?= $new_sort ?>');">Mobile Number  <span id="contact_mobile_sortimg"></span></a></th>
 			<th style="width: 15%;"><a href="javascript:void(0)" onclick="sorting('email','<?= $new_sort ?>');">Email<span id="email_sortimg"></span></a></th>
-			<th style="width: 15%;"><a href="javascript:void(0)" onclick="sorting('created','<?= $new_sort ?>');">Created<span id="created_sortimg"></span></a></th>
+			<th style="width: 15%;"><a href="javascript:void(0)" onclick="sorting('updated','<?= $new_sort ?>');">Last Update<span id="updated_sortimg"></span></a></th>
 			
 			<th style="width: 10%;">Action</th>
 		</tr>
@@ -20,7 +20,7 @@
 			<td><?= $row['ic'];?></td>	
 			<td><?= $row['contact_mobile'];?></td>	
 			<td><?= $row['email'];?></td>	
-			<td><?= date_convert($row['created'], 'full');?></td>
+			<td><?= date_convert($row['updated'], 'full');?></td>
 			 
 			<td><?= $this->admin_model->generateEditButton($this->name,$row['id'],$this->name); ?></td>																
 		</tr>

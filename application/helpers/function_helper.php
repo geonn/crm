@@ -277,7 +277,7 @@
 	
 	function convert_sort($sort_arr=array(),$sorting, $default_value='id'){
 
-		if (!empty($sorting)) {
+		if (!empty($sorting)) { 
 			$element = explode("-", $sorting);
 			$order = $element[0];
 			$sort  = $element[1];
