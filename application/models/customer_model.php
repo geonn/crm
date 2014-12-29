@@ -15,9 +15,14 @@ class Customer_Model extends APP_Model{
 		
 		);
 		$res = $this->get_data($filter);
-		
+		$list = array();
+		foreach($res as $k => $val){
+			$list[$k]['label'] = $val['name'];
+			$list[$k]['value'] = $val['id']; 
+		}
+		 
 		$this->_result['status']     = 'success'; 
-		$this->_result['data']       = $res;		
+		$this->_result['data']       = $list;		
 		
 		return $this->_result;
 	}
@@ -33,22 +38,40 @@ class Customer_Model extends APP_Model{
 		
 		$check     = $this->validateParams(); 
 		if($check === 1) { 
+			if(!empty($this->param['c_id'])){
+				$data = array(
+					'name' 					 => $this->param['name'],
+					'ic' 					 	  => $this->param['ic'],
+					'serial' 					=> $this->param['serial'],
+					'contact_home'   => $this->param['contact_home'],
+					'contact_mobile' => $this->param['contact_mobile'],
+					'contact_office' 	=> $this->param['contact_office'],
+					'age' 						=> $this->param['age'],
+					'email' 				  => $this->param['email'],
+					'mail_address' 	   => $this->param['mail_address'],
+					'home_address'	=> $this->param['home_address'], 
+					'updated'			  => localDate(),
+				);
+				$this->update($this->param['c_id'], $data);
+				$id = $this->param['c_id'];
+			}else{
+				$data = array(
+					'name' 					 => $this->param['name'],
+					'ic' 					 	  => $this->param['ic'],
+					'serial' 					=> $this->param['serial'],
+					'contact_home'   => $this->param['contact_home'],
+					'contact_mobile' => $this->param['contact_mobile'],
+					'contact_office' 	=> $this->param['contact_office'],
+					'age' 						=> $this->param['age'],
+					'email' 				  => $this->param['email'],
+					'mail_address' 	   => $this->param['mail_address'],
+					'home_address'	=> $this->param['home_address'],
+					'created'				=> localDate(),
+					'updated'			  => localDate(),
+				);
+				$id = $this->insert($data);
+			}
 			
-			$data = array(
-				'name' 					 => $this->param['name'],
-				'ic' 					 	  => $this->param['ic'],
-				'serial' 					=> $this->param['serial'],
-				'contact_home'   => $this->param['contact_home'],
-				'contact_mobile' => $this->param['contact_mobile'],
-				'contact_office' 	=> $this->param['contact_office'],
-				'age' 						=> $this->param['age'],
-				'email' 				  => $this->param['email'],
-				'mail_address' 	   => $this->param['mail_address'],
-				'home_address'	=> $this->param['home_address'],
-				'created'				=> localDate(),
-				'updated'			  => localDate(),
-			);
-			$id = $this->insert($data);
 			$this->logger_model->addLogger('add', $this->name, $this->param['name']);
 			$this->_result['status']     = 'success'; 
 			$this->_result['data']       = $id;

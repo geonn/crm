@@ -55,7 +55,7 @@ table.bordered th a span{position:absolute; top:0;}
   height: 140px;
   border: 1px solid #cccccc;
 }
-.gradient{#
+.gradient{
 background: -moz-linear-gradient(top,  #d67c7d 0%, #CFF 0%, #ffffff 100%); /* FF3.6+ */
 background: -webkit-gradient(linear, color-stop(0%,#d67c7d), color-stop(0%,#CFF), color-stop(100%,#ffffff)); /* Chrome,Safari4+ */
 background: -webkit-linear-gradient(top,  #d67c7d 0%,#CFF 0%,#ffffff 100%); /* Chrome10+,Safari5.1+ */
@@ -63,3 +63,4 @@ background: -o-linear-gradient(top,  #d67c7d 0%,#CFF 0%,#ffffff 100%); /* Opera 
 background: -ms-linear-gradient(top,  #d67c7d 0%,#CFF 0%,#ffffff 100%); /* IE10+ */
 background: linear-gradient(to bottom,  #d67c7d 0%,#CFF 0%,#ffffff 100%); /* W3C */
 }
+.red_dot{color:#ff0000;}

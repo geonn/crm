@@ -275,6 +275,7 @@
 		return md5(uniqid(rand(), true)) . md5(uniqid(rand(), true)) . md5(uniqid(rand(), true)) . md5(uniqid(rand(), true));
 	}
 	
+	
 	function convert_sort($sort_arr=array(),$sorting, $default_value='id'){
 
 		if (!empty($sorting)) { 
@@ -333,7 +334,7 @@
     } 
     
     function convertToDBDate($date){
-		$date_processed = explode("/", $date);
+		$date_processed = explode("-", $date);
 		return $date_processed[2]."-".$date_processed[1]."-".$date_processed[0];
 	}
 	

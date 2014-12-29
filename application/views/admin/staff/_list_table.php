@@ -3,6 +3,7 @@
 		<tr> 
 		
 			<th style="width: 100px;"><a href="javascript:void(0)" onclick="sorting('fullname','<?= $new_sort ?>');">Full Name <span id="fullname_sortimg"></span></a></th>
+			<th style="width: 100px;"><a href="javascript:void(0)" onclick="sorting('roles','<?= $new_sort ?>');">Position <span id="roles_sortimg"></span></a></th>
 			<th style="width: 120px;"><a href="javascript:void(0)" onclick="sorting('email','<?= $new_sort ?>');">Email  <span id="email_sortimg"></span></a></th>
 			<th style="width: 100px;"><a href="javascript:void(0)" onclick="sorting('mobile','<?= $new_sort ?>');">Mobile <span id="mobile_sortimg"></span></a></th>
 			<th style="width: 150px;"><a href="javascript:void(0)" onclick="sorting('last_login','<?= $new_sort ?>');">Last Login <span id="last_login_sortimg"></span></a></th>
@@ -16,6 +17,7 @@
     	<tr>
     	
 			<td><strong><font color="green"><?= $row['fullname'];?></font></strong></td>
+			<td><?= $row['roles'];?></td>	
 			<td><?= $row['email'];?></td>	
 			<td><?= $row['mobile'];?></td>	
 			<td><?= date_convert($row['last_login'],'full');?></td>	
@@ -25,7 +27,7 @@
 	<?php endforeach; ?>		
 	
 		<?php 	}else{ ?>
-			<tr><td colspan="5" ><div align='center'>No result found</div><td></tr>
+			<tr><td colspan="6" ><div align='center'>No result found</div><td></tr>
 		<?php  } ?>		
 	</tbody>	
 </table>	

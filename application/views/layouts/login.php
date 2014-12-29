@@ -16,12 +16,9 @@
 		if(txt_name == "" || txt_password == ""){
 			display_error("Username or password cannot be empty.");
 		}else{
-			var form_data = $("#loginform").serialize();
-			console.log(app_path+'/login/authenticate/?'+form_data);
-			$.post(app_path+'/login/authenticate/',form_data,function(data){
-			
-				var obj = jQuery.parseJSON(data);
-				console.log(obj.data);
+			var form_data = $("#loginform").serialize(); 
+			$.post(app_path+'/login/authenticate/',form_data,function(data){ 
+				var obj = jQuery.parseJSON(data); 
 				if(obj.status == "error"){
 					display_error(obj.data);
 				}else{

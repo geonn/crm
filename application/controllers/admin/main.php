@@ -5,16 +5,12 @@ class Main extends Admin_Controller {
 	public $denied   = false;
 	public $validation = array();
 	public $account_status = array();  
-	public $name  = 'users';
+	public $name  = 'main';
 	      			
 	function __construct() {
 		parent::__construct();	
 		$this->account_status = array(1 => 'Active', 2 => 'Resign');
-		$res = $this->permissions_model->checkExists($this->user->get_memberrole(), 'users');
-	
-		if($res[0]['permission'] < 1){ 
-			$this->denied = TRUE;
-		}
+		
 	}
 
 	function index($page='',$sortby='') {
@@ -34,12 +30,9 @@ class Main extends Admin_Controller {
 	function get_admin_list($page='0',$sortby=''){
 
 		$data = $this->users_model->admin_getListUsers($sortby);
-		
 		$table_row = $this->load->view('/admin/main/_list_table',$data,true);
 		echo $table_row;
 	}
-	
-	
 	
 	function dashboard(){
 		$data = array();

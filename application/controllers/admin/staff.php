@@ -91,14 +91,15 @@ class Staff extends Admin_Controller {
 	function create(){		
 		$data['module'] = "add";
 		$result = $this->users_model->addUser(); 
-		if ($result['status'] == 'success') { 
-			$this->message->set(ucwords($this->name).' created!', 'success',TRUE);		
-		    $this->goHome();
-		}else{
-			$data['form'] =$this->param;
-			$this->message->set($this->code[$result['error_code']], 'error');		
-			$this->_render_form('new',$data);
-		}
+		echo json_encode($result);
+//		if ($result['status'] == 'success') { 
+//			$this->message->set(ucwords($this->name).' created!', 'success',TRUE);		
+//		    $this->goHome();
+//		}else{
+//			$data['form'] =$this->param;
+//			$this->message->set($this->code[$result['error_code']], 'error');		
+//			$this->_render_form('new',$data);
+//		}
 	}
 	
 	function update(){
@@ -109,20 +110,7 @@ class Staff extends Admin_Controller {
 		} 
 		 
 		$result = $this->users_model->editAccount();
-		if ($result['status'] == 'success') {
-			$this->message->set('User profile updated!', 'success',TRUE);		
-		//	print_pre($this->param['u_id'] ."==". $this->user->get_memberid());
-			if($this->param['u_id'] != $this->user->get_memberid()){
-				 $this->goHome();
-			}else{
-				redirect($this->config->item('admin_url').'/'.$this->name.'/myAccount');
-			}
-		   
-		}else{
-			$data['form'] =$this->param;
-			$this->message->set($this->code[$result['error_code']], 'error');		
-			$this->_render_form('edit',$data);
-		}	
+		echo json_encode($result);
 	}
 	
 	public function remove($user_id){

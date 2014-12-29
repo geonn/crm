@@ -11,9 +11,22 @@ $config['roles'] = array(
 	 'salesman'       => "Salesman",
 );
 
+$config['founder_roles_access'] = array(
+	"director" => "Director",	
+	"manager" => "Manager", 
+	"admin"  => "Admin", 
+	"salesman"  => "Salesman"
+);
+
+$config['director_roles_access'] = array(
+	"manager" => "Manager", 
+	"admin"  => "Admin", 
+	"salesman"  => "Salesman"
+);
+
 $config['manager_roles_access'] = array(
-	"admin" => "Admin", 
-	"salesman" => "Salesman"
+	"admin"  => "Admin", 
+	"salesman"  => "Salesman"
 );
 
 $config['menu'] = array(

@@ -23,7 +23,7 @@ class Response_Model extends APP_Model{
 	}
 	
 	public function addResponse($return_customer=array()){ 
-		
+	 
 		$c_id = "";
 		if(!empty($return_customer)){
 			$c_id = $return_customer['data'];
@@ -31,38 +31,44 @@ class Response_Model extends APP_Model{
 		
 		$response = $this->convertResponse(); 
 		$check     = $this->validateParams($response );  
-		if(empty($check)) { 
+		if(empty($check)) {  
+			//If all success, then add data to 'response_form' table
+			$res_form = $this->response_form_model->addResponseForm($return_customer);
+			
 			foreach($response as $q_id => $answer){
-				
 				if(is_array($answer)){
+				
 					foreach($answer as $aa => $aa_a ){
-						$data = array(
-							'u_id' => $this->user->get_memberid(),
-							't_id' => $this->param['t_id'],
-							'q_id' => $q_id,
-							'c_id' => $c_id,
-							'answer' 		=>  $aa_a,
-							'additional' 	=>  !empty($this->param['q_'.$q_id.'_text']) ? $this->param['q_'.$q_id.'_text'] : "",    
+					  
+							$data = array( 
+								'rf_id' => $res_form['data'],
+								'q_id' => $q_id, 
+								'answer' 		=>  $aa_a,
+								'additional' 	=>  !empty($response[$q_id.'_99']) ? $response[$q_id.'_99'] : "",     
+								'created'	=> localDate(),
+								'updated'	=> localDate(),
+							);
+							$id = $this->insert($data);
+							
+					}
+				}else{
+					$isSubAns = explode('_', $q_id);
+					
+					if(isset($isSubAns[1]) ){
+						//Skip
+					}else{
+						$data = array( 
+							'rf_id' => $res_form['data'],
+							'q_id' => $q_id, 
+							'answer' 		=>  $answer,
+							'additional' 	=>  !empty($response[$q_id.'_99']) ? $response[$q_id.'_99'] : "",     
 							'created'	=> localDate(),
 							'updated'	=> localDate(),
 						);
 						$id = $this->insert($data);
 					}
-				}else{
-					$data = array(
-						'u_id' => $this->user->get_memberid(),
-						't_id' => $this->param['t_id'],
-						'q_id' => $q_id,
-						'c_id' => $c_id,
-						'answer' 		=>  $answer,
-						'additional' 	=>  !empty($this->param['additional']) ? $this->param['additional'] : "",    
-						'created'	=> localDate(),
-						'updated'	=> localDate(),
-					);
-					$id = $this->insert($data);
 				} 
-			}
-			
+			} 
 			$this->_result['status']     = 'success'; 
 			$this->_result['data']       = "";
 		}else{
@@ -73,79 +79,86 @@ class Response_Model extends APP_Model{
 		
 		return $this->_result;
 	}
-	
-	public function editResponse(){
-		$check     = $this->validateParams(); 
-		
-		if($check === 1) { 
-			
-			$data = array(
-				'u_id' => $this->user->get_memberid(),
-				't_id' => $this->param['t_id'],
-				'q_id' => $this->param['q_id'],
-				'answer' 		=>  $this->param['answer'],
-				'additional' 	=> !empty($this->param['additional']) ? $this->param['additional'] : "",    
-				'updated'	=> localDate(),
-			);
-			$id = $this->update($this->param['id'], $data);
-			
-			$this->_result['status']     = 'success'; 
-			$this->_result['data']       = $id;
-		}else{
-			$this->_result['status']     = 'error';
-			$this->_result['error_code'] = $check;	
-			$this->_result['data'] = $this->code[$check];	
-		}
-		$this->_result['status']     = 'success'; 
-		
-		return $this->_result;
-	}
+	 
 	
 	/** To validate if param is correct format  **/
 	private function validateParams($response=array()){
 		$return = array();
 		$count  = 1;
+		
+		//Loop into form response
 		foreach($response as $k => $val){
-			
+			//If answer have multiple options
 			if(is_array($val)){
+				
 				foreach($val as $m => $mal){
-					if(empty($val)){
+					
+					if($mal == "99"){
+						 if(empty($response[$k."_".$mal])){
+							$return[$count]['question'] = $k;
+							$return[$count]['code'] = 119;
+						}
+					
+					}else{
+						
+						//If response dont have 'Others'
+						if(empty($val)){
+							$return[$count]['question'] = $k;
+							$return[$count]['code'] = 119;
+						}
+					}
+				}
+			}else{ //Single options
+			 
+				//If response dont have 'Others'
+				if($val != "99"){ 
+				 
+				 	if(empty($val)){
 						$return[$count]['question'] = $k;
 						$return[$count]['code'] = 119;
 					}
-					
+				 
+				}else{
+					if(empty($response[$k."_".$val])){
+						$return[$count]['question'] = $k;
+						$return[$count]['code'] = 119;
+					}
 				}
-			}else{
-				if(empty($val)){
-					$return[$count]['question'] = $k;
-					$return[$count]['code'] = 119;
-				}
+				
 			}
 			$count++;
 		}  
+	 
 		return $return;
 	}
 	
-	private function convertResponse(){
+	private function convertResponse(){ 
 		$response = array();
+		
 		foreach($this->param as $k => $val){
 			$question = explode('q_', $k);
+		
 			if(count($question) > 1){
+				//	print_pre( $this->param['q_'.$question[1]]);
+				if(is_array($this->param['q_'.$question[1]])){
+					foreach($this->param['q_'.$question[1]] as $a => $jap){
+						if( $jap == "99"){
+							$response[$question[1]."_99"] = $this->param[$question[1].'_99'];
+						}
+					}
+				}else{
+					if($this->param['q_'.$question[1]] == "99"){
+						$response[$question[1]."_99"] = $this->param[$question[1].'_99'];
+					}
+				}
+				
 				$response[$question[1]] = $this->param['q_'.$question[1]];
 			}
 		}
-		
+		  
 		return $response;
 	}
-	
-	private function validateForm($t_id){
-		if(empty($t_id)){
-			return 116;
-		}
-		
-		return $this->checkFormAuth($t_id);
-		 
-	}
+	 
 	
 }
 ?>

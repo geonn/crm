@@ -62,10 +62,4 @@
     </ul>
 </div>
 <div id="loading" name="loading" align='center'><br/><br/><br/><?= $this->config->item("img_loading") ?><br/><br/></div>
-<div id="the_list"></div>
-<script>
-		$('select#status').selectmenu({width: "160px"});
-		
-</script>
-
-
+<div id="the_list"></div> 

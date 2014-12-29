@@ -84,6 +84,12 @@ class Customer extends Admin_Controller {
 		}	
 	}
 	
+	public function getCustomerById(){
+		if(!empty($this->param['c_id'])){
+			echo json_encode($this->customer_model->find_by($this->param['c_id']));
+		}	
+	}
+	
 	public function updatePosition(){ 
 		$this->template_details_model->updatePosition();
 	}

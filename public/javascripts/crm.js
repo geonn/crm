@@ -1,4 +1,6 @@
 $(function() { 
+	$( "#datepicker" ).datepicker({dateFormat: "dd-mm-yy"});
+	
 	$(".phone_number").keydown(function (e) { 
 	    // Allow: backspace, delete, tab, escape, enter and .
 	    if ($.inArray(e.keyCode, [46, 8, 9, 27, 13, 110, 189]) !== -1 ||
@@ -31,3 +33,28 @@ $(function() {
 	    }
 	});
 });
+
+
+function todayDate(){
+	var today = new Date();
+	var dd = today.getDate();
+	var mm = today.getMonth()+1; 
+	var yyyy = today.getFullYear();
+	
+	if(dd<10) {
+	    dd='0'+dd;
+	} 
+	
+	if(mm<10) {
+	    mm='0'+mm;
+	} 
+	
+	today = dd+'-'+mm+'-'+yyyy;
+	return today;
+}
+
+function resetError(){
+	$(".error_message").hide();
+	$(".error_message").html("");
+	$(".required").css("border","");
+}

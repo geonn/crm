@@ -36,11 +36,19 @@ class Forms extends Admin_Controller {
 	
 	function viewForm($t_id=""){
 		$data['result'] = $this->template_model->retrieveForm($t_id);
+		$customer_list = $this->customer_model->getList();
+		$data['customer_list'] = $customer_list['data'];
+		//print_pre(	$data['customer_list']);
 		// 	Build it!
 		$this->_render_form('viewForm',$data); 
 	}
 	
-	function submitAnswer(){
+	function getCustomerList(){
+		$customer_list = $this->customer_model->getList();
+		echo json_encode($customer_list['data']);
+	}
+	
+	function submitAnswer(){  
 		$return_customer = $this->customer_model->addCustomer();  
 		$return_form = $this->response_model->addResponse($return_customer);
 		echo json_encode($return_form);

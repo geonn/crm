@@ -1,10 +1,57 @@
 <script>
 	var queryString  = "<?= $this->config->item('admin_url') ?>/<?= $this->name ?>/";
+	$(function() { 
+		var dateToday = todayDate();
+		$( "#datepicker" ).val(dateToday);
+		
+ 		$( "#customer" ).on('blur',function(){
+ 			if($( "#customer" ).val() ==  ""){
+			      		$(".required").val("");
+			      		$("input[name=c_id]").val("");
+			      		$("textarea[name=mail_address]").html("");
+			      		$("textarea[name=home_address]").html("");
+			      		return false;
+			    }
+			      		
+ 		});
+ 		
+ 		$.getJSON( queryString+"getCustomerList", function( data ) {
+			$( "#customer" ).autocomplete({
+		     	source: data,
+			    focus: function( event, ui ) { 
+			        $( "#customer" ).val( ui.item.label );
+			        return false;
+			      },
+			      select: function( event, ui ) {
+			    
+			      	
+			      	$.get("<?= $this->config->item('admin_url') ?>/customer/getCustomerById?c_id="+ui.item.value, function(data) {
+			      		var obj = jQuery.parseJSON(data);
+			      		$("input[name=c_id]").val(obj.id);
+			      		$("input[name=name]").val(obj.name);
+			      		$("input[name=serial]").val(obj.serial);
+			      		$("input[name=ic]").val(obj.ic);
+			      		$("input[name=email]").val(obj.email);
+			      		$("input[name=contact_home]").val(obj.contact_home);
+			      		$("input[name=contact_mobile]").val(obj.contact_mobile);
+			      		$("input[name=contact_office]").val(obj.contact_office);
+			      		$("input[name=age]").val(obj.age);
+			      		$("textarea[name=mail_address]").html(obj.mail_address);
+			      		$("textarea[name=home_address]").html(obj.home_address);
+			      	});
+			        $( "#customer" ).val( ui.item.label );
+			        $( "#customer" ).attr("data-value",ui.item.value);
+			        return false;
+			      }
+			});
+		});
+
+	    
+	});
 	
 	function submitForm(){
 		var formdata = $('form').serialize();
-		resetOutline();
-		console.log(queryString+"submitAnswer/?"+formdata);
+		resetOutline(); 
 		$.post(queryString+"submitAnswer/", formdata, function(datas) {  
 			console.log(datas);
 				var obj = $.parseJSON(datas);
@@ -14,7 +61,8 @@
 					$.each(obj.error_code, function(idx, objs) {    
 						$("."+objs.question).css('outline','1px solid #ff0000');
 					});
-						$(".error_message").html("Please check the form below :");
+					
+					$(".error_message").html("Please check the form below :");
 				}else{
 					//success and redirection
 					noty({"text":"Form submitted successfully","layout":"center","type":"success","animateOpen":{"height":"toggle"},"animateClose":{"height":"toggle"},"speed":500,"timeout":2000,"closeButton":false,"closeOnSelfClick":true,"closeOnSelfOver":false,"modal":false});
@@ -29,8 +77,7 @@
 		$(".error_message").hide();
 		$(".required").css('outline','');
 	}
-	
-	
+	  
 </script>
 <div class="container_header">
 	<div class="header_title"><a class="separator" href="<?= $this->config->item('admin_url') ?>">Home</a> 
@@ -50,8 +97,10 @@
     if(!empty($result['data'])) {  
             echo form_hidden('isCustomerForm', set_value('isCustomerForm',$result['data']['isCustomerForm']));
             if($result['data']['isCustomerForm'] == "1"){
+            	 echo form_hidden('c_id', '');
                  ?>
                 <div style="font-size:16px;padding-left:10px;">Personal Details</div> 
+                 <div style="font-size:14px;padding-left:10px;">Search Customer : <input id="customer" name="customer" placeholder="Customer name..."></div> 
                 <div style="background-color:<?= $result['data']['background'] ?>;width:100%;margin-top:10px;margin-bottom:10px;">
                     <div style="padding:10px;font-size:14px;">Full Name</div>
                     <div style="padding-left:10px;padding-bottom:5px;">
@@ -106,6 +155,8 @@
     <?php 		} ?>
             <div style="font-size:16px;padding-left:10px;padding-top:10px;"><?= $result['data']['name'] ?></div>
             <div style="font-size:10px;color: #A4A4A4;padding-left:10px;"><?= $result['data']['description'] ?></div>
+            
+            <div style="font-size:14px;padding-left:10px;padding-top:5px;">Date :  <input name="filled_date" type="text" id="datepicker"></div>
             <div class="error_message" style="display:none;"></div>
             <div style="background-color:<?= $result['data']['background'] ?>;width:100%;margin-top:10px;">
     <?php		
@@ -123,7 +174,6 @@
             <div style="padding-left:20px;padding-bottom:10px;">
                 
             <?php
-                
                 switch($val['type']) {
                     case 1: // TEXT INPUT
                         echo   form_input('q_'. $val['id'], '','class="required '.$val['id'].'" placeholder="Please fill in '.$val['question'] .'" style="width:50%;"'); 
@@ -153,7 +203,7 @@
                                 'class'         => "required ".  $val['id'],
                                 'checked'     => FALSE, 
                             );
-							echo   form_radio($radioOthersValue) . "<span style='margin-right:20px;'>Others</span>".form_input('q_'. $val['id']."_text", '','class="required '.$val['id'].'" placeholder="Please fill in your answer" style="width:50%;"'); ; 
+							echo   form_radio($radioOthersValue) . "<span style='margin-right:20px;'>Others</span>".form_input( $val['id']."_99", '','class="required '.$val['id'].'" placeholder="Please fill in your answer" style="width:50%;"'); ; 
 						}
                         
                     break;	
@@ -172,13 +222,13 @@
                         
                         if($val['hasOthers'] == "1"){
                        		 $checkOthersValue = array(
-                                'name'    => 'q_'. $val['id'],
+                                'name'    => 'q_'. $val['id']."[]",
                                 'id'          => 'q_'. $val['id'],
                                 'value'       => 99,
                                 'class'         => "required ".  $val['id'],
                                 'checked'     => FALSE, 
                             );
-							echo   form_checkbox($checkOthersValue	) . "<span style='margin-right:20px;'>Others</span>".form_input('q_'. $val['id']."_text", '','class="required '.$val['id'].'" placeholder="Please fill in your answer" style="width:50%;"'); ; 
+							echo   form_checkbox($checkOthersValue	) . "<span style='margin-right:20px;'>Others</span>".form_input($val['id']."_99", '','class="required '.$val['id'].'" placeholder="Please fill in your answer" style="width:50%;"'); ; 
 						}
                     break;	
                 }

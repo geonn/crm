@@ -114,7 +114,8 @@ class Users_Model extends APP_Model{
 					'username'=> $this->param['username'], 
 					'mobile' => $this->param['mobile'],
 					'password' => md5($this->param['password']), 
-					'status'   => 1,
+					'roles' => $this->param['roles'],
+					'status'   =>  $this->param['status'],
 					'created' 	 => date('Y-m-d H:i:s'),
 					'updated' 	 => date('Y-m-d H:i:s'),
 				);
@@ -132,8 +133,10 @@ class Users_Model extends APP_Model{
 		} else { 
 			
 				$this->_result['status']     = 'error';
-				$this->_result['error_code'] = $validation[0];
-				$this->_result['data'] = $this->code[$validation[0]];
+				$this->_result['error_code'] = $validation;
+				foreach($validation as $k => $val){
+					$this->_result['data'][$k] = $this->code[$val];
+				}
 			
 		}
 		
@@ -167,8 +170,10 @@ class Users_Model extends APP_Model{
 		
 		} else { 
 			$this->_result['status']     = 'error';
-			$this->_result['error_code'] = $validation[0];
-			$this->_result['data'] = $this->code[$validation[0]];
+			$this->_result['error_code'] = $validation;
+			foreach($validation as $k => $val){
+				$this->_result['data'][$k] = $this->code[$val];
+			}
 			
 		}
 		
@@ -368,10 +373,21 @@ class Users_Model extends APP_Model{
 			$srhs = explode(' ',$this->input->get('q'));
 			foreach($srhs as $srh){
 				$search .= (!empty($search) ? " and ": "");		
-				$search .= "(fullname like '%".$srh."%' OR mobile like'%".$srh."%' OR email like '%".$srh."%' OR ".$this->primary_key."='".$srh."')  ";			
+				$search .= "(fullname like '%".$srh."%' OR mobile like'%".$srh."%' OR email like '%".$srh."%' OR roles like '%".$srh."%' OR ".$this->primary_key."='".$srh."')  ";			
 			}
 		}
+		
+		$user_roles = $this->user->get_memberrole();
+		$viewable_roles = $this->config->item($user_roles.'_roles_access');  
+		$str_roles = "";
+		foreach($viewable_roles as $rl => $role){
+			$str_roles .= '"'.$rl.'", ';
 			
+		}
+		$str_roles = substr($str_roles,0,-2);
+		$search .= (!empty($search) ? " AND ": "");		
+		$search .= "(roles IN (".$str_roles."))"  ;		
+		
 		if ($this->input->get('status')) {
 			$search .= (!empty($search) ? " and ": "");					
 			$search .= "status = '".$this->input->get('status')."' ";
@@ -379,8 +395,7 @@ class Users_Model extends APP_Model{
 	 
 		$return   = convert_sort($this->sorted,$sortby,$this->primary_key);
 		$new_sort = change_sort($return['sort']);	
-	 	 $offset   = pageToOffset($this->config->item('per_page'),$page);
-	  
+	 	 $offset   = pageToOffset($this->config->item('per_page'),$page); 
 		// Load Data
 		$data['results'] = $this->get_data($search,$this->config->item('per_page'),$offset,$return['order'],$return['sorts']); 
 				 
@@ -452,22 +467,35 @@ class Users_Model extends APP_Model{
 		$fullname  = isset($this->param['fullname'])  ? trim($this->param['fullname'])  : "";
 		$username  = isset($this->param['username'])  ? trim($this->param['username'])  : "";
 		$email = isset($this->param['email']) ? trim($this->param['email']) : "";
+		$mobile = isset($this->param['mobile']) ? trim($this->param['mobile']) : "";
 		$password  = isset($this->param['password'])   ? trim($this->param['password'])   : "";
-		$confirmation  = isset($this->param['confirmation'])   ? trim($this->param['confirmation'])   : "";
+		$confirmation  = isset($this->param['password2'])   ? trim($this->param['password2'])   : "";
 		
 		$statusCode = array();
 		if(!$fullname){
 			$statusCode[] = 104;
 		}
+		
 		if(!$username){
 			$statusCode[] = 103;
 		}
+		
+		if(!$mobile){
+			$statusCode[] = 109;
+		}
+		
 		if(!$email){
-			$statusCode []= 104;
+			$statusCode []= 108;
 		}elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
 		    $statusCode[] = 105;
 		}
 		
+		if(!$password){
+			$statusCode[] = 106;
+		}elseif($password != $confirmation){
+			$statusCode[] = 107;	
+		}
+			
 		if( !empty($this->param['edit'])){
 			if($this->param['edit'] == 1 &&  $this->param['change_password'] == '1'){
 				
@@ -486,11 +514,6 @@ class Users_Model extends APP_Model{
 				
 			}
 			
-			if(!$password){
-				$statusCode[] = 106;
-			}elseif($password != $confirmation){
-				$statusCode[] = 107;	
-			}
 		}
 		
 		return $statusCode;

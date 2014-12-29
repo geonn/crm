@@ -12,6 +12,7 @@
     </ul>
 </div>
 <div id="the_list">
+	<div class="error_message" style="display:none;"></div>
 	<?= $template['partials']['message']; ?>
 	<div class="header_title"><?= ucwords($this->name) ?> Profile</div>
 	<?= form_open_multipart($this->config->item('admin_url').'/'.$this->name.'/update/'.$this->uri->segment(4),'id="updateform"'); ?>
@@ -46,7 +47,33 @@
     </div>
 </div>
 <script type="text/javascript" >	
+	var queryString  = "<?= $this->config->item('admin_url') ?>/<?= $this->name ?>/";
 	$('#submitformbutton').click(function() {
-	  $('#updateform').submit();
+	 	var form_data = $('form').serialize();
+		resetError();
+		$.get(queryString+"update/" , form_data, function(data) { 
+			console.log(data);
+			var obj = jQuery.parseJSON(data);
+			 
+			if(obj.status == "error"){
+				$(".error_message").show();
+				var eCode = obj.error_code ;
+				$.each(eCode, function( index ,code) {
+				  $("."+code).css('border-color','red'); 
+				});
+				
+				var eData = obj.data ;
+				 $(".error_message").html("<p> Please check for following error(s):</p>");
+				$.each(eData, function( index ,errData) {
+				  $(".error_message").append('<p> - '+errData+'</p>');
+				});
+				
+			}else{
+				noty({"text":"Staff successfully created ","layout":"center","type":"success","animateOpen":{"height":"toggle"},"animateClose":{"height":"toggle"},"speed":500,"timeout":2000,"closeButton":false,"closeOnSelfClick":true,"closeOnSelfOver":false,"modal":false});
+				setTimeout(function() {location.href=window.location.href=queryString;},1500);	 
+			}		
+					
+		});
+		return false;
 	});
 </script>
