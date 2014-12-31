@@ -20,7 +20,7 @@ class Question extends Admin_Controller {
 		if(empty($page)) $data['page']="1";					
 		$data['sortby']   = !empty($sortby) ? $sortby : "id-1"; 
 		$data['search'] =!empty($this->param['q']) ? $this->param['q'] : "";
-		$data['status'] = !empty($this->param['status']) ? $this->param['status'] : "";
+		$data['type'] = !empty($this->param['type']) ? $this->param['type'] : "";
 		
 		// 	Build it!
 		$this->_render_form('index',$data);

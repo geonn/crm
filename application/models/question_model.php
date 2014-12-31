@@ -121,7 +121,12 @@ class Question_Model extends APP_Model{
 				$search .= "(question like '%".$srh."%' OR tag like'%".$srh."%'  OR ".$this->primary_key."='".$srh."')  ";			
 			}
 		}
-			 
+		
+		if ($this->input->get('type')) {
+			$search .= (!empty($search) ? " and ": "");					
+			$search .= "type = '".$this->input->get('type')."' ";
+		}
+		
 		$return   = convert_sort($this->sorted,$sortby,$this->primary_key);
 		$new_sort = change_sort($return['sort']);	
 	 	$offset   = pageToOffset($per_page,$page);
