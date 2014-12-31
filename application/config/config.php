@@ -388,7 +388,7 @@ $config['country'] = array(
 	'sg' => 'Singapore'			
 );
 
-$config['per_page'] = '20';
+$config['per_page'] = '15';
 $config['auto_logout'] = '480';
 
 //

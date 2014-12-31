@@ -11,10 +11,16 @@ class Question_Model extends APP_Model{
 	}
 	
 	public function getList(){
-		$filter = array(
+		$search = '';						
+		if (!empty($this->param['q'])) {				
+			$srhs = explode(' ',$this->param['q']);
+			foreach($srhs as $srh){
+				$search .= (!empty($search) ? " and ": "");		
+				$search .= "(question like '%".$srh."%' OR tag like'%".$srh."%')  ";			
+			}
+		}
 		
-		);
-		$res = $this->get_data($filter);
+		$res = $this->get_data($search,'','',$this->primary_key,'DESC');
 		
 		$this->_result['status']     = 'success'; 
 		$this->_result['data']       = $res;		
@@ -51,7 +57,7 @@ class Question_Model extends APP_Model{
 				'question' => $this->param['question'],
 				'created_by' 		=> $this->user->get_memberid(),
 				'tag' 		=> $this->param['tag'],  
-				'hasOthers'	=> $this->param['hasOthers'], 
+				//'hasOthers'	=> $this->param['hasOthers'], 
 				'created'	=> localDate(),
 				'updated'	=> localDate(),
 			);
@@ -105,7 +111,7 @@ class Question_Model extends APP_Model{
 	******************* ADMIN ********************
 	*********************************************/
 	public function admin_getList($sortby,$page=""){
-	
+		$per_page = 10;//$this->config->item('per_page');
 		// Search Param
 		$search = '';						
 		if ($this->input->get('q')) {				
@@ -116,13 +122,12 @@ class Question_Model extends APP_Model{
 			}
 		}
 			 
-	 
 		$return   = convert_sort($this->sorted,$sortby,$this->primary_key);
 		$new_sort = change_sort($return['sort']);	
-	 	 $offset   = pageToOffset($this->config->item('per_page'),$page);
-	  
+	 	$offset   = pageToOffset($per_page,$page);
+	   
 		// Load Data
-		$data['results'] = $this->get_data($search,$this->config->item('per_page'),$offset,$return['order'],$return['sorts']); 
+		$data['results'] = $this->get_data($search,$per_page,$offset,$return['order'],$return['sorts']); 
 		
 		foreach($data['results'] as $k => $val){
 			$creator = $this->users_model->checkUserById($val['created_by']);
@@ -134,8 +139,9 @@ class Question_Model extends APP_Model{
 		// Pagination		
 		$config['base_url'] = $this->config->item('admin_url').'/'.$this->name.'/index/';	
 		$config['total_rows'] = $data['count'];
-		$this->pagination->initialize($config);		
-		
+		$config['per_page'] = 10;//$this->config->item('per_page');
+		$config['num_links'] = 10;
+		$this->pagination->initialize($config);		 
 		return $data;
 	}
 	

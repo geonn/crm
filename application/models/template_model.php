@@ -11,15 +11,43 @@ class Template_Model extends APP_Model{
 	}
 	
 	public function getList(){
-		$filter = array(
+		$search = '(status = 1)';						
+		if ($this->input->get('q')) {				
+			$srhs = explode(' ',$this->input->get('q'));
+			foreach($srhs as $srh){
+				$search .= (!empty($search) ? " and ": "");		
+				$search .= "(name like '%".$srh."%' OR description like'%".$srh."%'  OR ".$this->primary_key."='".$srh."')  ";			
+			}
+		}
+			 
+	 	if ($this->input->get('category')) {
+			$search .= (!empty($search) ? " and ": "");					
+			$search .= "category LIKE '%".$this->input->get('category')."%' ";
+		}
+		$data['results'] = $this->get_data($search,'','','updated','DESC');
+		foreach($data['results'] as $k => $val){
+			$creator = $this->users_model->checkUserById($val['created_by']);
+			$data['results'][$k]['creator'] = $creator[0]['username'];
+			
+			//Extract Category
+			$categories = explode(',', $val['category']);
+			$c_con = array();
+			foreach($categories as $c){
+				$c_con[] = match($c, $this->config->item('template_category'));
+			}
+			$data['results'][$k]['c_con'] = implode(', ', $c_con);
+			
+			//Extract Viewable
+			$viewable = explode(',', $val['viewable']);
+			$v_con = array();
+			foreach($viewable as $v){
+				$v_con[] = match($v, $this->config->item('roles'));
+			}
+			$data['results'][$k]['v_con'] = implode(', ', $v_con);
+		} 		  
+ 
 		
-		);
-		$res = $this->get_data($filter);
-		
-		$this->_result['status']     = 'success'; 
-		$this->_result['data']       = $res;		
-		
-		return $this->_result;
+		return $data;
 	}
 	
 	public function retrieveForm($t_id=""){
@@ -56,14 +84,23 @@ class Template_Model extends APP_Model{
 	public function addTemplate(){
 		$check     = $this->validateParams(); 
 		if($check === 1) { 
+			$viewable = "";
+			if(!empty($this->param['viewable'])){
+				$viewable =  implode(',' , $this->param['viewable']);
+			}
+			
+			$category = "";
+			if(!empty($this->param['category'])){
+				$category =  implode(',' , $this->param['category']);
+			}
 			
 			$data = array(
 				'name' => $this->param['name'],
 				'p_id' => $this->param['p_id'],
 				'description' => $this->param['description'],
 				'created_by' 		=> $this->user->get_memberid(),
-				'category' 		=> implode(',' , $this->param['category']),   
-				'viewable' 		=> implode(',' , $this->param['viewable']),   
+				'category' 		=> $category,   
+				'viewable' 		=> $viewable,   
 				'status' 		=> $this->param['status'], 
 				'background' => !empty($this->param['background']) ? $this->param['background'] : "",
 				'isIndex' => $this->param['isIndex'],
@@ -88,18 +125,28 @@ class Template_Model extends APP_Model{
 		$check     = $this->validateParams(); 
 		
 		if($check === 1) { 
+			$viewable = "";
+			if(!empty($this->param['viewable'])){
+				$viewable =  implode(',' , $this->param['viewable']);
+			}
+			
+			$category = "";
+			if(!empty($this->param['category'])){
+				$category =  implode(',' , $this->param['category']);
+			}
 			
 			$data = array(
 				'name' => $this->param['name'], 
 				'description' => $this->param['description'], 
-				'category' 		=>  implode(',' , $this->param['category']),   
-				'viewable' 		=> implode(',' , $this->param['viewable']),   
+				'category' 		=>  $category,
+				'viewable' 		=> $viewable,  
 				'status' 		=> $this->param['status'], 
 				'background' => !empty($this->param['background']) ? $this->param['background'] : "",
 				'isIndex' => $this->param['isIndex'],
 				'isCustomerForm' => $this->param['isCustomerForm'],
 				'updated'	=> localDate(),
 			);
+		 
 			$id = $this->update($this->param['id'], $data);
 			$this->logger_model->addLogger('edit', $this->name, $this->param['name']);
 			$this->_result['status']     = 'success'; 

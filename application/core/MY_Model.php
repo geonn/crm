@@ -592,6 +592,15 @@ class APP_Model extends MY_Model{
 		return $row;		
 	}
 	
+	public function find_with($table_field, $primary_value){
+		$this->_run_before_get();
+		$row = $this->db->where($table_field, $primary_value)
+						->get($this->_table)
+						->result_array();
+		$this->_run_after_get($row);
+		return $row;		
+	}
+	
 	public function get_last_id(){
 		$this->_run_before_get();
 		$row = $this->db->select_max($this->primary_key)

@@ -2,41 +2,28 @@
 	var page         = "<?= $page ?>";
 	var searchstring = "<?= $search ?>";
 	var sortby       = "<?= $sortby ?>";
-	var astatus       = "<?= $status ?>";
+	var category       = "<?= $category ?>";
 	var queryString  = "<?= $this->config->item('admin_url') ?>/<?= $this->name ?>/get_list/";
-	var queryParam   = page+"/"+sortby+"?q="+searchstring+"&status="+astatus;
+	var queryParam   = page+"/"+sortby+"?q="+searchstring+"&category="+category;
   	get_list(queryParam);	 
   
 	function get_list(queryParam){ 
 		$.get(queryString+queryParam, function(data) {
 			jQuery('#loading').hide();
 			jQuery('#q').val(searchstring);
-			jQuery('#status').val(astatus);
+			jQuery('#category').val(category);
 		  	jQuery('#the_list').html(data);
-		  	
-		  	if(sortby != ""){
-		  		splitinfo = sortby.split("-");
-		  		if(splitinfo[1] == '1'){
-		  			jQuery('#'+splitinfo[0]+'_sortimg').html('<?= $this->config->item("icon_up") ?>');
-		  		}else{
-		  			jQuery('#'+splitinfo[0]+'_sortimg').html('<?= $this->config->item("icon_down") ?>');
-		  		}	  		
-		  	}
+		  	 
 			});
 	}
-	
-	function sorting(field,sort){
-			sortby =field+"-"+sort;
-			url= page+"/"+sortby+"?q="+searchstring+"&status="+astatus;
-			get_list(url);
-	}
+	 
 </script>
 <div class="container_header">
 	<div class="header_title"><a class="separator" href="<?= $this->config->item('domain') ?>">Home</a> <?= ucwords($this->name) ?> List</div>
         <div class='search_panel' style="float: left;">
             <div style="float:left; padding-left:10px;">
             <form action="<?= $this->config->item('admin_url') ?>/<?= $this->name ?>/index" method="get">	
-                <?= form_dropdown('status', array(""=>"--All Status--")+$this->account_status, set_value('status',isset($status) ? $status : '' ),' id="status"'); ?>					
+                <?= form_dropdown('category', array(""=>"--All Category--")+$this->config->item('template_category'), set_value('category',isset($category) ? $category : '' ),' id="category"'); ?>					
                                 
                 <input name="q" id="q" type="text" value="<?= set_value('q',''); ?>" class="mystyles_textbox">
                

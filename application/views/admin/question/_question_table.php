@@ -1,6 +1,6 @@
 <style>
   #sortable {font-size:12px;list-style-type: none; margin: 0; padding: 0; }
-  #sortable li { margin: 0 3px 3px 3px; padding: 0.4em;  font-size: 12px; min-height: 40px; }
+  #sortable li { margin: 0 3px 3px 3px; padding: 0.4em;  font-size: 12px; min-height: 25px; }
   #sortable li span { position: absolute; margin-left: -1.3em; }
 </style>
 <script>

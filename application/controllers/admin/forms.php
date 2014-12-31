@@ -20,7 +20,7 @@ class Forms extends Admin_Controller {
 		if(empty($page)) $data['page']="1";					
 		$data['sortby']   = !empty($sortby) ? $sortby : "id-1"; 
 		$data['search'] =!empty($this->param['q']) ? $this->param['q'] : "";
-		$data['status'] = !empty($this->param['status']) ? $this->param['status'] : "";
+		$data['category'] = !empty($this->param['category']) ? $this->param['category'] : "";
 		
 		// 	Build it!
 		$this->_render_form('index',$data);
@@ -28,7 +28,7 @@ class Forms extends Admin_Controller {
 	
 	function get_list( $page='1', $sortby=''){ 
 		$this->param['validateRoles'] = 1;
-		$data = $this->template_model->admin_getList($sortby,$page);
+		$data = $this->template_model->getList($sortby,$page);
 		
 		$table_row = $this->load->view('/admin/'.$this->name.'/_list_table',$data,true);
 		echo $table_row;
@@ -41,6 +41,14 @@ class Forms extends Admin_Controller {
 		//print_pre(	$data['customer_list']);
 		// 	Build it!
 		$this->_render_form('viewForm',$data); 
+	}
+	
+	function dynamicForm($t_id="",$rf_id=""){
+		$data['result'] = $this->template_model->retrieveForm($t_id);
+		$data['response'] = $this->response_model->retrieveResponse($rf_id); 
+		$data['response_form'] = $this->response_form_model->find_by($rf_id); 
+		$form_row = $this->load->view('/admin/'.$this->name.'/dynamicForm',$data,true);
+		echo $form_row;
 	}
 	
 	function getCustomerList(){

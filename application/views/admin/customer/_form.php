@@ -3,24 +3,16 @@
 	var t_id ="<?= isset($form['id']) ? $form['id'] : "" ?>";
 	$(function() {
 		$("#vasibletable").organicTabs();
-		$('.fancybox').fancybox();
-		getQuestionPools(t_id);
-		getTemplateQuestion(t_id);
+		$('.fancybox').fancybox({'width':400,'autoSize' : false});
+	 
 	});
 	
-	function getTemplateQuestion(t_id){
-		$.get(queryString+"/question/getTemplateQuestion/"+t_id, function(data) {
-			jQuery('#template_question').html(data);
-		});	
-	}
-	
-	function getQuestionPools(t_id){
-		
-
-		$.get(queryString+"/question/getQuestionPools/"+t_id, function(data) { 
+	function viewForm(t_id,rf_id){ 
+		$.get(queryString+"/forms/dynamicForm/"+t_id+"/"+rf_id, function(data) {
 			jQuery('#inline1').html(data);
 		});	
 	}
+	  
 </script>
 <div id="vasibletable" >
 	<input type='hidden' id="id" value="<?= isset($form['id']) ? $form['id'] : "" ?>"/>		
@@ -88,10 +80,43 @@
     	
     	 <ul id="structure" class="hide">
 			<li>
-				This page is under construction
+				<table class="bordered">
+					<tbody>
+						<tr> 
+						
+							<th style="width: 20%;"> Form Name  </th>
+							<th style="width: 20%;"> Filled By  </th>
+							<th style="width: 20%;">  Filled Date   </th>
+							<th style="width: 20%;"> Total Question  </th>
+							<th style="width: 20%;">Action</th>
+						</tr>
+						
+					<?php if(!empty($survey)){ 
+						foreach ($survey['data'] as $k => $row):
+						 ?>		
+				    	<tr>
+				    	
+							<td><strong><font color="green"><?= $row['name'];?></font></strong></td>
+							<td><?= $row['filled_by'];?></td>	
+							
+							<td><?= date_convert($row['filled_date'],'ori');?></td>
+							<td><?= $row['total_question'];?></td>	
+							<td><button class="fancybox blue_button" href="#inline1" onClick="viewForm('<?= $row['t_id'] ?>','<?= $row['id'] ?>')" title="View customer survey form"> View Survey</button>
+								  </td>																
+						</tr>
+					<?php endforeach; ?>		
+					
+						<?php 	}else{ ?>
+							<tr><td colspan="4" ><div align='center'>No result found</div></td></tr>
+						<?php  } ?>		
+					</tbody>	
+				</table>	
+				
 			</li>
     	</ul>
-     
+     <div id="inline1" style="width:100%;display: none;">
+					Loading...
+				</div>
     </div>
   </div>	
 

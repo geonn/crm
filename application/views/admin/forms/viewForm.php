@@ -90,7 +90,7 @@
         <li><a href="<?php echo $this->config->item('admin_url').'/'?><?= $this->name ?>/">Back</a></li>
     </ul>
 </div>
-<div id="the_list">
+<div id="the_list" style="background-color:<?= match($result['data']['background'],$this->config->item('template_background')) ?>;">
     <form>
     <?php  
     $submitButton = 1;
@@ -158,7 +158,7 @@
             
             <div style="font-size:14px;padding-left:10px;padding-top:5px;">Date :  <input name="filled_date" type="text" id="datepicker"></div>
             <div class="error_message" style="display:none;"></div>
-            <div style="background-color:<?= $result['data']['background'] ?>;width:100%;margin-top:10px;">
+            <div style="width:100%;margin-top:10px;">
     <?php		
             echo form_hidden('t_id', set_value('t_id',$result['data']['id']));
             

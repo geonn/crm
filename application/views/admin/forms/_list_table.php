@@ -8,9 +8,9 @@
 	<tbody>
 		<tr> 
 		
-			<th style="width: 25%;"><a href="javascript:void(0)" onclick="sorting('name','<?= $new_sort ?>');">Template Name <span id="name_sortimg"></span></a></th>
-			<th style="width: 25%;"><a href="javascript:void(0)" onclick="sorting('description','<?= $new_sort ?>');">Description <span id="description_sortimg"></span></a></th>
-			<th style="width: 25%;"><a href="javascript:void(0)" onclick="sorting('category','<?= $new_sort ?>');">Category  <span id="category_sortimg"></span></a></th>
+			<th style="width: 25%;">Template Name</th>
+			<th style="width: 25%;">Description </th>
+			<th style="width: 25%;">Category </th>
 			
 			<th style="width: 25%;">Action</th>
 		</tr>

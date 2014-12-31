@@ -45,11 +45,11 @@ class Customer extends Admin_Controller {
 		}else{		
 			$id = $this->uri->segment(4);
 			$data['form'] = $this->customer_model->find_by($id); 
-			 
+			$data['survey'] = $this->response_form_model->getList($id); 
 			if (empty($data['form'])) {
 				redirect($this->path.'index', 'refresh');												
 			}
-			//print_pre($data['form']);
+		//	 print_pre($data['survey']);
 			$this->_render_form('edit',$data);	
 		}					
 	}
@@ -73,7 +73,7 @@ class Customer extends Admin_Controller {
 		
 		$data['module'] = "edit";
 		$this->param['id'] =  $this->uri->segment(4);
-		$result = $this->customer_model->addCustomer();
+		$result = $this->customer_model->editCustomer();
 		if ($result['status'] == 'success') {
 			$this->message->set('Customer info updated!', 'success',TRUE);		
 			redirect($this->config->item('admin_url').'/'.$this->name.'/edit/'. $this->uri->segment(4));

@@ -22,6 +22,30 @@ class Response_Model extends APP_Model{
 		return $this->_result;
 	}
 	
+	public function retrieveResponse($rf_id=""){
+		if(empty($rf_id)){
+			return "Empty rf_id";
+		}
+		$filter = array(
+			'rf_id' => $rf_id
+		);
+		$res = $this->get_data($filter);
+		$list = array();
+		
+		foreach($res as $k => $val){
+			$list[$val['q_id']] = $val['answer'];
+			if(!empty($val['additional'])){
+				$list[$val['q_id']."_99"] = $val['additional'];
+			}
+		}
+		
+		$this->_result['status']     = 'success'; 
+		$this->_result['data']       = $list;		
+		
+		return $this->_result;
+		
+	}
+	
 	public function addResponse($return_customer=array()){ 
 	 
 		$c_id = "";

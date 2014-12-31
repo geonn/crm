@@ -17,7 +17,7 @@ class Activity extends Admin_Controller {
 	 
 		$data['page']=$page;
 		if(empty($page)) $data['page']="1";					
-		$data['sortby']   = !empty($sortby) ? $sortby : "id-1"; 
+		$data['sortby']   = !empty($sortby) ? $sortby : "id-2"; 
 		$data['search'] =!empty($this->param['q']) ? $this->param['q'] : ""; 
 		
 		// 	Build it!

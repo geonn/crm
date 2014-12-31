@@ -13,7 +13,7 @@ class Question extends Admin_Controller {
 		}
 	}
 
-	function index($sortby='',$page='1') {
+	function index($page='1',$sortby='') {
 		//Initialize param
 	 
 		$data['page']=$page;
@@ -26,7 +26,7 @@ class Question extends Admin_Controller {
 		$this->_render_form('index',$data);
 	}
 	
-	function get_list( $page='1', $sortby=''){ 
+	function get_list( $page='1', $sortby=''){  
 		$data = $this->question_model->admin_getList($sortby,$page);
 		
 		$table_row = $this->load->view('/admin/'.$this->name.'/_list_table',$data,true);
@@ -35,6 +35,7 @@ class Question extends Admin_Controller {
 	
 	function getQuestionPools($template_id=""){
 		$data['template_id']  = $template_id;
+		$data['q']  = $this->param['q'];
 		$data['pools'] = $this->question_model->getList(); 
 		$data['inTemplates']  = $this->template_details_model->getQuestionList( $template_id);  
 		$table_row = $this->load->view('/admin/'.$this->name.'/_pool_table',$data,true);

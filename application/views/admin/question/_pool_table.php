@@ -1,10 +1,11 @@
 
 <script>
 	var template_id = "<?= $template_id ?>"; 
+	$('#q').val("<?= $q ?>");
 	function addToTemplate(q_id){ 
 		var formdata = "t_id="+template_id+"&q_id="+q_id;
 		$.post(queryString+"/templates/addQuestionToTemplate/", formdata, function(data) {
-			 getQuestionPools(template_id);
+			 getQuestionPools(template_id,"<?= $q ?>");
 			 getTemplateQuestion(template_id)
 		});	
 	}
@@ -12,14 +13,19 @@
 	function removeFromTemplate(q_id){ 
 		var formdata = "t_id="+template_id+"&q_id="+q_id;
 		$.post(queryString+"/templates/removeQuestionFromTemplate/", formdata, function(data) {
-			 getQuestionPools(template_id);
+			 getQuestionPools(template_id,"<?= $q ?>");
 			 getTemplateQuestion(template_id)
 		});	
 	}
+	
+	$("#searchBtn").click(function(){
+		var q = $('#q').val();
+		getQuestionPools(template_id, q);
+	});
 </script> 
 <div style="padding-bottom:10px;">
 	<input name="q" id="q" type="text" value="<?= set_value('q',''); ?>" class="mystyles_textbox" placeholder="Search questions or tags" style="width:85%;">
- 	<button type="submit" class="blue_button" value="Submit" >Filter</button>   
+ 	<button type="submit"  id="searchBtn"  value="Submit" >Filter</button>   
 </div>
 <table class="bordered" style="width:100%;">
 	<tbody>

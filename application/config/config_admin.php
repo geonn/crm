@@ -130,6 +130,14 @@ $config['template_category'] = array(
 	6  => "Others"
 );
 
+$config['template_background'] = array(
+	1 => '#FAFAFA',
+	2 => '#FFEAEA',
+	3 => '#F4EAFF',
+	4 => '#EAF5FF',
+	5 => '#F2FFEA',
+);	
+
 $config['gender'] = array(
 	'm' => 'Male',
 	'f' => 'Female',

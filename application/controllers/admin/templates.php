@@ -63,6 +63,7 @@ class Templates extends Admin_Controller {
 	}
 			
 	function create(){		 
+		$data['module'] = "add";
 		$result = $this->template_model->addTemplate();
 		
 		if ($result['status'] == 'success') {
@@ -76,6 +77,7 @@ class Templates extends Admin_Controller {
 	}
 	
 	function update(){
+		$data['module'] = "edit";
 		$this->param['id'] =  $this->uri->segment(4);
 		$result = $this->template_model->editTemplate();
 		if ($result['status'] == 'success') {

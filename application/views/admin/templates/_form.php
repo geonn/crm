@@ -3,8 +3,12 @@
 	var t_id ="<?= isset($form['id']) ? $form['id'] : "" ?>";
 	$(function() {
 		$("#vasibletable").organicTabs();
-		$('.fancybox').fancybox();
-		getQuestionPools(t_id);
+		
+		$('.fancybox').click(function(){
+			$('.fancybox').fancybox();
+			 getQuestionPools(t_id,"");
+		});
+	 
 		getTemplateQuestion(t_id);
 	});
 	
@@ -14,10 +18,9 @@
 		});	
 	}
 	
-	function getQuestionPools(t_id){
-		
-
-		$.get(queryString+"/question/getQuestionPools/"+t_id, function(data) { 
+	function getQuestionPools(t_id,search_str){
+		$.get(queryString+"/question/getQuestionPools/"+t_id+"?q="+search_str, function(data) { 
+			$('#q').val(search_str);
 			jQuery('#inline1').html(data);
 		});	
 	}
@@ -56,6 +59,30 @@
 						<tr>
 							<td style="width: 140px;"  id='edit_title'>Show Customer Form</td>
 							<td><?= magic_radio_label('isCustomerForm', $this->config->item('yesno'), set_value('isCustomerForm',isset($form) ? $form['isCustomerForm'] : '')); ?></td>			
+						</tr>
+						<tr>
+							<td style="width: 140px;"  id='edit_title'>Form Background</td>
+							<td>
+								<div >
+								<?php
+									$temp_back = $this->config->item('template_background');
+									foreach($temp_back as $code => $color){
+                            			$isRadioChk = FALSE;
+			                            if($form['background'] == $code){
+			                            	$isRadioChk = TRUE;
+			                            }
+			                            $radioValue = array(
+			                                'name'    => 'background',
+			                                'id'          => 'background',
+			                                'value'       => $code, 
+			                                'checked'     => $isRadioChk, 
+			                            );
+			                            echo   "<div style='padding:10px;margin:10px;width:50px;height:50px;float:left;background-color:".$color."'>".form_radio($radioValue) ."</div>"; 
+			                        }
+                        	
+								 ?>
+								</div>
+								</td>			
 						</tr>
 						<tr>
 							<td style="width: 140px;"  id='edit_title'>Category</td>

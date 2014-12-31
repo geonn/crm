@@ -337,7 +337,7 @@
 		$date_processed = explode("-", $date);
 		return $date_processed[2]."-".$date_processed[1]."-".$date_processed[0];
 	}
-	
+	 
 	/*
 	Resizes an image and converts it to PNG returning the PNG data as a string
 	*/
