@@ -4,17 +4,28 @@
 	$(function() {
 		$("#vasibletable").organicTabs();
 		
-		$('.fancybox').click(function(){
+		$('.add_button').click(function(){
 			$('.fancybox').fancybox();
 			 getQuestionPools(t_id,"");
 		});
-	 
+	 	
+	 	$('.preview_button').click(function(){
+			$('.fancybox').fancybox();
+			 getPreview(t_id);
+		});
+	 	
 		getTemplateQuestion(t_id);
 	});
 	
 	function getTemplateQuestion(t_id){
 		$.get(queryString+"/question/getTemplateQuestion/"+t_id, function(data) {
 			jQuery('#template_question').html(data);
+		});	
+	}
+	
+	function getPreview(t_id){
+		$.get(queryString+"/forms/getPreview/"+t_id, function(data) {  
+			jQuery('#inline1').html(data);
 		});	
 	}
 	
@@ -151,7 +162,8 @@
     	
     	 <ul id="structure" class="hide">
 			<li>
-				<button class="fancybox blue_button" href="#inline1" title="Select question from CRM question pool">Add Question</button>
+				<button class="fancybox add_button" href="#inline1" title="Select question from CRM question pool">Add Question</button>
+				<button class="fancybox preview_button" href="#inline1" title="Select question from CRM question pool">Preview Template</button>
 				<div id="template_question" style="padding-top:10px;	"></div>
 			</li>
     	</ul>

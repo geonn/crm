@@ -35,6 +35,7 @@ class Forms extends Admin_Controller {
 	}
 	
 	function viewForm($t_id=""){
+		$data['preview'] = "0";
 		$data['result'] = $this->template_model->retrieveForm($t_id);
 		$customer_list = $this->customer_model->getList();
 		$data['customer_list'] = $customer_list['data'];
@@ -48,6 +49,15 @@ class Forms extends Admin_Controller {
 		$data['response'] = $this->response_model->retrieveResponse($rf_id); 
 		$data['response_form'] = $this->response_form_model->find_by($rf_id); 
 		$form_row = $this->load->view('/admin/'.$this->name.'/dynamicForm',$data,true);
+		echo $form_row;
+	}
+	
+	function getPreview($t_id=""){
+		$data['preview'] = "1";
+		$data['result'] = $this->template_model->retrieveForm($t_id);
+		$customer_list = $this->customer_model->getList();
+		$data['customer_list'] = $customer_list['data'];
+		$form_row = $this->load->view('/admin/'.$this->name.'/_form',$data,true);
 		echo $form_row;
 	}
 	
