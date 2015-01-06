@@ -21,7 +21,20 @@ class Project_Model extends APP_Model{
 		
 		return $this->_result;
 	}
-
+	
+	public function getMyProject(){
+		$userProj = $this->user->get_memberproject();  
+		$result = array();
+		if(!empty($userProj)){
+			foreach($userProj as $p_id){
+				$res = $this->find_by($p_id);
+				$result[$p_id] = $res['name'];
+			}
+		}
+		
+		return $result;
+	}
+	
 	public function getListAsMenu(){
 		$filter = array(
 			
@@ -48,13 +61,14 @@ class Project_Model extends APP_Model{
 				'address'          => $this->param['address'],
 				'postcode' 		 => $this->param['postcode'],   
 				'state' 			  => $this->param['state'],   
+				'status' 			  => $this->param['status'],   
 				//'launch_date' => $this->param['launch_date'],   
 				'created_by'   => $this->user->get_memberid(),
 				'created'		  => localDate(),
 				'updated'		=> localDate(),
 			);
 			$id = $this->insert($data);
-			
+			$this->logger_model->addLogger('add', $this->name, $this->param['name']);
 			$this->_result['status']     = 'success'; 
 			$this->_result['data']       = $id;
 		}else{
@@ -77,11 +91,12 @@ class Project_Model extends APP_Model{
 				'address'          => $this->param['address'],
 				'postcode' 		 => $this->param['postcode'],   
 				'state' 			  => $this->param['state'],   
+				'status' 			  => $this->param['status'],   
 				//'launch_date' => $this->param['launch_date'],   
 				'updated'	=> localDate(),
 			);
 			$id = $this->update($this->param['id'], $data);
-			
+			$this->logger_model->addLogger('edit', $this->name, $this->param['name']);
 			$this->_result['status']     = 'success'; 
 			$this->_result['data']       = $id;
 		}else{

@@ -2,7 +2,7 @@
 	<div class="header_title"><a class="separator" href="<?= $this->config->item('admin_url') ?>">Home</a> <a class="separator" href="<?= $this->config->item('admin_url').'/'.$this->name ?>"><?= ucwords($this->name) ?></a> New <?= ucwords($this->name) ?></div>
 	<div style="clear:both"></div>
 </div>
-<?= $template['partials']['message']; ?>
+
 <div id="submenu">
 	<ul>
     	<li><a href="#" onclick="$('#newform').submit();">Create</a></li>
@@ -10,6 +10,7 @@
     </ul>
 </div>
 <div id="the_list">
+	<?= $template['partials']['message']; ?>
 	<?= form_open_multipart($this->config->item('admin_url').'/'.$this->name.'/create','id="newform"'); ?>
     <?= $template['partials']['content']; ?>
     </form>

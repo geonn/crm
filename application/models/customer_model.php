@@ -70,9 +70,9 @@ class Customer_Model extends APP_Model{
 					'updated'			  => localDate(),
 				);
 				$id = $this->insert($data);
+				$this->logger_model->addLogger('add', $this->_table, $this->param['name']);
 			}
 			
-			$this->logger_model->addLogger('add', $this->name, $this->param['name']);
 			$this->_result['status']     = 'success'; 
 			$this->_result['data']       = $id;
 		}else{
@@ -103,7 +103,7 @@ class Customer_Model extends APP_Model{
 				'updated'	=> localDate(),
 			);
 			$id = $this->update($this->param['id'], $data);
-			$this->logger_model->addLogger('edit', $this->name, $this->param['name']);
+			$this->logger_model->addLogger('edit',$this->_table, $this->param['name']);
 			$this->_result['status']     = 'success'; 
 			$this->_result['data']       = $id;
 		}else{

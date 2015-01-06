@@ -12,7 +12,7 @@ class Permissions extends Admin_Controller {
 		parent::__construct();	
 		
 		$this->option = $this->config->item('admin_option');
-		$res = $this->permissions_model->checkExists($this->user->get_memberrole(), 'admin');
+		$res = $this->permissions_model->checkExists($this->user->get_memberrole(), 'settings');
 		if($res[0]['permission'] < 1){ 
 			$this->denied = TRUE;
 		}
@@ -30,7 +30,7 @@ class Permissions extends Admin_Controller {
 	public function updatePermission(){
 		$result = $this->permissions_model->updatePermission();
 		$data['menu'] = $this->permissions_model->getPermissionInfo();
-		$this->message->set('Record created!', 'success',TRUE);		
+		$this->message->set('Record created!', 'success');		
 		$this->_render_form('index',$data);
 		//redirect($this->config->item('admin_url').'/'.$this->name.'/index');
 	}

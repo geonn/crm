@@ -48,14 +48,20 @@ class Response_Model extends APP_Model{
 	
 	public function addResponse($return_customer=array()){ 
 	 
+		$template = $this->template_model->find_by($this->param['t_id']);
 		$c_id = "";
-		if(!empty($return_customer)){
-			$c_id = $return_customer['data'];
-		}
 		
 		$response = $this->convertResponse(); 
 		$check     = $this->validateParams($response );  
 		if(empty($check)) {  
+			if(!empty($return_customer)){
+				$c_id = $return_customer['data'];
+				$customer = $this->customer_model->find_by($c_id);
+				$this->logger_model->addLogger('submit', $this->name, 'for '.$customer['name'] . ' on '.$template['name']);
+			}else{
+				$this->logger_model->addLogger('submit', ' on '.$template['name'] );
+			}
+			
 			//If all success, then add data to 'response_form' table
 			$res_form = $this->response_form_model->addResponseForm($return_customer);
 			
@@ -93,6 +99,7 @@ class Response_Model extends APP_Model{
 					}
 				} 
 			} 
+			
 			$this->_result['status']     = 'success'; 
 			$this->_result['data']       = "";
 		}else{

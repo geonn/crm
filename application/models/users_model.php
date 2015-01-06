@@ -65,12 +65,18 @@ class Users_Model extends APP_Model{
 				$this->_result['status']     = 'success';
 				$this->_result['data']       = $this->generateSession($users[0]['u_id']);	
 				
+				$project = array();
 				// Set user object
 				foreach($users as $info){				
+					if(!empty($info['project'])){
+						$project = explode(',',$info['project']);
+						$this->phpsession->save('','curProj', $project[1]);
+					}
 					$this->user->set_memberid($info['u_id']);
 					$this->user->set_memberemail($info['email']);
 					$this->user->set_memberusername($info['username']);
 					$this->user->set_memberrole($info['roles']);
+					$this->user->set_memberproject($project);
 				}
 				
 			}
@@ -146,20 +152,31 @@ class Users_Model extends APP_Model{
 	public function editAccount(){
 		$validation = $this->validateUser();
 		$result     = $this->checkUser(); 
+		$users = $this->find_by($this->param['u_id']); 
+		$roles = $this->user->get_memberrole();
 		$this->_result['data'] = "";
 		if(empty($validation)) { 
-			if(empty($result)) {
-				$data = array(
-					'fullname'=> $this->param['fullname'],
-					'mobile' => $this->param['mobile'],
-					'roles' => $this->param['roles'],
-					'email'    => $this->param['email'], 
-					'project'    => $this->param['project'], 
-					'status' => $this->param['status'],
-					'updated' 	 => date('Y-m-d H:i:s'),
-				);
-			 	$this->logger_model->addLogger('edit', $this->name, $this->param['fullname']);
-				$id = $this->update($this->param['u_id'],$data);
+			if(empty($result)) { 
+				
+				//Check params updates and 
+				$updates = $this->compareUpdates($users);
+				 
+				$this->case_model->addCase('users',$this->param['u_id'], $users['username'], $updates);
+				
+				//Only who have the authority to change the record can directly updates the record
+				if($this->param['owner'] == "1" || in_array($roles, $this->config->item('updates_access'))){
+					$data = array(
+						'fullname'=> $this->param['fullname'],
+						'mobile' => $this->param['mobile'],
+						'roles' => $this->param['roles'],
+						'email'    => $this->param['email'], 
+						'project'    => $this->param['project'], 
+						'status' => $this->param['status'],
+						'updated' 	 => date('Y-m-d H:i:s'),
+					);
+				 	$this->logger_model->addLogger('edit', $this->name, $this->param['fullname']);
+					$id = $this->update($this->param['u_id'],$data);
+				}
 				$this->_result['status']     = 'success';
 				
 			} else {  
@@ -178,6 +195,37 @@ class Users_Model extends APP_Model{
 		}
 		
 		return	$this->_result;
+	}
+	
+	public function manualUpdates($updates){ 
+		$upd = array(
+			$updates['field'] => $updates['new_data']
+		);
+		$this->update($updates['update_key'], $upd); 
+	}
+	
+	public function revertUpdates($updates){
+		$upd = array(
+			$updates['field'] => $updates['old_data']
+		);
+		$this->update($updates['update_key'], $upd); 
+	}
+	
+	public function compareUpdates($users=array()){
+		$changeList = array();
+		$count = 0;
+		foreach($users as $key => $val){
+			if(isset($this->param[$key])){
+				if($this->param[$key] != $users[$key]){
+					$changeList[$count]['field'] = $key;
+					$changeList[$count]['old_data'] = $users[$key];
+					$changeList[$count]['new_data'] = $this->param[$key];
+					$count++;
+				}
+			}
+		}
+		 
+		return $changeList;
 	}
 	
 	/**Generate session to user **/
@@ -365,8 +413,7 @@ class Users_Model extends APP_Model{
 	/*********************************************
 	******************* ADMIN ********************
 	*********************************************/
-	public function admin_getListUsers($sortby,$page=""){
-	
+	public function admin_getListUsers($sortby,$page=""){ 
 		// Search Param
 		$search = '';						
 		if ($this->input->get('q')) {				
@@ -398,6 +445,13 @@ class Users_Model extends APP_Model{
 	 	 $offset   = pageToOffset($this->config->item('per_page'),$page); 
 		// Load Data
 		$data['results'] = $this->get_data($search,$this->config->item('per_page'),$offset,$return['order'],$return['sorts']); 
+		
+		foreach($data['results'] as $k => $val){
+			$projects = explode(',', $val['project']);
+			if(!in_array($this->phpsession->get('','curProj'), $projects)){
+				unset($data['results'][$k]);
+			}
+		}
 				 
 		$data['count']   = $this->total_count($search);
 		$data['new_sort'] = $new_sort;

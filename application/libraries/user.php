@@ -8,7 +8,7 @@ class User{
 	private $memberemail;
 	private $memberusername;
 	private $memberrole;
-
+	private $memberproject;
 	
 	function __construct(){
 		$this->CI  =& get_instance();	
@@ -78,6 +78,22 @@ class User{
 		return $this->memberrole;		
 	}	
 
+	// Member Project
+	function set_memberproject($val){
+		$this->CI->phpsession->save("project", $val);	
+		$this->memberproject = $val;		
+	}
+	
+	function get_memberproject(){
+		$sproject = $this->CI->phpsession->get("project");
+		if(!isset($this->memberproject)){		
+			if(isset($sproject)){
+				$this->memberproject = $this->CI->phpsession->get("project");
+			}				
+		}
+		return $this->memberproject;		
+	}	
+	
 	function logout_user(){
 		return $this->CI->phpsession->clear();
 	}

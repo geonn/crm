@@ -29,7 +29,7 @@ class Admin_Model extends APP_Model{
 	}
 	
 	public function generateUpdateButton($module,$id=""){
-		$res = $this->permissions_model->checkExists($this->user->get_memberrole(), $module);
+		$res = $this->permissions_model->checkExists($this->user->get_memberrole(), $module); 
 		if($res[0]['permission'] > 2){ 
 			echo '<button type="submit"  class="green_button" id="submitformbutton">Update</button>';	
 		}else if($module == "admin" && ($this->user->get_memberid() == $id)){				

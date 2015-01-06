@@ -23,8 +23,7 @@ class Staff extends Admin_Controller {
 	}
 
 	function index($sortby='',$page='1') {
-		//Initialize param
-	 
+		//Initialize param 
 		$data['page']=$page;
 		if(empty($page)) $data['page']="1";					
 		$data['sortby']   = !empty($sortby) ? $sortby : "u_id-1";
@@ -50,6 +49,7 @@ class Staff extends Admin_Controller {
 	
 	function edit(){		
 		$data['module'] = "edit";
+		$data['owner'] = "0";
 		if ($this->uri->segment(4) === FALSE){
 			redirect($this->path.'index', 'refresh');
 		}else{		
@@ -77,6 +77,7 @@ class Staff extends Admin_Controller {
 //			$this->denied = TRUE;
 //		}
 		$data['module'] = "edit";
+		$data['owner'] = "1";
 		$id = $this->user->get_memberid();
 		$data['form'] = $this->users_model->find_by($id); 
 		$data['form']['password2'] = $data['form']['password'];
@@ -103,7 +104,7 @@ class Staff extends Admin_Controller {
 	}
 	
 	function update(){
-		$data['module'] = "edit"; 
+		$data['module'] = "edit";  
 		$u_id =  $this->param['u_id'];
 		if(empty($u_id)){
 			$this->param['u_id'] = $this->user->get_memberid();

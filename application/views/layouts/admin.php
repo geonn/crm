@@ -13,7 +13,12 @@
 			
 			jQuery(document).ready(function() {
 				$('ul.sf-menu').superfish(); 
-				
+				$("#curProj").change(function(){ 
+					var form_data = "project="+$(this).val();
+					$.post("<?= $this->config->item('admin_url') ?>/main/changeCurrentProject/",form_data,  function(data) { 
+						location.reload();
+					});
+				});
 				//Increment the idle time counter every minute.
 			    var idleInterval = setInterval("timerIncrement()",60000); // 1 minute
 			
@@ -60,6 +65,8 @@
 					}
 				});		
 			}
+			
+			
 		</script>		
 		<style>
 			html {overflow-y:auto; }
@@ -73,8 +80,19 @@
 					<td width="76px" style=""><a style="height:30px; display:block;" href="<?= $this->config->item('admin_url') ?>"> <?= $this->config->item('img_logo') ?></a></td>
 					<td>&nbsp; &nbsp; &nbsp;  </td>
 					<td align='right' valign='bottom' style=''>	
+						
                     	<a style="border:none;" class='logoutbutton' href="javascript:void(0);" onclick="confirmLogout();">Logout</a>
 						<a href="#"><?= $this->authenticate->admin_username(); ?></a>
+						<div style="border-right: 1px solid #999;height:30px;padding:0 10px;float:right;">
+						<?php $userProj = $this->project_model->getMyProject();  
+							if(count($userProj) > 1){
+								$curProj = $this->phpsession->get('','curProj');
+								echo form_dropdown('curProj', $userProj, $curProj, 'id="curProj"' ); 
+							}else{
+								echo  $userProj[1];
+							}
+						 ?>	
+						</div>
 					</td>
 		
 				</tr>

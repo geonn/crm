@@ -29,6 +29,10 @@ $config['manager_roles_access'] = array(
 	"salesman"  => "Salesman"
 );
 
+$config['updates_access'] = array(
+	"founder"  
+);
+
 $config['menu'] = array(
 	 'staff'     => array(
 	 					"name" => "Staffs",	
@@ -62,9 +66,13 @@ $config['menu'] = array(
 	 					"name" => "Project",	
 	 					"url" => $this->domain."/admin/project/index",	
 	 					),
+	 'approval'  => array(
+	 					"name" => "Approval",	
+	 					"url" => $this->domain."/admin/main/approval",	
+	 					),
  	'settings'  => array(
 	 					"name" => "Settings",	
-	 					"url" => $this->domain."/admin/permissions/my",	
+	 					"url" => $this->domain."/admin/permissions/index",	
 	 					),
 );
 
@@ -85,9 +93,9 @@ $config['sub_menu'] = array(
 	 'question'    => array(
 	 					'Add Question' => $this->domain.'/admin/question/newd', 
 	 				),
-
+	'approval' => array(),
 	 'settings'    => array(
-	 					'My Account' => $this->domain."/admin/users/index",	
+	 					'My Account' => $this->domain."/admin/staff/myAccount",	
 	 					'Permission' => $this->domain.'/admin/permissions/index'
 	 	),
 );
@@ -114,6 +122,18 @@ $config['project_status'] = array(
 	2 => 'Close',
 );			
 
+$config['case_status'] = array(
+	1=> 'Pending',
+	2 => 'Reviewed',
+);		
+
+$config['case_details_status'] = array(
+	1=> 'Pending',
+	2 => 'Approved',
+	3 => 'Rejected',
+	4 => 'Reverted'
+);		
+ 
 $config['question_type'] = array(
 	1 => 'Text Input',
 	2 => 'Text Area',
