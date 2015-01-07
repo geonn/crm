@@ -29,12 +29,17 @@ class Case_details_Model extends APP_Model{
 			$status = "2";
 		} 
 		foreach($updates as $k => $val){
+			$n_data = $val['new_data'];
+			if(is_array( $val['new_data'])){
+				$n_data  = implode(',', $val['new_data']); 
+			}
+			
 			$data = array(
 				'case_id' => $case_id,
 				'update_key' => $key,
 				'field' 		=> $val['field'],   
 				'old_data' 		=> $val['old_data'],   
-				'new_data' 		=> $val['new_data'],   
+				'new_data' 		=> $n_data,   
 				'status' 		=>  $status,   
 				'created'	=> localDate(),
 				'updated'	=> localDate(),

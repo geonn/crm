@@ -170,7 +170,7 @@ class Users_Model extends APP_Model{
 						'mobile' => $this->param['mobile'],
 						'roles' => $this->param['roles'],
 						'email'    => $this->param['email'], 
-						'project'    => $this->param['project'], 
+						'project'    => implode(',', $this->param['project']), 
 						'status' => $this->param['status'],
 						'updated' 	 => date('Y-m-d H:i:s'),
 					);

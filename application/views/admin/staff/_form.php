@@ -70,10 +70,10 @@
 					  echo  set_value('status',isset($form) ? match($form['status'], $this->config->item('account_status')) : '');
 					 echo form_hidden('status', set_value('status',isset($form) ? $form['status'] : ''));
 				}
-				 ?> </td>		
+				 ?> 
+			</td>		
 		</tr>
 			
-		
 	</tbody>
 </table>
   

@@ -57,7 +57,32 @@
 						</tr>	
 						<tr>
 							<td style="width: 140px;"  id='edit_title'>Project</td>
-							<td><?= form_dropdown('p_id',array("" => "None"), set_value('p_id',isset($form) ? $form['p_id'] : ''),'class="required" placeholder="Project ID" style="width:30%;"'); ?></td>			
+							<td>
+								<?php
+												$projects = $this->project_model->getListAsMenu();
+												$template_proj = array();
+												if(!empty($form['p_id'])){
+													$template_proj = explode(',', $form['p_id']);
+												}
+												
+												foreach($projects as $p => $project){
+													$isCheck = FALSE;
+													if(in_array($p, $template_proj)){
+														$isCheck = TRUE;
+													}
+													
+													$data = array(
+													    'name'       => 'project[]',
+													    'id'         	 => $p,
+													    'value'       => $p,
+													    'checked'  => $isCheck,
+													    'style'        => 'margin:5px',
+													    );
+													
+													echo "<div>".form_checkbox($data) . $project."</div>"; 
+												}
+								?>
+								</td>			
 						</tr>		
 						<tr>
 							<td style="width: 140px;"  id='edit_title'>Description</td>

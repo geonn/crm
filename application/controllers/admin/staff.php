@@ -42,6 +42,12 @@ class Staff extends Admin_Controller {
 		echo $table_row;
 	}
 	
+	function getUserProject($id){
+		$data['form'] = $this->users_model->find_by($id);
+		$table_row = $this->load->view('/admin/'.$this->name.'/_user_project',$data,true);
+		echo $table_row;
+	}
+	
 	function newd(){
 		$data['module'] = "add";
 		$this->_render_form('new', $data);			
@@ -93,14 +99,6 @@ class Staff extends Admin_Controller {
 		$data['module'] = "add";
 		$result = $this->users_model->addUser(); 
 		echo json_encode($result);
-//		if ($result['status'] == 'success') { 
-//			$this->message->set(ucwords($this->name).' created!', 'success',TRUE);		
-//		    $this->goHome();
-//		}else{
-//			$data['form'] =$this->param;
-//			$this->message->set($this->code[$result['error_code']], 'error');		
-//			$this->_render_form('new',$data);
-//		}
 	}
 	
 	function update(){

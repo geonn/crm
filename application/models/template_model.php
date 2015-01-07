@@ -26,27 +26,32 @@ class Template_Model extends APP_Model{
 		}
 		$data['results'] = $this->get_data($search,'','','updated','DESC');
 		foreach($data['results'] as $k => $val){
-			$creator = $this->users_model->checkUserById($val['created_by']);
-			$data['results'][$k]['creator'] = $creator[0]['username'];
-			
-			//Extract Category
-			$categories = explode(',', $val['category']);
-			$c_con = array();
-			foreach($categories as $c){
-				$c_con[] = match($c, $this->config->item('template_category'));
+			$projects = explode(',', $val['p_id']);
+			if(!in_array($this->phpsession->get('','curProj'), $projects)){
+				unset($data['results'][$k]);
+			}else{
+				$creator = $this->users_model->checkUserById($val['created_by']);
+				$data['results'][$k]['creator'] = $creator[0]['username'];
+				
+				//Extract Category
+				$categories = explode(',', $val['category']);
+				$c_con = array();
+				foreach($categories as $c){
+					$c_con[] = match($c, $this->config->item('template_category'));
+				}
+				$data['results'][$k]['c_con'] = implode(', ', $c_con);
+				
+				//Extract Viewable
+				$viewable = explode(',', $val['viewable']);
+				$v_con = array();
+				foreach($viewable as $v){
+					$v_con[] = match($v, $this->config->item('roles'));
+				}
+				$data['results'][$k]['v_con'] = implode(', ', $v_con);
 			}
-			$data['results'][$k]['c_con'] = implode(', ', $c_con);
 			
-			//Extract Viewable
-			$viewable = explode(',', $val['viewable']);
-			$v_con = array();
-			foreach($viewable as $v){
-				$v_con[] = match($v, $this->config->item('roles'));
-			}
-			$data['results'][$k]['v_con'] = implode(', ', $v_con);
 		} 		  
  
-		
 		return $data;
 	}
 	
@@ -94,9 +99,14 @@ class Template_Model extends APP_Model{
 				$category =  implode(',' , $this->param['category']);
 			}
 			
+			$p_id = "";
+			if(!empty($this->param['project'])){
+				$p_id = implode(',',$this->param['project'] );
+			} 
+			
 			$data = array(
 				'name' => $this->param['name'],
-				'p_id' => $this->param['p_id'],
+				'p_id'                => $p_id,
 				'description' => $this->param['description'],
 				'created_by' 		=> $this->user->get_memberid(),
 				'category' 		=> $category,   
@@ -135,8 +145,14 @@ class Template_Model extends APP_Model{
 				$category =  implode(',' , $this->param['category']);
 			}
 			
+			$p_id = "";
+			if(!empty($this->param['project'])){
+				$p_id = implode(',',$this->param['project'] );
+			} 
+			
 			$data = array(
 				'name' => $this->param['name'], 
+				'p_id'                => $p_id,
 				'description' => $this->param['description'], 
 				'category' 		=>  $category,
 				'viewable' 		=> $viewable,  

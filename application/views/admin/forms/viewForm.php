@@ -16,6 +16,7 @@
  		});
  		
  		$.getJSON( queryString+"getCustomerList", function( data ) {
+ 			console.log(data);
 			$( "#customer" ).autocomplete({
 		     	source: data,
 			    focus: function( event, ui ) { 
@@ -23,8 +24,6 @@
 			        return false;
 			      },
 			      select: function( event, ui ) {
-			    
-			      	
 			      	$.get("<?= $this->config->item('admin_url') ?>/customer/getCustomerById?c_id="+ui.item.value, function(data) {
 			      		var obj = jQuery.parseJSON(data);
 			      		$("input[name=c_id]").val(obj.id);
@@ -45,8 +44,6 @@
 			      }
 			});
 		});
-
-	    
 	});
 	
 	function submitForm(){

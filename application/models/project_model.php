@@ -54,7 +54,7 @@ class Project_Model extends APP_Model{
 		$check     = $this->validateParams(); 
 		
 		if($check === 1) { 
-			
+			 
 			$data = array(
 				'name' 				=> $this->param['name'],
 				'description' 	 => $this->param['description'],
@@ -86,7 +86,7 @@ class Project_Model extends APP_Model{
 		if($check === 1) { 
 			
 			$data = array(
-				'name' 				=> $this->param['name'],
+				'name' 				=> $this->param['name'], 
 				'description' 	 => $this->param['description'],
 				'address'          => $this->param['address'],
 				'postcode' 		 => $this->param['postcode'],   

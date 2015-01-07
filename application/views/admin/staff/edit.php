@@ -27,36 +27,18 @@
     <?= $template['partials']['content']; ?>
     <?php $roles = $this->user->get_memberrole(); ?>
     <br/>
-    <div class="header_title" style="border:0;">Project Assignment</div>
-        <table class="edit bordered">
-            <tbody>	
-                <tr>
-                    <td style="width: 140px;"  id='edit_title'>Project Handle</td>
-                    <td>
-                        <?php
-                    if(in_array($roles, array('founder','director'))){
-                        echo form_dropdown('project', array("" => "None") + $this->project_model->getListAsMenu(), set_value('project',isset($form) ? $form['project'] : ''), ' style="width:20%;"');
-                    }else{
-                        $proj = $this->project_model->find_by($form['project']); 
-                          echo  set_value('project',isset($form) ? $proj['name']: '');
-                         echo form_hidden('project', set_value('project',isset($form) ? $form['project'] : ''));
-                    }
-                     ?>
-                            
-                    </td>		
-                </tr>
-            </tbody>
-        </table>
-        <br./>
-        <div class="header_title" style="border:0;">Remark for updates</div>
-        <table class="edit bordered">
-			<tbody>	
-				<tr>
-					<td style="width: 140px;"  id='edit_title'>Remark <span class="red_dot">*</span></td>
-					<td><textarea name="remark" id="remark" rows="4" style="width:50%;" placeholder="Remark of changes" ></textarea></td>			
-				</tr>	
-			</tbody>
-		</table>
+    
+    <div id="user_project"></div>
+   	<br./>
+	<div class="header_title" style="border:0;">Remark for updates</div>
+    <table class="edit bordered">
+		<tbody>	
+			<tr>
+				<td style="width: 140px;"  id='edit_title'>Remark <span class="red_dot">*</span></td>
+				<td><textarea name="remark" id="remark" rows="4" style="width:50%;" placeholder="Remark of changes" ></textarea></td>			
+			</tr>	
+		</tbody>
+	</table>
     </form>
     <br/>
     <div align='center'>
@@ -112,8 +94,19 @@
 		return false;
 	});
 	
+	function get_user_project(){ 
+		$.get(queryString+"getUserProject/<?=  $form['u_id'] ?>", function(data) { 
+		  	jQuery('#user_project').html(data);
+		
+		});
+	}
+	
 	$('#backbutton').click(function(){
 		location.href='<?=$this->config->item('admin_url')?>/<?= $this->name ?>/';
 		return false;
+	});
+	
+	$(function(){
+			get_user_project();
 	});
 </script>
